@@ -72,7 +72,6 @@
         }
         .btn-ui:active { transform: scale(0.95); }
         .btn-back { background: #F1F5F9; color: var(--nathan-blue); }
-        .btn-pdf { background: linear-gradient(135deg, var(--nathan-pink), #ff4d6d); color: white; box-shadow: 0 4px 15px rgba(236, 0, 140, 0.3); }
 
         .nav-select {
             width: 100%; padding: 16px 20px; border-radius: 14px; border: 2px solid transparent;
@@ -151,7 +150,6 @@
             padding: 20px; margin: 25px 0; display: flex; justify-content: center; align-items: center;
             box-shadow: inset 0 4px 15px rgba(0,0,0,0.02);
         }
-
     </style>
 </head>
 <body>
@@ -169,9 +167,9 @@
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
             <option value="auto">1. Automatisme (QCM)</option>
-            <option value="exo1">2. Exercice 1 : Polynômes</option>
+            <option value="exo1">2. Exercice 1 : Polynômes & Second Degré</option>
             <option value="exo2">3. Exercice 2 : Suites Numériques</option>
-            <option value="exo3">4. Exercice 3 : Probabilités & Dénombrement</option>
+            <option value="exo3">4. Exercice 3 : Probabilités</option>
         </select>
     </header>
 
@@ -180,7 +178,7 @@
         <div id="auto" class="section-view active">
             <div class="card card-auto">
                 <h2>Automatisme - 12 Questions</h2>
-                <p>Coche la bonne réponse pour valider tes réflexes de 1ère Spé.</p>
+                <p>Réflexes de base (calculs algébriques, fractions, pourcentages et inéquations).</p>
             </div>
             <div id="qcm-container"></div>
             <div class="nav-buttons">
@@ -192,22 +190,26 @@
         <div id="exo1" class="section-view">
             <div class="card card-exo1">
                 <h2>Exercice 1 : Fonctions Polynômes</h2>
-                <p>On considère la fonction polynôme $P$ du second degré définie sur $\mathbb{R}$ par :</p>
-                <div class="math-block">$\displaystyle P(x) = 2x^2 - 10x + 12$</div>
+                <p>Soit $P$ la fonction polynôme du second degré définie sur $\mathbb{R}$ par :</p>
+                <div class="math-block">$\displaystyle P(x) = 2x^2 - 8x + 6$</div>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
                 
-                <p><b>1.</b> Calculer le discriminant $\Delta$ du polynôme $P(x)$, puis déterminer ses racines réelles.</p>
-                <p><b>2.</b> Sachant qu'une racine évidente du polynôme $Q(x) = 2x^3 - 7x^2 + 7x - 2$ est $x_1 = 1$, retrouver l'autre racine $x_2$ à l'aide de la somme $S$ ou du produit $P$ des racines d'un trinôme factorisé.</p>
-                <p><b>3.</b> Développer et réduire l'expression : $R(x) = (x-2)(2x-1)(x-1)$.</p>
-                <p><b>4.</b> Résoudre dans $\mathbb{R}$ l'équation produit-nul : $(3x - 6)(4 - 2x) = 0$.</p>
+                <p><b>1.</b> Mettre $P(x)$ sous forme canonique en utilisant l'écriture générale.</p>
+                <p><b>2.</b> Factoriser le polynôme $P(x)$ en déterminant ses racines évidentes ou en résolvant $P(x) = 0$.</p>
+                <p><b>3.</b> Sachant qu'un polynôme du troisième degré $Q(x) = 2x^3 - 7x^2 + 7x - 2$ admet $x_1 = 1$ comme racine, utiliser la somme $S$ ou le produit $P$ des racines pour trouver l'autre racine évidente connaissant un facteur $(x-1)$.</p>
+                <p><b>4.</b> Développer, réduire et ordonner l'expression : $R(x) = (x - 2)(2x - 1)(x - 1)$.</p>
+                <p><b>5.</b> Résoudre dans $\mathbb{R}$ l'équation produit-nul : $(3x - 6)(4 - 2x) = 0$.</p>
+                <p><b>6.</b> Étudier le signe du trinôme $P(x)$ sur $\mathbb{R}$.</p>
                 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé</button>
                 
                 <div id="corr-exo1" class="correction">
-                    <div class="corr-step"><b>1.</b> $\Delta = (-10)^2 - 4(2)(12) = 100 - 96 = 4$. Comme $\Delta > 0$, il y a deux racines distinctes :<br>$\displaystyle x_1 = \frac{10 - \sqrt{4}}{2(2)} = \frac{8}{4} = 2$ et $\displaystyle x_2 = \frac{10 + \sqrt{4}}{2(2)} = \frac{12}{4} = 3$.</div>
-                    <div class="corr-step"><b>2.</b> Puisque $1$ est racine de $Q(x)$, on peut factoriser par $(x-1)$ : $Q(x) = (x-1)(2x^2 - 5x + 2)$.<br>Pour le trinôme $2x^2 - 5x + 2$, le produit des racines vaut $\displaystyle c/a = \frac{2}{2} = 1$, et la somme vaut $\displaystyle -b/a = \frac{5}{2} = 2,5$.<br>Connaissant une racine $x_1 = 1$, l'autre racine $x_2$ vérifie $1 \times x_2 = 1 \implies x_2 = 1$ ? Attention, le produit des racines est $\frac{c}{a}$ et la somme $-\frac{b}{a}$. Avec $x_1 = 1$ et $x_1+x_2 = 5/2$, on trouve $x_2 = 5/2 - 1 = 3/2 = 1,5$. Vérifions avec le produit : $1 \times x_2 = 2/2 = 1 \implies x_2 = 0,5$. Les racines du trinôme sont donc $1/2$ et $2$ (avec la racine initiale 1).</div>
-                    <div class="corr-step"><b>3.</b> $(x-2)(2x-1) = 2x^2 - x - 4x + 2 = 2x^2 - 5x + 2$.<br>Ensuite : $(2x^2 - 5x + 2)(x-1) = 2x^3 - 2x^2 - 5x^2 + 5x + 2x - 2 = 2x^3 - 7x^2 + 7x - 2$.</div>
-                    <div class="corr-step"><b>4.</b> Un produit de facteurs est nul si et seulement si l'un au moins de ses facteurs est nul :<br>$3x - 6 = 0 \iff x = 2$<br>ou $4 - 2x = 0 \iff x = 2$.<br>L'unique solution est $S = \{2\}$.</div>
+                    <div class="corr-step"><b>1.</b> Forme canonique $a(x-\alpha)^2 + \beta$ : avec $\alpha = \frac{-(-8)}{2(2)} = 2$ et $\beta = P(2) = 2(4) - 8(2) + 6 = -2$. Ainsi, $P(x) = 2(x-2)^2 - 2$.</div>
+                    <div class="corr-step"><b>2.</b> On remarque que $P(1) = 2(1)^2 - 8(1) + 6 = 0$, donc $1$ est racine. La somme des racines vaut $-b/a = 4$. L'autre racine est donc $4 - 1 = 3$. La forme factorisée est $P(x) = 2(x-1)(x-3)$.</div>
+                    <div class="corr-step"><b>3.</b> $Q(1) = 0$, donc $Q(x) = (x-1)(2x^2 - 5x + 2)$. Pour le trinôme $2x^2 - 5x + 2$, le produit des racines vaut $c/a = 1$ et leur somme $5/2 = 2,5$. Les autres racines sont $0,5$ et $2$.</div>
+                    <div class="corr-step"><b>4.</b> $(x-2)(2x-1) = 2x^2 - 5x + 2$. En multipliant par $(x-1)$, on obtient $2x^3 - 7x^2 + 7x - 2$.</div>
+                    <div class="corr-step"><b>5.</b> $3x - 6 = 0 \iff x = 2$ ou $4 - 2x = 0 \iff x = 2$. L'unique solution est $S = \{2\}$.</div>
+                    <div class="corr-step"><b>6.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif à l'extérieur de ses racines $[-\infty ; 1] \cup [3 ; +\infty[$ et négatif sur l'intervalle $[1 ; 3]$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -234,12 +236,12 @@
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé</button>
                 
                 <div id="corr-exo2" class="correction">
-                    <div class="corr-step"><b>1.</b> $u_1 = \frac{1}{2}(3) + 2 = 1,5 + 2 = 3,5$.<br>$u_2 = \frac{1}{2}(3,5) + 2 = 1,75 + 2 = 3,75$.<br>Comme $u_1 - u_0 = 0,5$ et $u_2 - u_1 = 0,25$, la différence n'est pas constante : $(u_n)$ n'est pas arithmétique. De même, les quotients ne sont pas constants : elle n'est pas géométrique.</div>
+                    <div class="corr-step"><b>1.</b> $u_1 = \frac{1}{2}(3) + 2 = 3,5$ et $u_2 = \frac{1}{2}(3,5) + 2 = 3,75$. Les différences et quotients ne sont pas constants : la suite n'est ni arithmétique ni géométrique.</div>
                     <div class="corr-step"><b>2.</b> $v_0 = u_0 - 4 = 3 - 4 = -1$.</div>
-                    <div class="corr-step"><b>3.</b> $\displaystyle v_{n+1} = u_{n+1} - 4 = \left(\frac{1}{2}u_n + 2\right) - 4 = \frac{1}{2}u_n - 2$.<br>En factorisant par $\frac{1}{2}$ : $\displaystyle v_{n+1} = \frac{1}{2}(u_n - 4) = \frac{1}{2}v_n$.<br>La suite $(v_n)$ est géométrique de premier terme $v_0 = -1$ et de raison $q = \frac{1}{2}$.</div>
-                    <div class="corr-step"><b>4.</b> $\displaystyle v_n = v_0 \times q^n = -1 \times \left(\frac{1}{2}\right)^n$.<br>Comme $u_n = v_n + 4$, on a : $\displaystyle u_n = 4 - \left(\frac{1}{2}\right)^n$.</div>
-                    <div class="corr-step"><b>5.</b> $\displaystyle u_{n+1} - u_n = \left(4 - \left(\frac{1}{2}\right)^{n+1}\right) - \left(4 - \left(\frac{1}{2}\right)^n\right) = \left(\frac{1}{2}\right)^n - \left(\frac{1}{2}\right)^{n+1} = \left(\frac{1}{2}\right)^n \left(1 - \frac{1}{2}\right) = \frac{1}{2} \times \left(\frac{1}{2}\right)^n > 0$.<br>La suite $(u_n)$ est donc strictement croissante.</div>
-                    <div class="corr-step"><b>6.</b> Comme $-1 < \frac{1}{2} < 1$, on a $\displaystyle \lim_{n \to +\infty} \left(\frac{1}{2}\right)^n = 0$.<br>Par conséquent, $\displaystyle \lim_{n \to +\infty} u_n = 4 - 0 = 4$.</div>
+                    <div class="corr-step"><b>3.</b> $\displaystyle v_{n+1} = u_{n+1} - 4 = \frac{1}{2}u_n - 2 = \frac{1}{2}(u_n - 4) = \frac{1}{2}v_n$. La suite $(v_n)$ est géométrique de raison $q = \frac{1}{2}$ et de premier terme $-1$.</div>
+                    <div class="corr-step"><b>4.</b> $v_n = -1 \times \left(\frac{1}{2}\right)^n$, donc $u_n = 4 - \left(\frac{1}{2}\right)^n$.</div>
+                    <div class="corr-step"><b>5.</b> $u_{n+1} - u_n = \frac{1}{2} \times \left(\frac{1}{2}\right)^n > 0$, donc la suite $(u_n)$ est strictement croissante.</div>
+                    <div class="corr-step"><b>6.</b> Puisque $-1 < \frac{1}{2} < 1$, $\lim_{n \to +\infty} \left(\frac{1}{2}\right)^n = 0$, d'où $\lim_{n \to +\infty} u_n = 4$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -257,22 +259,22 @@
                 <p>On choisit une personne au hasard. On note $M$ l'événement "la personne est malade" et $T$ l'événement "le test est positif".</p>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
 
-                <p><b>1.</b> Représenter cette situation à l'aide d'un <b>arbre pondéré</b>.</p>
+                <p><b>1.</b> Représenter cette situation à l'aide d'un arbre pondéré.</p>
                 <p><b>2.</b> Calculer la probabilité que la personne soit malade et que son test soit positif $P(M \cap T)$.</p>
-                <p><b>3.</b> Démontrer à l'aide de la formule des <b>probabilités totales</b> que $P(T) = 0,083$.</p>
-                <p><b>4.</b> Calculer la probabilité qu'une personne ayant un test positif soit effectivement malade (formule de <b>Bayes</b> / probabilité conditionnelle $P_T(M)$).</p>
-                <p><b>5.</b> Les événements $M$ et $T$ sont-ils indépendants ? Justifier.</p>
-                <p><b>6.</b> (Complément Urne / Dés) On tire simultanément et au hasard 3 jetons dans une urne contenant 4 jetons rouges et 6 jetons noirs. Calculer la probabilité d'obtenir exactement 2 jetons rouges.</p>
+                <p><b>3.</b> Calculer la probabilité totale de l'événement $T$, soit $P(T) = 0{,}083$.</p>
+                <p><b>4.</b> Calculer la probabilité qu'une personne ayant un test positif soit effectivement malade ($P_T(M)$).</p>
+                <p><b>5.</b> Les événements $M$ et $T$ sont-ils indépendants ? Justifier par le calcul.</p>
+                <p><b>6.</b> (Urne) On tire simultanément et au hasard 3 jetons dans une urne contenant 4 jetons rouges et 6 jetons noirs. Calculer la probabilité d'obtenir exactement 2 jetons rouges.</p>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo3')">Afficher le corrigé</button>
                 
                 <div id="corr-exo3" class="correction">
-                    <div class="corr-step"><b>1.</b> Arbre à deux niveaux : Premier nœud $M$ (0,05) et $\overline{M}$ (0,95). Depuis $M$, branches $T$ (0,90) et $\overline{T}$ (0,10). Depuis $\overline{M}$, branches $T$ (0,04) et $\overline{T}$ (0,96).</div>
+                    <div class="corr-step"><b>1.</b> Arbre à deux niveaux : Branches $M$ (0,05) et $\overline{M}$ (0,95), puis sous-branches $T$ et $\overline{T}$.</div>
                     <div class="corr-step"><b>2.</b> $P(M \cap T) = P(M) \times P_M(T) = 0,05 \times 0,90 = 0,045$.</div>
                     <div class="corr-step"><b>3.</b> $P(T) = P(M \cap T) + P(\overline{M} \cap T) = 0,045 + (0,95 \times 0,04) = 0,045 + 0,038 = 0,083$.</div>
-                    <div class="corr-step"><b>4.</b> $\displaystyle P_T(M) = \frac{P(M \cap T)}{P(T)} = \frac{0,045}{0,083} \approx 0,5422$ (soit environ 54,2 %).</div>
-                    <div class="corr-step"><b>5.</b> $M$ et $T$ sont indépendants si $P(M \cap T) = P(M) \times P(T)$.<br>Ici $P(M) \times P(T) = 0,05 \times 0,083 = 0,00415$, or $P(M \cap T) = 0,045$. Ils ne sont pas égaux, donc les événements ne sont pas indépendants.</div>
-                    <div class="corr-step"><b>6.</b> Nombre de tirages possibles : $\displaystyle \binom{10}{3} = 120$.<br>Nombre de tirages avec 2 rouges et 1 noir : $\displaystyle \binom{4}{2} \times \binom{6}{1} = 6 \times 6 = 36$.<br>Probabilité : $\displaystyle \frac{36}{120} = \frac{3}{10} = 0,3$.</div>
+                    <div class="corr-step"><b>4.</b> $\displaystyle P_T(M) = \frac{P(M \cap T)}{P(T)} = \frac{0,045}{0,083} \approx 54,2\,\%$.</div>
+                    <div class="corr-step"><b>5.</b> $P(M) \times P(T) = 0,05 \times 0,083 = 0,00415 \neq 0,045$, donc ils ne sont pas indépendants.</div>
+                    <div class="corr-step"><b>6.</b> $\displaystyle \frac{\binom{4}{2} \times \binom{6}{1}}{\binom{10}{3}} = \frac{6 \times 6}{120} = \frac{36}{120} = 0,3$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -284,21 +286,21 @@
 
 <script>
 // ==========================================
-// DONNÉES QCM (12 Questions)
+// DONNÉES QCM (12 Questions adaptées Novembre)
 // ==========================================
 const qcmData = [
-    { q: "Calculer et simplifier : $\\displaystyle \\frac{2}{5} - \\frac{1}{3}$", opts: ["$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{1}{15}$", "$\\displaystyle \\frac{11}{15}$", "$\\displaystyle \\frac{3}{8}$"], ans: 1, corr: "Mise au même dénominateur (15) : $\\displaystyle \\frac{2 \\times 3}{15} - \\frac{1 \\times 5}{15} = \\frac{6 - 5}{15} = \\frac{1}{15}$." },
-    { q: "Quel est le discriminant de $P(x) = 3x^2 - 5x + 2$ ?", opts: ["$\\Delta = 1$", "$\\Delta = 25$", "$\\Delta = 49$", "$\\Delta = 9$"], ans: 0, corr: "$\\Delta = (-5)^2 - 4(3)(2) = 25 - 24 = 1$." },
-    { q: "Résoudre l'équation : $4x - 7 = 2(x + 5)$", opts: ["$x = 8,5$", "$x = 1$", "$x = 3$", "$x = 2$"], ans: 0, corr: "On développe : $4x - 7 = 2x + 10 \\Longleftrightarrow 2x = 17 \\Longleftrightarrow x = 8,5$." },
-    { q: "Si une suite géométrique $(u_n)$ a pour premier terme $u_0 = 2$ et pour raison $q = 3$, alors $u_3$ vaut :", opts: ["$18$", "$54$", "$162$", "$24$"], ans: 1, corr: "$u_3 = u_0 \times q^3 = 2 \times 3^3 = 2 \times 27 = 54$." },
-    { q: "Résoudre l'inéquation : $-3x + 5 \\lt 2x - 10$", opts: ["$x \\lt 3$", "$x \\gt 3$", "$x \\lt -3$", "$x \\gt -3$"], ans: 1, corr: "$-5x < -15 \implies x > 3$ (on change le sens car on divise par un nombre négatif)." },
-    { q: "Quel est l'ensemble solution de $x^2 - 9 \\ge 0$ ?", opts: ["$[-3 ; 3]$", "$]-\\infty ; -3] \\cup [3 ; +\\infty[$", "$[3 ; +\\infty[$", "$\\mathbb{R}$"], ans: 1, corr: "Racines $-3$ et $3$. Le trinôme est du signe de $a=1 > 0$ à l'extérieur." },
-    { q: "Soit $u_n = 5 \times 0,8^n$. Quelle est la limite de $u_n$ quand $n$ tend vers $+\infty$ ?", opts: ["$+\infty$", "$5$", "$0$", "N'existe pas"], ans: 2, corr: "Puisque $-1 < 0,8 < 1$, $\\lim 0,8^n = 0$, donc la limite est $0$." },
-    { q: "Si $P(A) = 0,4$ et $P_A(B) = 0,5$, alors $P(A \cap B)$ vaut :", opts: ["$0,9$", "$0,1$", "$0,2$", "$1,25$"], ans: 2, corr: "$P(A \cap B) = P(A) \times P_A(B) = 0,4 \times 0,5 = 0,2$." },
-    { q: "Soient $\\vec{u}(3 ; -2)$ et $\\vec{v}(1 ; 4)$. Calculer $\\vec{u} \\cdot \\vec{v}$.", opts: ["$5$", "$-5$", "$11$", "$-11$"], ans: 1, corr: "$(3 \times 1) + (-2 \times 4) = 3 - 8 = -5$." },
-    { q: "Déterminer la dérivée de $\\displaystyle f(x) = x^3 - 4x + 1$.", opts: ["$3x^2 - 4$", "$3x^2 - 4x$", "$x^2 - 4$", "$3x^2 + 4$"], ans: 0, corr: "La dérivée de $x^3$ est $3x^2$ et celle de $-4x$ est $-4$." },
-    { q: "Un prix augmente de 20% puis baisse de 20%. Globalement :", opts: ["Il revient au prix initial", "Il augmente de 4%", "Il baisse de 4%", "Il baisse de 2%"], ans: 2, corr: "Coefficient global : $1,2 \times 0,8 = 0,96$, soit une baisse de $4\%$." },
-    { q: "Simplifier l'expression $\\sqrt{50} - \\sqrt{8}$", opts: ["$3\\sqrt{2}$", "$4\\sqrt{2}$", "$\\sqrt{42}$", "$7\\sqrt{2}$"], ans: 0, corr: "$\\sqrt{50} = 5\\sqrt{2}$ et $\\sqrt{8} = 2\\sqrt{2}$. Donc $5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." }
+    { q: "Calculer et simplifier : $\\displaystyle \\frac{2}{5} - \\frac{1}{3}$", opts: ["$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{1}{15}$", "$\\displaystyle \\frac{11}{15}$", "$\\displaystyle \\frac{3}{8}$"], ans: 1, corr: "Mise au même dénominateur : $\\displaystyle \\frac{6 - 5}{15} = \\frac{1}{15}$." },
+    { q: "Quel est le signe de $3x^2 - 5x + 2$ pour $x=1$ ?", opts: ["Strictement positif", "Nul", "Strictement négatif", "Impossible"], ans: 1, corr: "En remplaçant : $3(1)^2 - 5(1) + 2 = 3 - 5 + 2 = 0$." },
+    { q: "Résoudre l'équation : $4x - 7 = 2(x + 5)$", opts: ["$x = 8,5$", "$x = 1$", "$x = 3$", "$x = 2$"], ans: 0, corr: "$4x - 7 = 2x + 10 \iff 2x = 17 \iff x = 8,5$." },
+    { q: "Si une suite géométrique $(u_n)$ a pour premier terme $u_0 = 2$ et pour raison $q = 3$, alors $u_3$ vaut :", opts: ["$18$", "$54$", "$162$", "$24$"], ans: 1, corr: "$u_3 = 2 \times 3^3 = 54$." },
+    { q: "Résoudre l'inéquation : $-3x + 5 < 2x - 10$", opts: ["$x < 3$", "$x > 3$", "$x < -3$", "$x > -3$"], ans: 1, corr: "$-5x < -15 \iff x > 3$." },
+    { q: "Quel est l'ensemble solution de $x^2 - 9 \\ge 0$ ?", opts: ["$[-3 ; 3]$", "$]-\\infty ; -3] \\cup [3 ; +\\infty[$", "$[3 ; +\\infty[$", "$\\mathbb{R}$"], ans: 1, corr: "À l'extérieur des racines $-3$ et $3$." },
+    { q: "Soit $u_n = 5 \\times 0,8^n$. Quelle est la limite de $u_n$ quand $n$ tend vers $+\\infty$ ?", opts: ["$+\\infty$", "$5$", "$0$", "N'existe pas"], ans: 2, corr: "Puisque $-1 < 0,8 < 1$, la limite de $0,8^n$ est $0$." },
+    { q: "Si $P(A) = 0,4$ et $P_A(B) = 0,5$, alors $P(A \\cap B)$ vaut :", opts: ["$0,9$", "$0,1$", "$0,2$", "$1,25$"], ans: 2, corr: "$P(A \\cap B) = 0,4 \\times 0,5 = 0,2$." },
+    { q: "Développer $(2x - 3)(x + 4)$ :", opts: ["$2x^2 + 5x - 12$", "$2x^2 - 5x - 12$", "$2x^2 + 11x - 12$", "$2x^2 + 8x - 12$"], ans: 0, corr: "$2x^2 + 8x - 3x - 12 = 2x^2 + 5x - 12$." },
+    { q: "Déterminer les solutions de $(x-2)(x+5) = 0$ :", opts: ["$2$ et $-5$", "$-2$ et $5$", "$2$ et $5$", "$-2$ et $-5$"], ans: 0, corr: "$x = 2$ ou $x = -5$." },
+    { q: "Un prix augmente de 20% puis baisse de 20%. Globalement :", opts: ["Il revient au prix initial", "Il augmente de 4%", "Il baisse de 4%", "Il baisse de 2%"], ans: 2, corr: "$1,2 \\times 0,8 = 0,96$ (baisse de $4\\%$)." },
+    { q: "Simplifier l'expression $\\sqrt{50} - \\sqrt{8}$", opts: ["$3\\sqrt{2}$", "$4\\sqrt{2}$", "$\\sqrt{42}$", "$7\\sqrt{2}$"], ans: 0, corr: "$5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." }
 ];
 
 // ==========================================
