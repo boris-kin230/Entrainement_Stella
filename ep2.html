@@ -123,15 +123,6 @@
         
         .math-block { background: #F8FAFC; padding: 20px; border-radius: 16px; text-align: center; margin: 20px 0; border: 1px solid #E2E8F0; font-size: 1.2rem; }
 
-        /* --- TABLEAUX DE VARIATIONS (STYLE CLASSIQUE LYCÉE) --- */
-        .variation-table-wrapper {
-            background: #FFFFFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 15px; margin: 20px 0;
-            overflow-x: auto; box-shadow: var(--shadow-sm);
-        }
-        .var-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 1.05rem; }
-        .var-table th, .var-table td { border: 1px solid #94A3B8; padding: 12px 8px; vertical-align: middle; }
-        .var-table th { background: #F1F5F9; color: var(--primary); font-family: 'Outfit', sans-serif; font-weight: 700; }
-
         /* --- QCM --- */
         .qcm-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; }
         @media(min-width: 600px) { .qcm-grid { grid-template-columns: 1fr 1fr; } }
@@ -201,7 +192,7 @@
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
             <option value="auto">1. Automatisme (QCM)</option>
-            <option value="exo1">2. Exercice 1 : Étude de fonction</option>
+            <option value="exo1">2. Exercice 1 : Polynômes</option>
             <option value="exo2">3. Exercice 2 : Suites & Modélisation</option>
             <option value="exo3">4. Exercice 3 : Probabilités Conditionnelles</option>
         </select>
@@ -221,70 +212,37 @@
             </div>
         </div>
 
-        <!-- SECTION 2 : EXERCICE 1 (ANALYSE & FONCTIONS) -->
+        <!-- SECTION 2 : EXERCICE 1 (POLYNÔMES) -->
         <div id="exo1" class="section-view">
             <div class="card card-exo1">
-                <div class="title-badge">Analyse & Étude de Fonction</div>
-                <h2>Exercice 1 : Fonction Rationnelle & Variations</h2>
-                <p>Soit $f$ la fonction définie sur l'intervalle $]1 ; +\infty[$ par l'expression :</p>
-                <div class="math-block">$\displaystyle f(x) = \frac{2x^2 - 3x + 4}{x - 1}$</div>
-                <p>On note $\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal.</p>
+                <div class="title-badge">Algèbre & Second Degré</div>
+                <h2>Exercice 1 : Fonctions Polynômes</h2>
+                <p>On considère la fonction polynôme $P$ du second degré définie sur $\mathbb{R}$ par :</p>
+                <div class="math-block">$\displaystyle P(x) = 2x^2 - 12x + 16$</div>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
                 
-                <p><b>1.</b> Calculer l'image de $3$ par la fonction $f$.</p>
-                <p><b>2.</b> Montrer que pour tout $x > 1$, la fonction dérivée $f'(x)$ peut s'écrire sous la forme :</p>
-                <div class="math-block">$\displaystyle f'(x) = \frac{2x^2 - 4x - 1}{(x - 1)^2}$</div>
-                <p><b>3.</b> Résoudre dans $]1 ; +\infty[$ l'équation $2x^2 - 4x - 1 = 0$, et en déduire les racines du numérateur.</p>
-                <p><b>4.</b> Étudier le signe de $f'(x)$ sur l'intervalle de définition $]1 ; +\infty[$.</p>
-                <p><b>5.</b> Compléter ou analyser le tableau de variations de $f$ :</p>
-                
-                <div class="variation-table-wrapper">
-                    <table class="var-table">
-                        <tr>
-                            <th>$x$</th>
-                            <td>$1$</td>
-                            <td></td>
-                            <td>$\frac{2+\sqrt{6}}{2}$</td>
-                            <td></td>
-                            <td>$+\infty$</td>
-                        </tr>
-                        <tr>
-                            <th>Signe de $f'(x)$</th>
-                            <td>$\parallel$</td>
-                            <td>$-$</td>
-                            <td>$0$</td>
-                            <td>$+$</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Variations de $f$</th>
-                            <td>$\parallel$</td>
-                            <td>$\searrow$</td>
-                            <td>Minimum local</td>
-                            <td>$\nearrow$</td>
-                            <td>$+\infty$</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <p><b>6.</b> Déterminer l'équation réduite de la tangente $\mathcal{T}$ à la courbe $\mathcal{C}_f$ au point d'abscisse $x_0 = 2$.</p>
-                <p><b>7.</b> Démontrer qu'il existe une droite asymptote verticale dont on précisera l'équation.</p>
+                <p><b>1.</b> Calculer le discriminant $\Delta$ du polynôme $P(x)$, puis déterminer ses racines réelles $x_1$ et $x_2$.</p>
+                <p><b>2.</b> Écrire le polynôme $P(x)$ sous sa forme factorisée.</p>
+                <p><b>3.</b> Vérifier les racines à l'aide de la somme $S$ et du produit $P_{rod}$ des racines d'un trinôme.</p>
+                <p><b>4.</b> Résoudre dans $\mathbb{R}$ l'inéquation $P(x) \ge 0$.</p>
+                <p><b>5.</b> On considère un autre polynôme $Q(x) = 2x^3 - 8x^2 + 6x$. Sachant que $1$ est une racine évidente, factoriser complètement $Q(x)$ sous la forme d'un produit de facteurs du premier degré.</p>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo1" class="correction">
-                    <div class="corr-step"><b>1.</b> $\displaystyle f(3) = \frac{2(3)^2 - 3(3) + 4}{3 - 1} = \frac{18 - 9 + 4}{2} = \frac{13}{2} = 6{,}5$.</div>
-                    <div class="corr-step"><b>2.</b> On pose $u(x) = 2x^2 - 3x + 4 \implies u'(x) = 4x - 3$ et $v(x) = x - 1 \implies v'(x) = 1$.<br>
-                    $\displaystyle f'(x) = \frac{u'v - uv'}{v^2} = \frac{(4x - 3)(x - 1) - (2x^2 - 3x + 4)(1)}{(x - 1)^2}$<br>
-                    $= \frac{4x^2 - 4x - 3x + 3 - 2x^2 + 3x - 4}{(x - 1)^2} = \frac{2x^2 - 4x - 1}{(x - 1)^2}$.</div>
-                    <div class="corr-step"><b>3.</b> Discriminant de $2x^2 - 4x - 1$ : $\Delta = (-4)^2 - 4(2)(-1) = 16 + 8 = 24$.<br>
-                    Les racines sont $\displaystyle x_1 = \frac{4 - \sqrt{24}}{4} = \frac{4 - 2\sqrt{6}}{4} = \frac{2 - \sqrt{6}}{2}$ (hors domaine car $< 1$) et $\displaystyle x_2 = \frac{2 + \sqrt{6}}{2} \approx 2{,}22$ (valeur retenue dans $]1 ; +\infty[$).</div>
-                    <div class="corr-step"><b>4.</b> Le dénominateur $(x-1)^2$ est strictement positif sur $]1 ; +\infty[$. Le signe de $f'(x)$ est donc celui du trinôme $2x^2 - 4x - 1$, qui est négatif entre les racines et positif à l'extérieur.</div>
-                    <div class="corr-step"><b>5.</b> La fonction est décroissante de $+\infty$ jusqu'au minimum atteint en $x = \frac{2+\sqrt{6}}{2}$, puis croissante vers $+\infty$.</div>
-                    <div class="corr-step"><b>6.</b> $\mathcal{T} : y = f'(2)(x - 2) + f(2)$.<br>
-                    $f(2) = \frac{2(4) - 6 + 4}{2 - 1} = 6$. Et $f'(2) = \frac{2(4) - 4(2) - 1}{(2 - 1)^2} = -1$.<br>
-                    Équation : $y = -1(x - 2) + 6 \iff y = -x + 8$.</div>
-                    <div class="corr-step"><b>7.</b> Lorsque $x$ tend vers $1$ par valeurs supérieures, le numérateur tend vers $3$ et le dénominateur tend vers $0$ par valeurs positives, donc $\lim_{x \to 1^+} f(x) = +\infty$. La droite d'équation $x = 1$ est asymptote verticale à $\mathcal{C}_f$.</div>
+                    <div class="corr-step"><b>1.</b> $\Delta = (-12)^2 - 4(2)(16) = 144 - 128 = 16$.<br>
+                    Comme $\Delta > 0$, il y a deux racines distinctes :<br>
+                    $\displaystyle x_1 = \frac{12 - \sqrt{16}}{2(2)} = \frac{8}{4} = 2$ et $\displaystyle x_2 = \frac{12 + \sqrt{16}}{2(2)} = \frac{16}{4} = 4$.</div>
+                    <div class="corr-step"><b>2.</b> Forme factorisée $a(x-x_1)(x-x_2)$ :<br>
+                    $P(x) = 2(x - 2)(x - 4)$.</div>
+                    <div class="corr-step"><b>3.</b> Somme $S = x_1 + x_2 = 2 + 4 = 6$ (ce qui correspond à $-b/a = 12/2 = 6$).<br>
+                    Produit $P_{rod} = x_1 \times x_2 = 2 \times 4 = 8$ (ce qui correspond à $c/a = 16/2 = 8$). Les valeurs concordent.</div>
+                    <div class="corr-step"><b>4.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif ou nul à l'extérieur de ses racines :<br>
+                    $S = ]-\infty ; 2] \cup [4 ; +\infty[$.</div>
+                    <div class="corr-step"><b>5.</b> Puisque $1$ est racine de $Q(x)$, on peut factoriser par $(x-1)$ :<br>
+                    $Q(x) = 3x^3 - ... = 2x(x^2 - 4x + 3)$.<br>
+                    Les racines de $x^2 - 4x + 3$ sont $1$ et $3$ (somme 4, produit 3).<br>
+                    La factorisation complète est donc : <b>$Q(x) = 2x(x - 1)(x - 3)$</b>.</div>
                 </div>
             </div>
             <div class="nav-buttons">
