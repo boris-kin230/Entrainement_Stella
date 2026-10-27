@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Épreuve 3 - Maths Spé 1ère</title>
+    <title>Épreuve 3 - Espace de Stella R.</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
 
@@ -136,9 +136,9 @@
 </a>
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
-            <option value="exo1">1. Exercice 1 : Probabilités & Suites</option>
-            <option value="exo2">2. Exercice 2 : Géométrie & Prod. Scalaire</option>
-            <option value="exo3">3. Exercice 3 : Étude de fonction</option>
+            <option value="exo1">1. Exercice 1 : Probabilités & Suites ($p_n$ et $p_{n+1}$)</option>
+            <option value="exo2">2. Exercice 2 : Géométrie & Produit Scalaire</option>
+            <option value="exo3">3. Exercice 3 : Étude de Fonction & Coûts</option>
         </select>
     </header>
 
@@ -148,21 +148,21 @@
       <div id="exo1" class="section-view active">
                 <div class="title-badge">Probabilités & Suites : 8 points</div>
                 <div class="card exo">
-                    <h2>Exercice 1 : Le jeu vidéo de Léa</h2>
-                    <p>Léa passe une bonne partie de ses journées à jouer à un jeu vidéo et s'intéresse aux chances de victoire de ses prochaines parties.</p>
-                    <p>Elle estime que si elle vient de gagner une partie, elle gagne la suivante dans 70% des cas. Mais si elle vient de subir une défaite, la probabilité qu'elle gagne la suivante est de 0,2.</p>
-                    <p>De plus, elle pense avoir autant de chance de gagner la première partie que de la perdre.</p>
-                    <p>Pour tout entier naturel $n$ non nul, on définit les évènements suivants :</p>
+                    <h2>Exercice 1 : L'application de révision de Stella</h2>
+                    <p>Pour préparer au mieux ses épreuves de spécialité, Stella utilise une application quotidienne de révisions mathématiques sur son téléphone.</p>
+                    <p>D'après ses statistiques d'utilisation, si Stella révise un jour $n$, la probabilité qu'elle révise le lendemain est de 0,75. Si elle ne révise pas un jour $n$, la probabilité qu'elle révise le lendemain (grâce à une notification) est de 0,4.</p>
+                    <p>Au tout premier jour ($n=1$), Stella a décidé de réviser, donc la probabilité initiale est $p_1 = 1$.</p>
+                    <p>Pour tout entier naturel $n$ non nul, on définit les évènements :</p>
                     <ul style="margin-left: 20px; margin-bottom: 15px; line-height: 1.8;">
-                        <li>$G_n$ : « Léa gagne la $n$-ième partie de la journée » ;</li>
-                        <li>$D_n$ : « Léa perd la $n$-ième partie de la journée ».</li>
+                        <li>$R_n$ : « Stella révise le jour $n$ » ;</li>
+                        <li>$\overline{R_n}$ : « Stella ne révise pas le jour $n$ ».</li>
                     </ul>
-                    <p>Pour tout entier naturel $n$ non nul, on note $g_n$ la probabilité de l'évènement $G_n$. On a donc $g_1 = 0,5$.</p>
+                    <p>On note $p_n$ la probabilité de l'évènement $R_n$. On a donc $p_1 = 1$.</p>
                     
                     <hr style="border:0; border-top:2px solid #E2E8F0; margin: 20px 0;">
                     
-                    <p><b>1.</b> Quelle est la valeur de la probabilité conditionnelle $P_{G_1}(D_2)$ ?</p>
-                    <p><b>2.</b> Recopier et compléter l'arbre des probabilités ci-dessous qui modélise la situation pour les deux premières parties de la journée :</p>
+                    <p><b>1.</b> Déterminer la valeur de la probabilité conditionnelle $P_{R_1}(\overline{R_2})$ (probabilité qu'elle ne révise pas le jour 2 sachant qu'elle a révisé le jour 1).</p>
+                    <p><b>2.</b> Recopier et compléter l'arbre pondéré représentant les deux premiers jours de révision :</p>
                     
                     <div class="svg-box">
                         <svg viewBox="0 0 450 220" width="100%" height="220px">
@@ -175,16 +175,16 @@
                             <path d="M 200 170 L 300 140" stroke="#1E293B" stroke-width="2" fill="none"/>
                             <path d="M 200 170 L 300 200" stroke="#1E293B" stroke-width="2" fill="none"/>
                             
-                            <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₁</text>
-                            <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₁</text>
+                            <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₁</text>
+                            <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₁</text>
                             
-                            <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₂</text>
-                            <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₂</text>
-                            <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₂</text>
-                            <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₂</text>
+                            <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₂</text>
+                            <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₂</text>
+                            <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₂</text>
+                            <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₂</text>
                             
-                            <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">0,5</text>
-                            <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">0,5</text>
+                            <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">1</text>
+                            <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">0</text>
                             
                             <text x="240" y="25" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
                             <text x="240" y="90" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
@@ -193,52 +193,22 @@
                         </svg>
                     </div>
 
-                    <p><b>3.</b> Calculer $g_2$.</p>
+                    <p><b>3.</b> Calculer la probabilité $p_2$ que Stella révise le deuxième jour.</p>
                     <p><b>4.</b> Soit $n$ un entier naturel non nul.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>a)</b> Recopier et compléter l'arbre des probabilités modélisant la situation pour les $n$-ième et $(n+1)$-ième parties.</p>
-                    
-                    <div class="svg-box" style="margin: 15px 0;">
-                        <svg viewBox="0 0 450 220" width="100%" height="220px">
-                            <path d="M 50 110 L 150 50" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            <path d="M 50 110 L 150 170" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            
-                            <path d="M 200 50 L 300 20" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            <path d="M 200 50 L 300 80" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            
-                            <path d="M 200 170 L 300 140" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            <path d="M 200 170 L 300 200" stroke="#1E293B" stroke-width="2" fill="none"/>
-                            
-                            <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                            <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                            
-                            <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                            <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                            <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                            <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                            
-                            <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">g<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                            <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
-                            
-                            <text x="240" y="25" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
-                            <text x="240" y="90" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
-                            <text x="240" y="145" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
-                            <text x="240" y="210" font-family="Poppins" font-weight="600" font-size="14" fill="#EC008C">...</text>
-                        </svg>
-                    </div>
-
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>b)</b> Justifier que pour tout entier naturel $n$ non nul, $$g_{n+1} = 0,5g_n + 0,2$$</p>
-                    <p><b>5.</b> Pour tout entier naturel $n$ non nul, on pose $v_n = g_n - 0,4$.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>a)</b> Montrer que la suite $(v_n)$ est géométrique. On précisera son premier terme et sa raison.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>b)</b> Montrer que, pour tout entier naturel $n$ non nul : $$g_n = 0,1 \times 0,5^{n-1} + 0,4$$</p>
-                    <p><b>6.</b> Étudier les variations de la suite $(g_n)$.</p>
-                    <p><b>7.</b> Donner, en justifiant, la limite de la suite $(g_n)$. Interpréter le résultat dans le contexte de l'énoncé.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>a)</b> Représenter l'arbre général de la transition entre le jour $n$ et le jour $n+1$ avec les probabilités $p_n$ et $1-p_n$.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>b)</b> Démontrer à l'aide de la formule des probabilités totales que pour tout entier $n \ge 1$, on a : $$p_{n+1} = 0,35p_n + 0,4$$</p>
+                    <p><b>5.</b> On pose, pour tout entier $n \ge 1$, $v_n = p_n - \frac{8}{13}$.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>a)</b> Montrer que la suite $(v_n)$ est géométrique, en précisant sa raison $q$ et son premier terme $v_1$.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>b)</b> Exprimer $p_n$ en fonction de $n$.</p>
+                    <p><b>6.</b> Étudier la limite de la suite $(p_n)$ lorsque $n$ tend vers $+\infty$. Interpréter concrètement ce résultat pour Stella.</p>
                     
                     <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé</button>
                     
                     <div id="corr-exo1" class="correction">
-                        <div class="corr-step"><b>1.</b> L'énoncé indique que si elle gagne une partie, elle gagne la suivante dans 70% des cas, donc $P_{G_1}(G_2) = 0,7$.<br>La somme des probabilités issues d'un même nœud vaut 1, donc :<br> $P_{G_1}(D_2) = 1 - P_{G_1}(G_2) = 1 - 0,7 = 0,3$.</div>
+                        <div class="corr-step"><b>1.</b> L'énoncé indique que si Stella révise un jour, elle révise le lendemain dans 75% des cas ($0,75$). La probabilité qu'elle ne révise pas le lendemain sachant qu'elle a révisé la veille est donc :<br>
+                        $P_{R_1}(\overline{R_2}) = 1 - 0,75 = 0,25$.</div>
                         
-                        <div class="corr-step"><b>2.</b> Arbre complété pour les deux premières parties :
+                        <div class="corr-step"><b>2.</b> Arbre complété pour les deux premiers jours :
                             <div class="svg-box" style="margin: 15px 0; padding: 10px;">
                                 <svg viewBox="0 0 450 220" width="100%" height="200px">
                                     <path d="M 50 110 L 150 50" stroke="#94A3B8" stroke-width="2" fill="none"/>
@@ -248,88 +218,51 @@
                                     <path d="M 200 170 L 300 140" stroke="#94A3B8" stroke-width="2" fill="none"/>
                                     <path d="M 200 170 L 300 200" stroke="#94A3B8" stroke-width="2" fill="none"/>
                                     
-                                    <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₁</text>
-                                    <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₁</text>
-                                    <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₂</text>
-                                    <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₂</text>
-                                    <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G₂</text>
-                                    <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D₂</text>
+                                    <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₁</text>
+                                    <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₁</text>
+                                    <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₂</text>
+                                    <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₂</text>
+                                    <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R₂</text>
+                                    <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">R̄₂</text>
                                     
-                                    <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,5</text>
-                                    <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,5</text>
-                                    <text x="240" y="25" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,7</text>
-                                    <text x="240" y="90" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,3</text>
-                                    <text x="240" y="145" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,2</text>
-                                    <text x="240" y="210" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,8</text>
+                                    <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">1</text>
+                                    <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0</text>
+                                    <text x="240" y="25" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,75</text>
+                                    <text x="240" y="90" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,25</text>
+                                    <text x="240" y="145" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,4</text>
+                                    <text x="240" y="210" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,6</text>
                                 </svg>
                             </div>
                         </div>
 
-                        <div class="corr-step"><b>3.</b> Les évènements $G_1$ et $D_1$ forment une partition de l'univers. D'après la formule des probabilités totales :<br>
-                        $g_2 = P(G_2) = P(G_1 \cap G_2) + P(D_1 \cap G_2)$<br>
-                        $g_2 = P(G_1) \times P_{G_1}(G_2) + P(D_1) \times P_{D_1}(G_2)$<br>
-                        $g_2 = 0,5 \times 0,7 + 0,5 \times 0,2 = 0,35 + 0,10 = 0,45$.</div>
+                        <div class="corr-step"><b>3.</b> D'après la formule des probabilités totales :<br>
+                        $p_2 = P(R_2) = P(R_1 \cap R_2) + P(\overline{R_1} \cap R_2)$<br>
+                        $p_2 = P(R_1) \times P_{R_1}(R_2) + P(\overline{R_1}) \times P_{\overline{R_1}}(R_2)$<br>
+                        $p_2 = 1 \times 0,75 + 0 \times 0,4 = 0,75$.</div>
 
-                        <div class="corr-step"><b>4. a)</b> L'arbre pour l'étape $n$ à $n+1$ est identique dans sa structure, avec $P(G_n) = g_n$ et $P(D_n) = 1 - g_n$. Les probabilités conditionnelles restent 0,7 et 0,3 (haut) puis 0,2 et 0,8 (bas).
-                            <div class="svg-box" style="margin: 15px 0; padding: 10px;">
-                                <svg viewBox="0 0 450 220" width="100%" height="200px">
-                                    <path d="M 50 110 L 150 50" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    <path d="M 50 110 L 150 170" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    <path d="M 200 50 L 300 20" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    <path d="M 200 50 L 300 80" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    <path d="M 200 170 L 300 140" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    <path d="M 200 170 L 300 200" stroke="#94A3B8" stroke-width="2" fill="none"/>
-                                    
-                                    <text x="175" y="55" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                                    <text x="175" y="175" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                                    <text x="325" y="25" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                                    <text x="325" y="85" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                                    <text x="325" y="145" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">G<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                                    <text x="325" y="205" font-family="Poppins" font-weight="bold" font-size="16" fill="#005AAA" text-anchor="middle">D<tspan baseline-shift="sub" font-size="0.75em">n+1</tspan></text>
-                                    
-                                    <text x="90" y="70" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">g<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                                    <text x="90" y="160" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">1 - g<tspan baseline-shift="sub" font-size="0.75em">n</tspan></text>
-                                    <text x="240" y="25" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,7</text>
-                                    <text x="240" y="90" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,3</text>
-                                    <text x="240" y="145" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,2</text>
-                                    <text x="240" y="210" font-family="Poppins" font-weight="600" font-size="14" fill="#8CC63F">0,8</text>
-                                </svg>
-                            </div>
-                        </div>
+                        <div class="corr-step"><b>4. a)</b> L'arbre général de $n$ à $n+1$ comporte les branches $R_n$ (probabilité $p_n$) et $\overline{R_n}$ (probabilité $1 - p_n$). Les probabilités conditionnelles de révision sont 0,75 (si $R_n$) et 0,4 (si $\overline{R_n}$).</div>
 
-                        <div class="corr-step"><b>4. b)</b> D'après la formule des probabilités totales appliquées au rang $n$ :<br>
-                        $g_{n+1} = P(G_{n+1}) = P(G_n \cap G_{n+1}) + P(D_n \cap G_{n+1})$<br>
-                        $g_{n+1} = g_n \times 0,7 + (1 - g_n) \times 0,2$<br>
-                        $g_{n+1} = 0,7g_n + 0,2 - 0,2g_n$<br>
-                        $g_{n+1} = 0,5g_n + 0,2$.</div>
+                        <div class="corr-step"><b>4. b)</b> D'après la formule des probabilités totales au rang $n$ :<br>
+                        $p_{n+1} = P(R_{n+1}) = P(R_n \cap R_{n+1}) + P(\overline{R_n} \cap R_{n+1})$<br>
+                        $p_{n+1} = p_n \times 0,75 + (1 - p_n) \times 0,4$<br>
+                        $p_{n+1} = 0,75p_n + 0,4 - 0,4p_n$<br>
+                        $p_{n+1} = 0,35p_n + 0,4$.</div>
 
-                        <div class="corr-step"><b>5. a)</b> On cherche à exprimer $v_{n+1}$ en fonction de $v_n$ :<br>
-                        $v_{n+1} = g_{n+1} - 0,4$<br>
-                        $v_{n+1} = (0,5g_n + 0,2) - 0,4$<br>
-                        $v_{n+1} = 0,5g_n - 0,2$<br>
-                        On factorise par 0,5 :<br>
-                        $v_{n+1} = 0,5(g_n - \frac{0,2}{0,5}) = 0,5(g_n - 0,4)$<br>
-                        $v_{n+1} = 0,5v_n$.<br>
-                        La suite $(v_n)$ est donc une <b>suite géométrique de raison $q = 0,5$</b>.<br>
-                        Son premier terme est $v_1 = g_1 - 0,4 = 0,5 - 0,4 = 0,1$.</div>
+                        <div class="corr-step"><b>5. a)</b> Exprimons $v_{n+1}$ en fonction de $v_n$ :<br>
+                        $v_{n+1} = p_{n+1} - \frac{8}{13} = (0,35p_n + 0,4) - \frac{8}{13}$<br>
+                        Or $0,35 = \frac{35}{100} = \frac{7}{20}$ (attention, ici la relation canonique avec le point fixe $l = 0,35l + 0,4 \iff 0,65l = 0,4 \iff l = \frac{40}{65} = \frac{8}{13}$).<br>
+                        Poursuivons : $v_{n+1} = 0,35p_n + \frac{2}{5} - \frac{8}{13} = 0,35p_n + \frac{26 - 40}{65} = 0,35p_n - \frac{14}{65}$...<br>
+                        Reformulons plus simplement : $v_{n+1} = 0,35p_n + 0,4 - \frac{8}{13} = 0,35(p_n - \frac{8}{13}) = 0,35v_n$.<br>
+                        La suite $(v_n)$ est donc une <b>suite géométrique de raison $q = 0,35$</b>.<br>
+                        Premier terme : $v_1 = p_1 - \frac{8}{13} = 1 - \frac{8}{13} = \frac{5}{13}$.</div>
 
-                        <div class="corr-step"><b>5. b)</b> Comme $(v_n)$ est géométrique, on a $v_n = v_1 \times q^{n-1}$.<br>
-                        Donc $v_n = 0,1 \times 0,5^{n-1}$.<br>
-                        Or, $v_n = g_n - 0,4 \iff g_n = v_n + 0,4$.<br>
-                        En remplaçant $v_n$, on obtient bien : <b>$g_n = 0,1 \times 0,5^{n-1} + 0,4$</b>.</div>
+                        <div class="corr-step"><b>5. b)</b> On a donc $v_n = v_1 \times q^{n-1} = \frac{5}{13} \times (0,35)^{n-1}$.<br>
+                        Puisque $p_n = v_n + \frac{8}{13}$, on obtient :<br>
+                        <b>$p_n = \frac{5}{13} \times (0,35)^{n-1} + \frac{8}{13}$</b>.</div>
 
-                        <div class="corr-step"><b>6.</b> Pour étudier les variations, on calcule la différence $g_{n+1} - g_n$ :<br>
-                        $g_{n+1} - g_n = (0,1 \times 0,5^n + 0,4) - (0,1 \times 0,5^{n-1} + 0,4)$<br>
-                        $g_{n+1} - g_n = 0,1 \times 0,5^n - 0,1 \times 0,5^{n-1}$<br>
-                        $g_{n+1} - g_n = 0,1 \times 0,5^{n-1} \times (0,5^1 - 1)$<br>
-                        $g_{n+1} - g_n = 0,1 \times 0,5^{n-1} \times (-0,5)$<br>
-                        $g_{n+1} - g_n = -0,05 \times 0,5^{n-1}$<br>
-                        Comme un exposant d'un nombre positif est toujours strictement positif ($0,5^{n-1} > 0$), le résultat global est strictement négatif. La suite $(g_n)$ est donc <b>strictement décroissante</b>.</div>
-
-                        <div class="corr-step"><b>7.</b> On cherche $\lim\limits_{n \to +\infty} g_n$.<br>
-                        Comme $-1 < 0,5 < 1$, on a $\lim\limits_{n \to +\infty} 0,5^{n-1} = 0$.<br>
-                        Par produit et somme, $\lim\limits_{n \to +\infty} (0,1 \times 0,5^{n-1} + 0,4) = 0 + 0,4 = 0,4$.<br>
-                        <b>Interprétation :</b> Si Léa joue un très grand nombre de parties dans la journée, sa probabilité de gagner tend à se stabiliser autour de 40% (0,4).</div>
+                        <div class="corr-step"><b>6.</b> Comme $-1 < 0,35 < 1$, on a $\lim_{n \to +\infty} (0,35)^{n-1} = 0$.<br>
+                        Par conséquent, $\lim_{n \to +\infty} p_n = \frac{8}{13} \approx 0,615$ (soit environ 61,5%).<br>
+                        <b>Interprétation :</b> À long terme, quelle que soit sa décision initiale, Stella a environ 61,5% de chances de réviser chaque jour grâce aux rappels de l'application.</div>
                     </div>
                 </div>
 
@@ -337,6 +270,7 @@
                     <button class="btn-nav btn-next" onclick="switchSection('exo2')">Suivant : Exercice 2 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
                 </div>
             </div>
+            
             <div id="exo2" class="section-view">
                 <div class="title-badge" style="background: var(--nathan-cyan); color: white;">Géométrie : 6 points</div>
                 <div class="card exo" style="border-top-color: var(--nathan-cyan);">
@@ -462,8 +396,8 @@
             <div id="exo3" class="section-view">
                 <div class="title-badge" style="background: var(--nathan-pink); color: white;">Étude de fonction : 6 points</div>
                 <div class="card exo" style="border-top-color: var(--nathan-pink);">
-                    <h2>Exercice 3 : Coût de fabrication</h2>
-                    <p>Une entreprise fabrique $q$ milliers d'objets, avec $q \in [1; 20]$. Le coût total de fabrication, exprimé en euros en fonction de $q$, est donné par l'expression :</p>
+                    <h2>Exercice 3 : Coût de fabrication pour Stella</h2>
+                    <p>Une entreprise fabrique $q$ milliers d'objets pour un projet, avec $q \in [1; 20]$. Le coût total de fabrication, exprimé en euros en fonction de $q$, est donné par l'expression :</p>
                     <p style="text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--nathan-blue); margin: 15px 0;">
                         $C(q) = q^3 - 18q^2 + 750q + 200$
                     </p>
@@ -479,7 +413,7 @@
                     <p><b>&nbsp;&nbsp;&nbsp;&nbsp;a)</b> On note $C'_M$ la fonction dérivée, sur l'intervalle $[1; 20]$, de la fonction $C_M$. Montrer que, pour tout $q \in [1; 20]$ :</p>
                     <p style="text-align: center; margin: 15px 0;">$$C'_M(q) = \frac{2(q - 10)(q^2 + q + 10)}{q^2}$$</p>
                     <p><b>&nbsp;&nbsp;&nbsp;&nbsp;b)</b> Étudier le signe de $C'_M$ et dresser le tableau de variation de la fonction $C_M$ sur l'intervalle $[1; 20]$.</p>
-                    <p><b>&nbsp;&nbsp;&nbsp;&nbsp;c)</b> Quel est le coût moyen minimal et quelle quantité d'objets est-il obtenu ?</p>
+                    <p><b>&nbsp;&nbsp;&nbsp;&nbsp;c)</b> Quel est le coût moyen minimal et pour quelle quantité d'objets est-il obtenu ?</p>
 
                     <button class="btn-corr" onclick="toggleCorr('corr-exo3')" style="border-color: var(--nathan-pink); color: var(--nathan-pink);">Afficher le corrigé</button>
                     
