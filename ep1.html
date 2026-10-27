@@ -194,10 +194,10 @@
                 <div class="math-block">$\displaystyle P(x) = 2x^2 - 8x + 6$</div>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
                 
-                <p><b>1.</b> Mettre $P(x)$ sous forme canonique en utilisant l'écriture générale.</p>
-                <p><b>2.</b> Factoriser le polynôme $P(x)$ en déterminant ses racines évidentes ou en résolvant $P(x) = 0$.</p>
-                <p><b>3.</b> Sachant qu'un polynôme du troisième degré $Q(x) = 2x^3 - 7x^2 + 7x - 2$ admet $x_1 = 1$ comme racine, utiliser la somme $S$ ou le produit $P$ des racines pour trouver l'autre racine évidente connaissant un facteur $(x-1)$.</p>
-                <p><b>4.</b> Développer, réduire et ordonner l'expression : $R(x) = (x - 2)(2x - 1)(x - 1)$.</p>
+                <p><b>1.</b> Mettre $P(x)$ sous forme canonique.</p>
+                <p><b>2.</b> Trouver une racine évidente de $P(x)$ et en déduire la seconde à l'aide de la somme $S$ ou du produit $P_{rod}$.</p>
+                <p><b>3.</b> Écrire le polynôme $P(x)$ sous sa forme factorisée.</p>
+                <p><b>4.</b> Développer, réduire et ordonner l'expression : $R(x) = (x - 2)(2x - 2)$.</p>
                 <p><b>5.</b> Résoudre dans $\mathbb{R}$ l'équation produit-nul : $(3x - 6)(4 - 2x) = 0$.</p>
                 <p><b>6.</b> Étudier le signe du trinôme $P(x)$ sur $\mathbb{R}$.</p>
                 
@@ -205,11 +205,11 @@
                 
                 <div id="corr-exo1" class="correction">
                     <div class="corr-step"><b>1.</b> Forme canonique $a(x-\alpha)^2 + \beta$ : avec $\alpha = \frac{-(-8)}{2(2)} = 2$ et $\beta = P(2) = 2(4) - 8(2) + 6 = -2$. Ainsi, $P(x) = 2(x-2)^2 - 2$.</div>
-                    <div class="corr-step"><b>2.</b> On remarque que $P(1) = 2(1)^2 - 8(1) + 6 = 0$, donc $1$ est racine. La somme des racines vaut $-b/a = 4$. L'autre racine est donc $4 - 1 = 3$. La forme factorisée est $P(x) = 2(x-1)(x-3)$.</div>
-                    <div class="corr-step"><b>3.</b> $Q(1) = 0$, donc $Q(x) = (x-1)(2x^2 - 5x + 2)$. Pour le trinôme $2x^2 - 5x + 2$, le produit des racines vaut $c/a = 1$ et leur somme $5/2 = 2,5$. Les autres racines sont $0,5$ et $2$.</div>
-                    <div class="corr-step"><b>4.</b> $(x-2)(2x-1) = 2x^2 - 5x + 2$. En multipliant par $(x-1)$, on obtient $2x^3 - 7x^2 + 7x - 2$.</div>
-                    <div class="corr-step"><b>5.</b> $3x - 6 = 0 \iff x = 2$ ou $4 - 2x = 0 \iff x = 2$. L'unique solution est $S = \{2\}$.</div>
-                    <div class="corr-step"><b>6.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif à l'extérieur de ses racines $[-\infty ; 1] \cup [3 ; +\infty[$ et négatif sur l'intervalle $[1 ; 3]$.</div>
+                    <div class="corr-step"><b>2.</b> On remarque que $P(1) = 2(1)^2 - 8(1) + 6 = 0$, donc $1$ est une racine évidente. La somme des racines vaut $-b/a = 4$. L'autre racine est donc $4 - 1 = 3$.</div>
+                    <div class="corr-step"><b>3.</b> Forme factorisée $a(x-x_1)(x-x_2)$ : $P(x) = 2(x-1)(x-3)$.</div>
+                    <div class="corr-step"><b>4.</b> $R(x) = 2x^2 - 2x - 4x + 2 = 2x^2 - 6x + 2$.</div>
+                    <div class="corr-step"><b>5.</b> Un produit de facteurs est nul si et seulement si l'un au moins de ses facteurs est nul : $3x - 6 = 0 \iff x = 2$ ou $4 - 2x = 0 \iff x = 2$. L'ensemble solution est $S = \{2\}$.</div>
+                    <div class="corr-step"><b>6.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif à l'extérieur de ses racines $]-\infty ; 1] \cup [3 ; +\infty[$ et négatif sur l'intervalle $[1 ; 3]$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -286,7 +286,7 @@
 
 <script>
 // ==========================================
-// DONNÉES QCM (12 Questions adaptées Novembre)
+// DONNÉES QCM (12 Questions adaptées Novembre - Sans vecteurs ni trigo)
 // ==========================================
 const qcmData = [
     { q: "Calculer et simplifier : $\\displaystyle \\frac{2}{5} - \\frac{1}{3}$", opts: ["$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{1}{15}$", "$\\displaystyle \\frac{11}{15}$", "$\\displaystyle \\frac{3}{8}$"], ans: 1, corr: "Mise au même dénominateur : $\\displaystyle \\frac{6 - 5}{15} = \\frac{1}{15}$." },
