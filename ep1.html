@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Épreuve 1 - Espace de Clara</title>
+    <title>Épreuve 1 - Espace de Stella R.</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -158,7 +158,7 @@
 
     <div id="loader">
         <div class="spinner"></div>
-        <p style="font-weight: 600; color: var(--nathan-blue);">Préparation des mathématiques...</p>
+        <p style="font-weight: 600; color: var(--nathan-blue);">Préparation des mathématiques pour Stella R...</p>
     </div>
 
     <header>
@@ -169,17 +169,18 @@
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
             <option value="auto">1. Automatisme (QCM)</option>
-            <option value="exo1">2. Exercice 1 : Fonctions</option>
-            <option value="exo2">3. Exercice 2 : Suites & Probas</option>
-            <option value="exo3">4. Exercice 3 : Géométrie Plane</option>
+            <option value="exo1">2. Exercice 1 : Polynômes</option>
+            <option value="exo2">3. Exercice 2 : Suites Numériques</option>
+            <option value="exo3">4. Exercice 3 : Probabilités & Dénombrement</option>
         </select>
     </header>
 
     <main>
+        <!-- AUTOMATISME -->
         <div id="auto" class="section-view active">
             <div class="card card-auto">
                 <h2>Automatisme - 12 Questions</h2>
-                <p>Coche la bonne réponse.</p>
+                <p>Coche la bonne réponse pour valider tes réflexes de 1ère Spé.</p>
             </div>
             <div id="qcm-container"></div>
             <div class="nav-buttons">
@@ -187,34 +188,26 @@
             </div>
         </div>
 
+        <!-- EXERCICE 1 : POLYNÔMES -->
         <div id="exo1" class="section-view">
             <div class="card card-exo1">
-                <h2>Exercice 1 : Fonctions</h2>
-                <p>On considère la fonction $f$ définie sur $\mathbb{R}$ par :</p>
-                <div class="math-block">$\displaystyle f(x) = -2x^3 + 3x^2 + 12x - 5$</div>
-                <p>On note $\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal.</p>
+                <h2>Exercice 1 : Fonctions Polynômes</h2>
+                <p>On considère la fonction polynôme $P$ du second degré définie sur $\mathbb{R}$ par :</p>
+                <div class="math-block">$\displaystyle P(x) = 2x^2 - 10x + 12$</div>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
                 
-                <p><b>1.</b> Calculer l'ordonnée du point d'intersection de $\mathcal{C}_f$ avec l'axe des ordonnées.</p>
-                <p><b>2.</b> Calculer les images $f(-1)$ et $f(2)$.</p>
-                <p><b>3.</b> Déterminer l'expression de la fonction dérivée $f'(x)$.</p>
-                <p><b>4.</b> Montrer que pour tout réel $x$, on a : $\displaystyle f'(x) = -6(x-2)(x+1)$.</p>
-                <p><b>5.</b> Étudier le signe de $f'(x)$ sur $\mathbb{R}$.</p>
-                <p><b>6.</b> Dresser le tableau de variations complet de la fonction $f$.</p>
-                <p><b>7.</b> Déterminer l'équation réduite de la tangente $\mathcal{T}$ au point d'abscisse $x_0 = 0$.</p>
-                <p><b>8.</b> Étudier la position relative de la courbe $\mathcal{C}_f$ par rapport à sa tangente $\mathcal{T}$.</p>
+                <p><b>1.</b> Calculer le discriminant $\Delta$ du polynôme $P(x)$, puis déterminer ses racines réelles.</p>
+                <p><b>2.</b> Sachant qu'une racine évidente du polynôme $Q(x) = 2x^3 - 7x^2 + 7x - 2$ est $x_1 = 1$, retrouver l'autre racine $x_2$ à l'aide de la somme $S$ ou du produit $P$ des racines d'un trinôme factorisé.</p>
+                <p><b>3.</b> Développer et réduire l'expression : $R(x) = (x-2)(2x-1)(x-1)$.</p>
+                <p><b>4.</b> Résoudre dans $\mathbb{R}$ l'équation produit-nul : $(3x - 6)(4 - 2x) = 0$.</p>
                 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé</button>
                 
                 <div id="corr-exo1" class="correction">
-                    <div class="corr-step"><b>1.</b> L'intersection avec l'axe des ordonnées correspond à $x = 0$.<br> $f(0) = -2(0)^3 + 3(0)^2 + 12(0) - 5 = -5$. Le point est $(0; -5)$.</div>
-                    <div class="corr-step"><b>2.</b> $f(-1) = -2(-1) + 3(1) - 12 - 5 = 2 + 3 - 12 - 5 = -12$.<br> $f(2) = -2(8) + 3(4) + 12(2) - 5 = -16 + 12 + 24 - 5 = 15$.</div>
-                    <div class="corr-step"><b>3.</b> La dérivée d'un polynôme : $f'(x) = -2(3x^2) + 3(2x) + 12 = -6x^2 + 6x + 12$.</div>
-                    <div class="corr-step"><b>4.</b> Développons la forme proposée :<br> $-6(x-2)(x+1) = -6(x^2 + x - 2x - 2) = -6(x^2 - x - 2) = -6x^2 + 6x + 12$. On retrouve bien $f'(x)$.</div>
-                    <div class="corr-step"><b>5.</b> Signe d'un trinôme : les racines sont $x_1 = 2$ et $x_2 = -1$. Le coefficient $a = -6$ est négatif. Donc $f'(x)$ est positive (signe opposé de $a$) entre les racines $[-1 ; 2]$, et négative à l'extérieur.</div>
-                    <div class="corr-step"><b>6.</b> $f$ est décroissante sur $]-\infty ; -1]$, croissante sur $[-1 ; 2]$, et décroissante sur $[2 ; +\infty[$. Le minimum local est $-12$ et le maximum local est $15$.</div>
-                    <div class="corr-step"><b>7.</b> Équation de $\mathcal{T}$ : $\displaystyle y = f'(0)(x - 0) + f(0)$. Or $f'(0) = 12$ et $f(0) = -5$. Donc $\mathcal{T} : y = 12x - 5$.</div>
-                    <div class="corr-step"><b>8.</b> On étudie le signe de la différence $d(x) = f(x) - y$.<br>$\displaystyle d(x) = (-2x^3 + 3x^2 + 12x - 5) - (12x - 5) = -2x^3 + 3x^2 = x^2(-2x + 3)$.<br>Comme $x^2 \ge 0$, le signe de $d(x)$ dépend de $-2x + 3$.<br>$-2x + 3 \ge 0 \Longleftrightarrow x \le 1,5$.<br>Donc sur $]-\infty ; 1,5]$, $\mathcal{C}_f$ est au-dessus de $\mathcal{T}$. Sur $[1,5 ; +\infty[$, $\mathcal{C}_f$ est en-dessous.</div>
+                    <div class="corr-step"><b>1.</b> $\Delta = (-10)^2 - 4(2)(12) = 100 - 96 = 4$. Comme $\Delta > 0$, il y a deux racines distinctes :<br>$\displaystyle x_1 = \frac{10 - \sqrt{4}}{2(2)} = \frac{8}{4} = 2$ et $\displaystyle x_2 = \frac{10 + \sqrt{4}}{2(2)} = \frac{12}{4} = 3$.</div>
+                    <div class="corr-step"><b>2.</b> Puisque $1$ est racine de $Q(x)$, on peut factoriser par $(x-1)$ : $Q(x) = (x-1)(2x^2 - 5x + 2)$.<br>Pour le trinôme $2x^2 - 5x + 2$, le produit des racines vaut $\displaystyle c/a = \frac{2}{2} = 1$, et la somme vaut $\displaystyle -b/a = \frac{5}{2} = 2,5$.<br>Connaissant une racine $x_1 = 1$, l'autre racine $x_2$ vérifie $1 \times x_2 = 1 \implies x_2 = 1$ ? Attention, le produit des racines est $\frac{c}{a}$ et la somme $-\frac{b}{a}$. Avec $x_1 = 1$ et $x_1+x_2 = 5/2$, on trouve $x_2 = 5/2 - 1 = 3/2 = 1,5$. Vérifions avec le produit : $1 \times x_2 = 2/2 = 1 \implies x_2 = 0,5$. Les racines du trinôme sont donc $1/2$ et $2$ (avec la racine initiale 1).</div>
+                    <div class="corr-step"><b>3.</b> $(x-2)(2x-1) = 2x^2 - x - 4x + 2 = 2x^2 - 5x + 2$.<br>Ensuite : $(2x^2 - 5x + 2)(x-1) = 2x^3 - 2x^2 - 5x^2 + 5x + 2x - 2 = 2x^3 - 7x^2 + 7x - 2$.</div>
+                    <div class="corr-step"><b>4.</b> Un produit de facteurs est nul si et seulement si l'un au moins de ses facteurs est nul :<br>$3x - 6 = 0 \iff x = 2$<br>ou $4 - 2x = 0 \iff x = 2$.<br>L'unique solution est $S = \{2\}$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -223,62 +216,30 @@
             </div>
         </div>
 
+        <!-- EXERCICE 2 : SUITES -->
         <div id="exo2" class="section-view">
             <div class="card card-exo2">
-                <h2>Exercice 2 : Suites & Probabilités</h2>
-                <p>Pour financer son école de commerce, Clara a lancé une application de révisions. On s'intéresse à la fidélité de ses utilisateurs mois après mois.<br>Si un utilisateur est abonné le mois $n$, la probabilité qu'il reste abonné le mois $n+1$ est de $0,8$. S'il n'est pas abonné le mois $n$, la probabilité qu'il s'abonne le mois $n+1$ (suite à une publicité) est de $0,3$.<br>On note $A_n$ l'événement "l'utilisateur est abonné le mois $n$" et $p_n = P(A_n)$. Au lancement (mois 0), les testeurs sont tous abonnés, donc $p_0 = 1$.</p>
+                <h2>Exercice 2 : Suites Numériques</h2>
+                <p>On considère la suite $(u_n)$ définie par son premier terme $u_0 = 3$ et la relation de récurrence :</p>
+                <div class="math-block">$\displaystyle u_{n+1} = \frac{1}{2}u_n + 2$</div>
+                <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
 
-                <div class="svg-container">
-                    <svg viewBox="0 0 500 280" width="100%" height="280">
-                        <defs>
-                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                              <path d="M 0 0 L 10 5 L 0 10 z" fill="#0F172A" />
-                            </marker>
-                            <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00AEEF" /><stop offset="100%" stop-color="#005AAA" /></linearGradient>
-                            <linearGradient id="grad-pink" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF758C" /><stop offset="100%" stop-color="#EC008C" /></linearGradient>
-                        </defs>
-                        <text x="80" y="25" font-family="Outfit" font-size="16" font-weight="bold" fill="#64748B" text-anchor="middle">Mois n</text>
-                        <text x="360" y="25" font-family="Outfit" font-size="16" font-weight="bold" fill="#64748B" text-anchor="middle">Mois n+1</text>
-                        
-                        <path d="M 100 100 C 180 50, 250 40, 320 40" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-                        <path d="M 100 110 C 180 150, 250 160, 320 160" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-                        
-                        <rect x="180" y="45" width="45" height="24" rx="12" fill="white" stroke="#8CC63F" stroke-width="2"/>
-                        <text x="202.5" y="61" font-size="13" font-weight="bold" fill="#166534" text-anchor="middle">0,8</text>
-                        <rect x="180" y="145" width="45" height="24" rx="12" fill="white" stroke="#EC008C" stroke-width="2"/>
-                        <text x="202.5" y="161" font-size="13" font-weight="bold" fill="#9D174D" text-anchor="middle">0,2</text>
-
-                        <circle cx="80" cy="105" r="22" fill="url(#grad-blue)"/>
-                        <text x="80" y="110" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">A<tspan dy="5" font-size="12">n</tspan></text>
-
-                        <circle cx="360" cy="40" r="22" fill="url(#grad-blue)"/>
-                        <text x="360" y="45" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">A<tspan dy="5" font-size="12">n+1</tspan></text>
-
-                        <circle cx="360" cy="160" r="22" fill="url(#grad-pink)"/>
-                        <text x="360" y="165" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">A<tspan dy="5" font-size="12">n+1</tspan></text>
-                        <line x1="352" y1="145" x2="368" y2="145" stroke="white" stroke-width="2.5"/> </svg>
-                </div>
-
-                <p><b>1.</b> Reproduire l'arbre pondéré de la situation pour le mois $n$ vers $n+1$ sur votre copie et le compléter intégralement.</p>
-                <p><b>2.</b> En utilisant la formule des probabilités totales, démontrer que pour tout entier $n$, $\displaystyle p_{n+1} = 0,5p_n + 0,3$.</p>
-                <p><b>3.</b> Calculer $p_1$ et $p_2$. La suite $(p_n)$ est-elle arithmétique ? Est-elle géométrique ?</p>
-                <p><b>4.</b> On pose $\displaystyle u_n = p_n - 0,6$. Calculer $u_0$.</p>
-                <p><b>5.</b> Démontrer que la suite $(u_n)$ est géométrique et préciser sa raison $q$.</p>
-                <p><b>6.</b> Exprimer $u_n$ en fonction de $n$, puis en déduire que $\displaystyle p_n = 0,4 \times 0,5^n + 0,6$.</p>
-                <p><b>7.</b> Étudier le sens de variation de la suite $(p_n)$.</p>
-                <p><b>8.</b> Calculer la limite de $p_n$ quand $n$ tend vers l'infini. Quelle conclusion Clara peut-elle en tirer sur la fidélisation à long terme ?</p>
+                <p><b>1.</b> Calculer les termes $u_1$ et $u_2$. La suite $(u_n)$ est-elle arithmétique ? Géométrique ?</p>
+                <p><b>2.</b> On pose, pour tout entier $n$, $v_n = u_n - 4$. Calculer $v_0$.</p>
+                <p><b>3.</b> Démontrer que la suite $(v_n)$ est une suite géométrique de raison $q = \frac{1}{2}$ et préciser son premier terme.</p>
+                <p><b>4.</b> Exprimer $v_n$ en fonction de $n$, puis en déduire l'expression explicite de $u_n$ en fonction de $n$.</p>
+                <p><b>5.</b> Étudier le sens de variation de la suite $(u_n)$.</p>
+                <p><b>6.</b> Calculer la limite de la suite $(u_n)$ lorsque $n$ tend vers $+\infty$.</p>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé</button>
                 
                 <div id="corr-exo2" class="correction">
-                    <div class="corr-step"><b>1.</b> L'arbre possède deux branches primaires : $A_n$ (probabilité $p_n$) et $\overline{A_n}$ (probabilité $1 - p_n$). De $A_n$, on va vers $A_{n+1}$ (0,8) et $\overline{A_{n+1}}$ (0,2). De $\overline{A_n}$, on va vers $A_{n+1}$ (0,3) et $\overline{A_{n+1}}$ (0,7).</div>
-                    <div class="corr-step"><b>2.</b> $\displaystyle P(A_{n+1}) = P(A_n \cap A_{n+1}) + P(\overline{A_n} \cap A_{n+1})$<br>$\displaystyle p_{n+1} = p_n \times 0,8 + (1 - p_n) \times 0,3$<br>$\displaystyle p_{n+1} = 0,8p_n + 0,3 - 0,3p_n = 0,5p_n + 0,3$.</div>
-                    <div class="corr-step"><b>3.</b> $p_1 = 0,5(1) + 0,3 = 0,8$.<br>$p_2 = 0,5(0,8) + 0,3 = 0,7$.<br>$p_1 - p_0 = -0,2$ et $p_2 - p_1 = -0,1$. La différence n'est pas constante : pas arithmétique.<br>$p_1/p_0 = 0,8$ et $p_2/p_1 = 0,875$. Le quotient n'est pas constant : pas géométrique.</div>
-                    <div class="corr-step"><b>4.</b> $u_0 = p_0 - 0,6 = 1 - 0,6 = 0,4$.</div>
-                    <div class="corr-step"><b>5.</b> $\displaystyle u_{n+1} = p_{n+1} - 0,6 = (0,5p_n + 0,3) - 0,6 = 0,5p_n - 0,3$<br>On factorise par 0,5 : $\displaystyle u_{n+1} = 0,5(p_n - 0,6) = 0,5 u_n$.<br>$(u_n)$ est bien géométrique de raison $q = 0,5$.</div>
-                    <div class="corr-step"><b>6.</b> $\displaystyle u_n = u_0 \times q^n = 0,4 \times 0,5^n$.<br>Comme $u_n = p_n - 0,6$, on a $\displaystyle p_n = u_n + 0,6 = 0,4 \times 0,5^n + 0,6$.</div>
-                    <div class="corr-step"><b>7.</b> $\displaystyle p_{n+1} - p_n = (0,4 \times 0,5^{n+1} + 0,6) - (0,4 \times 0,5^n + 0,6) = 0,4 \times 0,5^n \times (0,5 - 1) = -0,2 \times 0,5^n$.<br>Cette quantité est strictement négative car $0,5^n \gt 0$. La suite $(p_n)$ est strictement décroissante.</div>
-                    <div class="corr-step"><b>8.</b> Comme $-1 \lt 0,5 \lt 1$, $\displaystyle \lim_{n \to +\infty} 0,5^n = 0$. Donc $\lim p_n = 0,6$.<br>À long terme, Clara stabilisera sa base d'utilisateurs avec 60% d'abonnés fidèles par mois.</div>
+                    <div class="corr-step"><b>1.</b> $u_1 = \frac{1}{2}(3) + 2 = 1,5 + 2 = 3,5$.<br>$u_2 = \frac{1}{2}(3,5) + 2 = 1,75 + 2 = 3,75$.<br>Comme $u_1 - u_0 = 0,5$ et $u_2 - u_1 = 0,25$, la différence n'est pas constante : $(u_n)$ n'est pas arithmétique. De même, les quotients ne sont pas constants : elle n'est pas géométrique.</div>
+                    <div class="corr-step"><b>2.</b> $v_0 = u_0 - 4 = 3 - 4 = -1$.</div>
+                    <div class="corr-step"><b>3.</b> $\displaystyle v_{n+1} = u_{n+1} - 4 = \left(\frac{1}{2}u_n + 2\right) - 4 = \frac{1}{2}u_n - 2$.<br>En factorisant par $\frac{1}{2}$ : $\displaystyle v_{n+1} = \frac{1}{2}(u_n - 4) = \frac{1}{2}v_n$.<br>La suite $(v_n)$ est géométrique de premier terme $v_0 = -1$ et de raison $q = \frac{1}{2}$.</div>
+                    <div class="corr-step"><b>4.</b> $\displaystyle v_n = v_0 \times q^n = -1 \times \left(\frac{1}{2}\right)^n$.<br>Comme $u_n = v_n + 4$, on a : $\displaystyle u_n = 4 - \left(\frac{1}{2}\right)^n$.</div>
+                    <div class="corr-step"><b>5.</b> $\displaystyle u_{n+1} - u_n = \left(4 - \left(\frac{1}{2}\right)^{n+1}\right) - \left(4 - \left(\frac{1}{2}\right)^n\right) = \left(\frac{1}{2}\right)^n - \left(\frac{1}{2}\right)^{n+1} = \left(\frac{1}{2}\right)^n \left(1 - \frac{1}{2}\right) = \frac{1}{2} \times \left(\frac{1}{2}\right)^n > 0$.<br>La suite $(u_n)$ est donc strictement croissante.</div>
+                    <div class="corr-step"><b>6.</b> Comme $-1 < \frac{1}{2} < 1$, on a $\displaystyle \lim_{n \to +\infty} \left(\frac{1}{2}\right)^n = 0$.<br>Par conséquent, $\displaystyle \lim_{n \to +\infty} u_n = 4 - 0 = 4$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -287,53 +248,31 @@
             </div>
         </div>
 
+        <!-- EXERCICE 3 : PROBABILITÉS -->
         <div id="exo3" class="section-view">
             <div class="card card-exo3">
-                <h2>Exercice 3 : Géométrie</h2>
-                <p>Dans un repère orthonormé $(O; \vec{i}, \vec{j})$, on donne les points : $A(-2 ; 3)$, $B(4 ; 1)$ et $C(2 ; 5)$.</p>
+                <h2>Exercice 3 : Probabilités & Dénombrement</h2>
+                <p>Dans un centre de dépistage, une maladie touche 5 % d'une population. Un test de dépistage est mis en place :</p>
+                <p>• Si une personne est malade, le test est positif dans 90 % des cas (vrai positif).<br>• Si une personne n'est pas malade, le test est positif dans 4 % des cas (faux positif).</p>
+                <p>On choisit une personne au hasard. On note $M$ l'événement "la personne est malade" et $T$ l'événement "le test est positif".</p>
+                <hr style="border:0; border-top:1px solid #E2E8F0; margin: 20px 0;">
 
-                <div class="svg-container">
-                    <svg viewBox="-4 -1 10 8" width="100%" height="280">
-                        <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
-                            <path d="M 1 0 L 0 0 0 1" fill="none" stroke="#E2E8F0" stroke-width="0.05"/>
-                        </pattern>
-                        <rect x="-4" y="-1" width="10" height="8" fill="url(#grid)" />
-                        <line x1="-4" y1="0" x2="6" y2="0" stroke="#94A3B8" stroke-width="0.1"/>
-                        <line x1="0" y1="-1" x2="0" y2="7" stroke="#94A3B8" stroke-width="0.1"/>
-                        
-                        <g transform="scale(1, -1) translate(0, -6)">
-                            <polygon points="-2,3 4,1 2,5" fill="rgba(0, 174, 239, 0.1)" stroke="var(--nathan-cyan)" stroke-width="0.08" stroke-linejoin="round"/>
-                            <line x1="-2" y1="3" x2="3" y2="3" stroke="var(--nathan-pink)" stroke-width="0.05" stroke-dasharray="0.2,0.2"/> <circle cx="-2" cy="3" r="0.15" fill="var(--nathan-blue)"/>
-                            <circle cx="4" cy="1" r="0.15" fill="var(--nathan-blue)"/>
-                            <circle cx="2" cy="5" r="0.15" fill="var(--nathan-blue)"/>
-                        </g>
-
-                        <text x="-2.5" y="2.8" font-family="Poppins" font-size="0.6" font-weight="bold" fill="var(--text-main)">A</text>
-                        <text x="4.2" y="5.2" font-family="Poppins" font-size="0.6" font-weight="bold" fill="var(--text-main)">B</text> 
-                        <text x="2" y="0.8" font-family="Poppins" font-size="0.6" font-weight="bold" fill="var(--text-main)">C</text>  
-                    </svg>
-                </div>
-
-                <p><b>1.</b> Calculer les coordonnées des vecteurs $\vec{AB}$ et $\vec{AC}$.</p>
-                <p><b>2.</b> Calculer les distances exactes $AB$ et $AC$.</p>
-                <p><b>3.</b> Calculer le produit scalaire $\vec{AB} \cdot \vec{AC}$ à l'aide des coordonnées.</p>
-                <p><b>4.</b> En déduire la mesure de l'angle $\widehat{BAC}$ au dixième de degré près.</p>
-                <p><b>5.</b> Soit $I$ le milieu du segment $[BC]$. Calculer ses coordonnées.</p>
-                <p><b>6.</b> La droite $(AI)$ est la médiane issue de $A$. Montrer qu'elle n'est pas perpendiculaire à $(BC)$.</p>
-                <p><b>7.</b> Déterminer une équation cartésienne de la droite $(BC)$.</p>
-                <p><b>8.</b> Déterminer une équation cartésienne de la hauteur issue de $A$ dans le triangle $ABC$.</p>
+                <p><b>1.</b> Représenter cette situation à l'aide d'un <b>arbre pondéré</b>.</p>
+                <p><b>2.</b> Calculer la probabilité que la personne soit malade et que son test soit positif $P(M \cap T)$.</p>
+                <p><b>3.</b> Démontrer à l'aide de la formule des <b>probabilités totales</b> que $P(T) = 0,083$.</p>
+                <p><b>4.</b> Calculer la probabilité qu'une personne ayant un test positif soit effectivement malade (formule de <b>Bayes</b> / probabilité conditionnelle $P_T(M)$).</p>
+                <p><b>5.</b> Les événements $M$ et $T$ sont-ils indépendants ? Justifier.</p>
+                <p><b>6.</b> (Complément Urne / Dés) On tire simultanément et au hasard 3 jetons dans une urne contenant 4 jetons rouges et 6 jetons noirs. Calculer la probabilité d'obtenir exactement 2 jetons rouges.</p>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo3')">Afficher le corrigé</button>
                 
                 <div id="corr-exo3" class="correction">
-                    <div class="corr-step"><b>1.</b> $\vec{AB}(x_B - x_A ; y_B - y_A) \implies \vec{AB}(4 - (-2) ; 1 - 3) \implies \vec{AB}(6 ; -2)$.<br>$\vec{AC}(2 - (-2) ; 5 - 3) \implies \vec{AC}(4 ; 2)$.</div>
-                    <div class="corr-step"><b>2.</b> $\displaystyle AB = \sqrt{6^2 + (-2)^2} = \sqrt{36 + 4} = \sqrt{40} = 2\sqrt{10}$.<br>$\displaystyle AC = \sqrt{4^2 + 2^2} = \sqrt{16 + 4} = \sqrt{20} = 2\sqrt{5}$.</div>
-                    <div class="corr-step"><b>3.</b> Produit scalaire analytique : $xx' + yy'$.<br>$\vec{AB} \cdot \vec{AC} = (6 \times 4) + (-2 \times 2) = 24 - 4 = 20$.</div>
-                    <div class="corr-step"><b>4.</b> On sait que $\vec{AB} \cdot \vec{AC} = AB \times AC \times \cos(\widehat{BAC})$.<br>$20 = \sqrt{40} \times \sqrt{20} \times \cos(\widehat{BAC}) = \sqrt{800} \times \cos(\widehat{BAC})$.<br>$\displaystyle \cos(\widehat{BAC}) = \frac{20}{\sqrt{800}} = \frac{20}{20\sqrt{2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}$.<br>On reconnaît une valeur remarquable : $\widehat{BAC} = 45^{\circ}$.</div>
-                    <div class="corr-step"><b>5.</b> $\displaystyle I\left(\frac{x_B+x_C}{2} ; \frac{y_B+y_C}{2}\right) = I\left(\frac{4+2}{2} ; \frac{1+5}{2}\right) = I(3 ; 3)$.</div>
-                    <div class="corr-step"><b>6.</b> Vérifions l'orthogonalité via le produit scalaire $\vec{AI} \cdot \vec{BC}$.<br>$\vec{AI}(3 - (-2) ; 3 - 3) \implies \vec{AI}(5 ; 0)$.<br>$\vec{BC}(2 - 4 ; 5 - 1) \implies \vec{BC}(-2 ; 4)$.<br>$\vec{AI} \cdot \vec{BC} = (5 \times -2) + (0 \times 4) = -10 \neq 0$. Les droites ne sont pas perpendiculaires.</div>
-                    <div class="corr-step"><b>7.</b> La droite $(BC)$ a pour vecteur directeur $\vec{BC}(-2 ; 4)$.<br>Un point $M(x;y)$ appartient à $(BC)$ si $\vec{BM}(x-4 ; y-1)$ et $\vec{BC}$ sont colinéaires.<br>Déterminant : $(x-4)(4) - (y-1)(-2) = 0 \Longleftrightarrow 4x - 16 + 2y - 2 = 0 \Longleftrightarrow 4x + 2y - 18 = 0$.<br>En simplifiant par 2 : $2x + y - 9 = 0$.</div>
-                    <div class="corr-step"><b>8.</b> La hauteur issue de $A$ passe par $A(-2 ; 3)$ et a pour vecteur normal $\vec{BC}(-2 ; 4)$.<br>L'équation est de la forme $-2x + 4y + c = 0$.<br>Elle passe par $A$ : $-2(-2) + 4(3) + c = 0 \Longleftrightarrow 4 + 12 + c = 0 \Longleftrightarrow c = -16$.<br>Équation cartésienne : $-2x + 4y - 16 = 0$, soit en simplifiant : $-x + 2y - 8 = 0$.</div>
+                    <div class="corr-step"><b>1.</b> Arbre à deux niveaux : Premier nœud $M$ (0,05) et $\overline{M}$ (0,95). Depuis $M$, branches $T$ (0,90) et $\overline{T}$ (0,10). Depuis $\overline{M}$, branches $T$ (0,04) et $\overline{T}$ (0,96).</div>
+                    <div class="corr-step"><b>2.</b> $P(M \cap T) = P(M) \times P_M(T) = 0,05 \times 0,90 = 0,045$.</div>
+                    <div class="corr-step"><b>3.</b> $P(T) = P(M \cap T) + P(\overline{M} \cap T) = 0,045 + (0,95 \times 0,04) = 0,045 + 0,038 = 0,083$.</div>
+                    <div class="corr-step"><b>4.</b> $\displaystyle P_T(M) = \frac{P(M \cap T)}{P(T)} = \frac{0,045}{0,083} \approx 0,5422$ (soit environ 54,2 %).</div>
+                    <div class="corr-step"><b>5.</b> $M$ et $T$ sont indépendants si $P(M \cap T) = P(M) \times P(T)$.<br>Ici $P(M) \times P(T) = 0,05 \times 0,083 = 0,00415$, or $P(M \cap T) = 0,045$. Ils ne sont pas égaux, donc les événements ne sont pas indépendants.</div>
+                    <div class="corr-step"><b>6.</b> Nombre de tirages possibles : $\displaystyle \binom{10}{3} = 120$.<br>Nombre de tirages avec 2 rouges et 1 noir : $\displaystyle \binom{4}{2} \times \binom{6}{1} = 6 \times 6 = 36$.<br>Probabilité : $\displaystyle \frac{36}{120} = \frac{3}{10} = 0,3$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -349,17 +288,17 @@
 // ==========================================
 const qcmData = [
     { q: "Calculer et simplifier : $\\displaystyle \\frac{2}{5} - \\frac{1}{3}$", opts: ["$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{1}{15}$", "$\\displaystyle \\frac{11}{15}$", "$\\displaystyle \\frac{3}{8}$"], ans: 1, corr: "Mise au même dénominateur (15) : $\\displaystyle \\frac{2 \\times 3}{15} - \\frac{1 \\times 5}{15} = \\frac{6 - 5}{15} = \\frac{1}{15}$." },
-    { q: "Comparer les fractions : $\\displaystyle \\frac{7}{12}$ et $\\displaystyle \\frac{5}{8}$", opts: ["$\\displaystyle \\frac{7}{12} \\lt \\frac{5}{8}$", "$\\displaystyle \\frac{7}{12} = \\frac{5}{8}$", "$\\displaystyle \\frac{7}{12} \\gt \\frac{5}{8}$", "Impossible"], ans: 0, corr: "On met au même dénominateur (24) : $\\displaystyle \\frac{7}{12} = \\frac{14}{24}$ et $\\displaystyle \\frac{5}{8} = \\frac{15}{24}$. Donc $\\displaystyle \\frac{7}{12} \\lt \\frac{5}{8}$." },
-    { q: "Résoudre l'équation : $4x - 7 = 2(x + 5)$", opts: ["$x = 8,5$", "$x = 1$", "$x = 3$", "$x = 2$"], ans: 0, corr: "On développe : $4x - 7 = 2x + 10 \\Longleftrightarrow 4x - 2x = 10 + 7 \\Longleftrightarrow 2x = 17 \\Longleftrightarrow x = 8,5$." },
-    { q: "Combien de solutions réelles admet $2x^2 - 5x + 3 = 0$ ?", opts: ["Aucune", "Une seule", "Deux", "Trois"], ans: 2, corr: "Calcul du discriminant $\\Delta = (-5)^2 - 4(2)(3) = 25 - 24 = 1$. Comme $\\Delta \\gt 0$, il y a deux solutions." },
-    { q: "Résoudre l'inéquation : $-3x + 5 \\lt 2x - 10$", opts: ["$x \\lt 3$", "$x \\gt 3$", "$x \\lt -3$", "$x \\gt -3$"], ans: 1, corr: "$-3x - 2x \\lt -10 - 5 \\Longleftrightarrow -5x \\lt -15$. En divisant par un nombre négatif (-5), on inverse le sens de l'inégalité : $x \\gt 3$." },
-    { q: "Quel est l'ensemble solution de $x^2 - 4 \\gt 0$ ?", opts: ["$]-2 ; 2[$", "$]-\\infty ; -2[ \\cup ]2 ; +\\infty[$", "$[2 ; +\\infty[$", "$\\mathbb{R}$"], ans: 1, corr: "C'est une identité remarquable $(x-2)(x+2) \\gt 0$. Les racines sont $-2$ et $2$. Le trinôme est du signe de $a=1 \\gt 0$ à l'extérieur des racines." },
-    { q: "Maths coef 4 (note 10), Physique coef 3 (note 11), Français coef 2 (note $x$). On veut une moyenne de 12. Trouver $x$.", opts: ["$15$", "$17,5$", "$16$", "$14,5$"], ans: 1, corr: "Moyenne : $\\displaystyle \\frac{4(10) + 3(11) + 2x}{4+3+2} = 12 \\Longleftrightarrow \\frac{73 + 2x}{9} = 12 \\Longleftrightarrow 73 + 2x = 108 \\Longleftrightarrow 2x = 35 \\Longleftrightarrow x = 17,5$." },
-    { q: "Résoudre $\\displaystyle \\cos(x) = \\frac{\\sqrt{3}}{2}$ sur $]-\\pi ; \\pi]$", opts: ["$\\displaystyle \\frac{\\pi}{3}$ et $\\displaystyle -\\frac{\\pi}{3}$", "$\\displaystyle \\frac{\\pi}{4}$", "$\\displaystyle \\frac{\\pi}{6}$ et $\\displaystyle -\\frac{\\pi}{6}$", "$\\displaystyle \\frac{5\\pi}{6}$"], ans: 2, corr: "Lecture du cercle trigonométrique. Le cosinus vaut $\\displaystyle \\frac{\\sqrt{3}}{2}$ pour les angles $\\displaystyle \\frac{\\pi}{6}$ et $\\displaystyle -\\frac{\\pi}{6}$." },
-    { q: "Soient $\\vec{u}(3 ; -2)$ et $\\vec{v}(1 ; 4)$. Calculer $\\vec{u} \\cdot \\vec{v}$.", opts: ["$5$", "$-5$", "$11$", "$-11$"], ans: 1, corr: "Formule $xx' + yy' = (3 \\times 1) + (-2 \\times 4) = 3 - 8 = -5$." },
-    { q: "Déterminer la dérivée de $\\displaystyle f(x) = \\frac{1}{x} + x^2$.", opts: ["$\\displaystyle -\\frac{1}{x^2} + 2x$", "$\\displaystyle \\frac{1}{x^2} + 2x$", "$\\displaystyle \\ln(x) + 2x$", "$\\displaystyle -\\frac{1}{x^2} + x$"], ans: 0, corr: "La dérivée de $\\displaystyle \\frac{1}{x}$ est $\\displaystyle -\\frac{1}{x^2}$ et la dérivée de $x^2$ est $2x$." },
-    { q: "Un prix augmente de 20% puis baisse de 20%. Globalement :", opts: ["Il revient au prix initial", "Il augmente de 4%", "Il baisse de 4%", "Il baisse de 2%"], ans: 2, corr: "Augmenter de 20% = $\\times 1,2$. Baisser de 20% = $\\times 0,8$. Le coefficient multiplicateur global est $1,2 \\times 0,8 = 0,96$. Cela correspond à une baisse de 4%." },
-    { q: "Simplifier l'expression $\\sqrt{50} - \\sqrt{8}$", opts: ["$3\\sqrt{2}$", "$4\\sqrt{2}$", "$\\sqrt{42}$", "$7\\sqrt{2}$"], ans: 0, corr: "On extrait les carrés parfaits : $\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$ et $\\sqrt{8} = \\sqrt{4 \\times 2} = 2\\sqrt{2}$. Donc $5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." }
+    { q: "Quel est le discriminant de $P(x) = 3x^2 - 5x + 2$ ?", opts: ["$\\Delta = 1$", "$\\Delta = 25$", "$\\Delta = 49$", "$\\Delta = 9$"], ans: 0, corr: "$\\Delta = (-5)^2 - 4(3)(2) = 25 - 24 = 1$." },
+    { q: "Résoudre l'équation : $4x - 7 = 2(x + 5)$", opts: ["$x = 8,5$", "$x = 1$", "$x = 3$", "$x = 2$"], ans: 0, corr: "On développe : $4x - 7 = 2x + 10 \\Longleftrightarrow 2x = 17 \\Longleftrightarrow x = 8,5$." },
+    { q: "Si une suite géométrique $(u_n)$ a pour premier terme $u_0 = 2$ et pour raison $q = 3$, alors $u_3$ vaut :", opts: ["$18$", "$54$", "$162$", "$24$"], ans: 1, corr: "$u_3 = u_0 \times q^3 = 2 \times 3^3 = 2 \times 27 = 54$." },
+    { q: "Résoudre l'inéquation : $-3x + 5 \\lt 2x - 10$", opts: ["$x \\lt 3$", "$x \\gt 3$", "$x \\lt -3$", "$x \\gt -3$"], ans: 1, corr: "$-5x < -15 \implies x > 3$ (on change le sens car on divise par un nombre négatif)." },
+    { q: "Quel est l'ensemble solution de $x^2 - 9 \\ge 0$ ?", opts: ["$[-3 ; 3]$", "$]-\\infty ; -3] \\cup [3 ; +\\infty[$", "$[3 ; +\\infty[$", "$\\mathbb{R}$"], ans: 1, corr: "Racines $-3$ et $3$. Le trinôme est du signe de $a=1 > 0$ à l'extérieur." },
+    { q: "Soit $u_n = 5 \times 0,8^n$. Quelle est la limite de $u_n$ quand $n$ tend vers $+\infty$ ?", opts: ["$+\infty$", "$5$", "$0$", "N'existe pas"], ans: 2, corr: "Puisque $-1 < 0,8 < 1$, $\\lim 0,8^n = 0$, donc la limite est $0$." },
+    { q: "Si $P(A) = 0,4$ et $P_A(B) = 0,5$, alors $P(A \cap B)$ vaut :", opts: ["$0,9$", "$0,1$", "$0,2$", "$1,25$"], ans: 2, corr: "$P(A \cap B) = P(A) \times P_A(B) = 0,4 \times 0,5 = 0,2$." },
+    { q: "Soient $\\vec{u}(3 ; -2)$ et $\\vec{v}(1 ; 4)$. Calculer $\\vec{u} \\cdot \\vec{v}$.", opts: ["$5$", "$-5$", "$11$", "$-11$"], ans: 1, corr: "$(3 \times 1) + (-2 \times 4) = 3 - 8 = -5$." },
+    { q: "Déterminer la dérivée de $\\displaystyle f(x) = x^3 - 4x + 1$.", opts: ["$3x^2 - 4$", "$3x^2 - 4x$", "$x^2 - 4$", "$3x^2 + 4$"], ans: 0, corr: "La dérivée de $x^3$ est $3x^2$ et celle de $-4x$ est $-4$." },
+    { q: "Un prix augmente de 20% puis baisse de 20%. Globalement :", opts: ["Il revient au prix initial", "Il augmente de 4%", "Il baisse de 4%", "Il baisse de 2%"], ans: 2, corr: "Coefficient global : $1,2 \times 0,8 = 0,96$, soit une baisse de $4\%$." },
+    { q: "Simplifier l'expression $\\sqrt{50} - \\sqrt{8}$", opts: ["$3\\sqrt{2}$", "$4\\sqrt{2}$", "$\\sqrt{42}$", "$7\\sqrt{2}$"], ans: 0, corr: "$\\sqrt{50} = 5\\sqrt{2}$ et $\\sqrt{8} = 2\\sqrt{2}$. Donc $5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." }
 ];
 
 // ==========================================
