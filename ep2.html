@@ -240,7 +240,7 @@
                     <div class="corr-step"><b>4.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif ou nul à l'extérieur de ses racines :<br>
                     $S = ]-\infty ; 2] \cup [4 ; +\infty[$.</div>
                     <div class="corr-step"><b>5.</b> Puisque $1$ est racine de $Q(x)$, on peut factoriser par $(x-1)$ :<br>
-                    $Q(x) = 3x^3 - ... = 2x(x^2 - 4x + 3)$.<br>
+                    $Q(x) = 2x(x^2 - 4x + 3)$.<br>
                     Les racines de $x^2 - 4x + 3$ sont $1$ et $3$ (somme 4, produit 3).<br>
                     La factorisation complète est donc : <b>$Q(x) = 2x(x - 1)(x - 3)$</b>.</div>
                 </div>
@@ -466,6 +466,7 @@ const qcmData = [
 // ==========================================
 const qcmContainer = document.getElementById('qcm-container');
 let htmlQCM = '';
+qcmData.queryObject = qcmData;
 qcmData.forEach((q, index) => {
     htmlQCM += `
         <div class="card" id="qcm-${index}" style="border-top: none; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
