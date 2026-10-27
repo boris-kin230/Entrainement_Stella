@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Épreuve 2 - Espace de Clara</title>
+    <title>Épreuve 2 - Espace de Stella R.</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -85,7 +85,6 @@
         }
         .btn-ui:active { transform: scale(0.95); }
         .btn-back { background: #F1F5F9; color: var(--primary); }
-        .btn-pdf { background: linear-gradient(135deg, var(--accent-cyan), #0077B6); color: white; box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3); }
 
         .nav-select {
             width: 100%; padding: 16px 20px; border-radius: 16px; border: none;
@@ -123,6 +122,15 @@
         .card p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; color: var(--text-dark); }
         
         .math-block { background: #F8FAFC; padding: 20px; border-radius: 16px; text-align: center; margin: 20px 0; border: 1px solid #E2E8F0; font-size: 1.2rem; }
+
+        /* --- TABLEAUX DE VARIATIONS (STYLE CLASSIQUE LYCÉE) --- */
+        .variation-table-wrapper {
+            background: #FFFFFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 15px; margin: 20px 0;
+            overflow-x: auto; box-shadow: var(--shadow-sm);
+        }
+        .var-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 1.05rem; }
+        .var-table th, .var-table td { border: 1px solid #94A3B8; padding: 12px 8px; vertical-align: middle; }
+        .var-table th { background: #F1F5F9; color: var(--primary); font-family: 'Outfit', sans-serif; font-weight: 700; }
 
         /* --- QCM --- */
         .qcm-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; }
@@ -171,28 +179,13 @@
             padding: 20px; margin: 25px 0; display: flex; justify-content: center; align-items: center;
             box-shadow: inset 0 4px 15px rgba(0,0,0,0.02);
         }
-
-        /* ==========================================================================
-           5. ZONE CACHÉE POUR LE PDF (LATEX PUR)
-           ========================================================================== */
-        #pdf-export-zone {
-            display: none; width: 210mm; padding: 20mm; background: white; color: black;
-            font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5;
-        }
-        .pdf-header { text-align: center; border-bottom: 2px solid black; padding-bottom: 10px; margin-bottom: 30px; }
-        .pdf-header h1 { font-size: 24pt; font-weight: bold; margin-bottom: 5px; }
-        .pdf-header h2 { font-size: 16pt; font-style: italic; }
-        .pdf-section { margin-bottom: 40px; page-break-inside: avoid; }
-        .pdf-section h3 { font-size: 18pt; margin-bottom: 15px; text-decoration: underline; }
-        .pdf-q { margin-bottom: 10px; }
-
     </style>
 </head>
 <body>
 
     <div id="loader">
         <div class="spinner"></div>
-        <p style="font-weight: 600; color: var(--primary); font-family: 'Outfit', sans-serif;">Génération des mathématiques...</p>
+        <p style="font-weight: 600; color: var(--primary); font-family: 'Outfit', sans-serif;">Génération de l'Épreuve 2 pour Stella R...</p>
     </div>
 
     <div class="bg-orbs">
@@ -208,18 +201,19 @@
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
             <option value="auto">1. Automatisme (QCM)</option>
-            <option value="exo1">2. Exercice 1 : Fonctions</option>
-            <option value="exo2">3. Exercice 2 : Suites</option>
-            <option value="exo3">4. Exercice 3 : Probabilités</option>
+            <option value="exo1">2. Exercice 1 : Étude de fonction</option>
+            <option value="exo2">3. Exercice 2 : Suites & Modélisation</option>
+            <option value="exo3">4. Exercice 3 : Probabilités Conditionnelles</option>
         </select>
     </header>
 
     <main>
+        <!-- SECTION 1 : AUTOMATISME -->
         <div id="auto" class="section-view active">
             <div class="card card-auto">
-                <div class="title-badge">Entrainement</div>
+                <div class="title-badge">Entraînement</div>
                 <h2>Automatisme - 12 Questions</h2>
-                <p>Coche la bonne réponse</p>
+                <p>Coche la bonne réponse pour valider tes réflexes de 1ère Spécialité Maths.</p>
             </div>
             <div id="qcm-container"></div>
             <div class="nav-buttons">
@@ -227,35 +221,70 @@
             </div>
         </div>
 
+        <!-- SECTION 2 : EXERCICE 1 (ANALYSE & FONCTIONS) -->
         <div id="exo1" class="section-view">
             <div class="card card-exo1">
-                <div class="title-badge">Analyse</div>
-                <h2>Exercice 1 : Fonctions</h2>
-                <p>On considère la fonction $f$ définie sur $\mathbb{R} \setminus \{1\}$ par :</p>
-                <div class="math-block">$\displaystyle f(x) = \frac{x^2 + 3}{x - 1}$</div>
-                <p>On note $\mathcal{C}_f$ sa courbe représentative.</p>
+                <div class="title-badge">Analyse & Étude de Fonction</div>
+                <h2>Exercice 1 : Fonction Rationnelle & Variations</h2>
+                <p>Soit $f$ la fonction définie sur l'intervalle $]1 ; +\infty[$ par l'expression :</p>
+                <div class="math-block">$\displaystyle f(x) = \frac{2x^2 - 3x + 4}{x - 1}$</div>
+                <p>On note $\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal.</p>
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
                 
-                <p><b>1.</b> Calculer l'image de $0$ et l'image de $3$ par $f$.</p>
-                <p><b>2.</b> Montrer que pour tout $x \neq 1$, la dérivée s'écrit $\displaystyle f'(x) = \frac{x^2 - 2x - 3}{(x - 1)^2}$.</p>
-                <p><b>3.</b> Étudier le signe du trinôme $x^2 - 2x - 3$.</p>
-                <p><b>4.</b> En déduire le signe de $f'(x)$ sur $\mathbb{R} \setminus \{1\}$.</p>
-                <p><b>5.</b> Dresser le tableau de variations complet de $f$.</p>
-                <p><b>6.</b> Déterminer l'équation de la tangente $\mathcal{T}$ au point d'abscisse $x_0 = 0$.</p>
-                <p><b>7.</b> Résoudre l'équation $f(x) = 0$. Que peut-on en déduire pour la courbe $\mathcal{C}_f$ ?</p>
-                <p><b>8.</b> Déterminer les coordonnées des points de $\mathcal{C}_f$ où la tangente est horizontale.</p>
+                <p><b>1.</b> Calculer l'image de $3$ par la fonction $f$.</p>
+                <p><b>2.</b> Montrer que pour tout $x > 1$, la fonction dérivée $f'(x)$ peut s'écrire sous la forme :</p>
+                <div class="math-block">$\displaystyle f'(x) = \frac{2x^2 - 4x - 1}{(x - 1)^2}$</div>
+                <p><b>3.</b> Résoudre dans $]1 ; +\infty[$ l'équation $2x^2 - 4x - 1 = 0$, et en déduire les racines du numérateur.</p>
+                <p><b>4.</b> Étudier le signe de $f'(x)$ sur l'intervalle de définition $]1 ; +\infty[$.</p>
+                <p><b>5.</b> Compléter ou analyser le tableau de variations de $f$ :</p>
                 
-                <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé</button>
+                <div class="variation-table-wrapper">
+                    <table class="var-table">
+                        <tr>
+                            <th>$x$</th>
+                            <td>$1$</td>
+                            <td></td>
+                            <td>$\frac{2+\sqrt{6}}{2}$</td>
+                            <td></td>
+                            <td>$+\infty$</td>
+                        </tr>
+                        <tr>
+                            <th>Signe de $f'(x)$</th>
+                            <td>$\parallel$</td>
+                            <td>$-$</td>
+                            <td>$0$</td>
+                            <td>$+$</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Variations de $f$</th>
+                            <td>$\parallel$</td>
+                            <td>$\searrow$</td>
+                            <td>Minimum local</td>
+                            <td>$\nearrow$</td>
+                            <td>$+\infty$</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p><b>6.</b> Déterminer l'équation réduite de la tangente $\mathcal{T}$ à la courbe $\mathcal{C}_f$ au point d'abscisse $x_0 = 2$.</p>
+                <p><b>7.</b> Démontrer qu'il existe une droite asymptote verticale dont on précisera l'équation.</p>
+
+                <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo1" class="correction">
-                    <div class="corr-step"><b>1.</b> $\displaystyle f(0) = \frac{0^2 + 3}{0 - 1} = \frac{3}{-1} = -3$.<br> $\displaystyle f(3) = \frac{3^2 + 3}{3 - 1} = \frac{9 + 3}{2} = \frac{12}{2} = 6$.</div>
-                    <div class="corr-step"><b>2.</b> $f$ est de la forme $\displaystyle \frac{u}{v}$ avec $u(x) = x^2+3 \Longrightarrow u'(x)=2x$ et $v(x)=x-1 \Longrightarrow v'(x)=1$.<br>$\displaystyle f'(x) = \frac{u'v - uv'}{v^2} = \frac{2x(x-1) - (x^2+3)(1)}{(x-1)^2} = \frac{2x^2 - 2x - x^2 - 3}{(x-1)^2} = \frac{x^2 - 2x - 3}{(x-1)^2}$.</div>
-                    <div class="corr-step"><b>3.</b> Signe de $x^2 - 2x - 3$ : $\Delta = (-2)^2 - 4(1)(-3) = 4 + 12 = 16$. $\sqrt{\Delta} = 4$.<br>Racines : $\displaystyle x_1 = \frac{2 - 4}{2} = -1$ et $\displaystyle x_2 = \frac{2 + 4}{2} = 3$.<br>Le trinôme est positif à l'extérieur des racines (car $a=1 \gt 0$) et négatif entre $-1$ et $3$.</div>
-                    <div class="corr-step"><b>4.</b> Le dénominateur $(x-1)^2$ est toujours strictement positif sur le domaine. Le signe de $f'(x)$ est donc strictement identique au signe du numérateur étudié à la question 3.</div>
-                    <div class="corr-step"><b>5.</b> $f'(x) \gt 0$ sur $]-\infty ; -1[$ et $]3 ; +\infty[ \Longrightarrow f$ est croissante.<br>$f'(x) \lt 0$ sur $]-1 ; 1[$ et $]1 ; 3[ \Longrightarrow f$ est décroissante. (Attention à la double barre en $x=1$).</div>
-                    <div class="corr-step"><b>6.</b> $\mathcal{T} : \displaystyle y = f'(0)(x-0) + f(0)$.<br>$\displaystyle f'(0) = \frac{-3}{(-1)^2} = -3$. On sait que $f(0) = -3$. Donc $y = -3x - 3$.</div>
-                    <div class="corr-step"><b>7.</b> $f(x) = 0 \Longleftrightarrow x^2 + 3 = 0 \Longleftrightarrow x^2 = -3$. Impossible dans $\mathbb{R}$.<br>La courbe $\mathcal{C}_f$ ne coupe jamais l'axe des abscisses.</div>
-                    <div class="corr-step"><b>8.</b> Tangente horizontale $\Longleftrightarrow f'(x) = 0 \Longleftrightarrow x^2 - 2x - 3 = 0$.<br>Les abscisses sont $x_1 = -1$ et $x_2 = 3$.<br>On calcule les ordonnées : $\displaystyle f(-1) = \frac{4}{-2} = -2$ et $f(3) = 6$.<br>Les points sont $A(-1 ; -2)$ et $B(3 ; 6)$.</div>
+                    <div class="corr-step"><b>1.</b> $\displaystyle f(3) = \frac{2(3)^2 - 3(3) + 4}{3 - 1} = \frac{18 - 9 + 4}{2} = \frac{13}{2} = 6{,}5$.</div>
+                    <div class="corr-step"><b>2.</b> On pose $u(x) = 2x^2 - 3x + 4 \implies u'(x) = 4x - 3$ et $v(x) = x - 1 \implies v'(x) = 1$.<br>
+                    $\displaystyle f'(x) = \frac{u'v - uv'}{v^2} = \frac{(4x - 3)(x - 1) - (2x^2 - 3x + 4)(1)}{(x - 1)^2}$<br>
+                    $= \frac{4x^2 - 4x - 3x + 3 - 2x^2 + 3x - 4}{(x - 1)^2} = \frac{2x^2 - 4x - 1}{(x - 1)^2}$.</div>
+                    <div class="corr-step"><b>3.</b> Discriminant de $2x^2 - 4x - 1$ : $\Delta = (-4)^2 - 4(2)(-1) = 16 + 8 = 24$.<br>
+                    Les racines sont $\displaystyle x_1 = \frac{4 - \sqrt{24}}{4} = \frac{4 - 2\sqrt{6}}{4} = \frac{2 - \sqrt{6}}{2}$ (hors domaine car $< 1$) et $\displaystyle x_2 = \frac{2 + \sqrt{6}}{2} \approx 2{,}22$ (valeur retenue dans $]1 ; +\infty[$).</div>
+                    <div class="corr-step"><b>4.</b> Le dénominateur $(x-1)^2$ est strictement positif sur $]1 ; +\infty[$. Le signe de $f'(x)$ est donc celui du trinôme $2x^2 - 4x - 1$, qui est négatif entre les racines et positif à l'extérieur.</div>
+                    <div class="corr-step"><b>5.</b> La fonction est décroissante de $+\infty$ jusqu'au minimum atteint en $x = \frac{2+\sqrt{6}}{2}$, puis croissante vers $+\infty$.</div>
+                    <div class="corr-step"><b>6.</b> $\mathcal{T} : y = f'(2)(x - 2) + f(2)$.<br>
+                    $f(2) = \frac{2(4) - 6 + 4}{2 - 1} = 6$. Et $f'(2) = \frac{2(4) - 4(2) - 1}{(2 - 1)^2} = -1$.<br>
+                    Équation : $y = -1(x - 2) + 6 \iff y = -x + 8$.</div>
+                    <div class="corr-step"><b>7.</b> Lorsque $x$ tend vers $1$ par valeurs supérieures, le numérateur tend vers $3$ et le dénominateur tend vers $0$ par valeurs positives, donc $\lim_{x \to 1^+} f(x) = +\infty$. La droite d'équation $x = 1$ est asymptote verticale à $\mathcal{C}_f$.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -264,69 +293,49 @@
             </div>
         </div>
 
+        <!-- SECTION 3 : EXERCICE 2 (SUITES & MODÉLISATION) -->
         <div id="exo2" class="section-view">
             <div class="card card-exo2">
-                <div class="title-badge">Modélisation</div>
-                <h2>Exercice 2 : Les abonnés de Clara_Pix</h2>
-                <p>En parallèle de ses études, Clara gère une page sur un réseau social. Au début de l'année, elle compte 10 000 abonnés. L'algorithme de la plateforme a changé. Une étude statistique montre que chaque mois :</p>
-                <ul style="margin-left: 20px; margin-bottom: 15px; color: var(--text-main);">
-                    <li>Elle perd 5% de son audience totale.</li>
-                    <li>Elle gagne 1 000 nouveaux abonnés de manière organique.</li>
-                </ul>
-                <p>On modélise le nombre d'abonnés au mois $n$ par la suite $(f_n)$. Ainsi, $f_0 = 10 000$.</p>
+                <div class="title-badge">Modélisation Numérique</div>
+                <h2>Exercice 2 : La croissance de l'application de Stella</h2>
+                <p>Pour développer sa propre application de révision, Stella réalise un investissement initial de 500 utilisateurs actifs au mois 0 ($u_0 = 500$). Une étude prévisionnelle indique que d'un mois sur l'autre, l'application conserve 85% de ses anciens utilisateurs et en attire 300 nouveaux.</p>
+                <p>On modélise le nombre d'utilisateurs au mois $n$ par la suite $(u_n)$. Ainsi, pour tout entier $n \ge 0$ :</p>
+                <div class="math-block">$\displaystyle u_{n+1} = 0{,}85u_n + 300$</div>
 
                 <div class="svg-container" style="background: transparent; border: none; padding: 0;">
-                    <svg viewBox="0 0 250 450" width="100%" height="350px" style="max-width: 250px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));">
-                        <rect x="10" y="10" width="230" height="430" rx="30" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="4"/>
-                        <path d="M 85 10 L 85 25 Q 85 35 95 35 L 155 35 Q 165 35 165 25 L 165 10" fill="#0F172A"/>
-                        <defs>
-                            <linearGradient id="grad-insta" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#fd5949" /><stop offset="50%" stop-color="#d6249f" /><stop offset="100%" stop-color="#285AEB" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="125" cy="80" r="30" fill="url(#grad-insta)"/>
-                        <text x="125" y="88" font-family="Outfit" font-size="24" font-weight="bold" fill="white" text-anchor="middle">C</text>
-                        <text x="125" y="135" font-family="Outfit" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">@Clara_Pix</text>
-                        
-                        <text x="50" y="170" font-family="Outfit" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">10 K</text>
-                        <text x="50" y="185" font-family="Poppins" font-size="9" fill="#64748B" text-anchor="middle">ABONNÉS</text>
-                        
-                        <text x="125" y="170" font-family="Outfit" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">1.2 K</text>
-                        <text x="125" y="185" font-family="Poppins" font-size="9" fill="#64748B" text-anchor="middle">SUIVIS</text>
-
-                        <text x="200" y="170" font-family="Outfit" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">450</text>
-                        <text x="200" y="185" font-family="Poppins" font-size="9" fill="#64748B" text-anchor="middle">POSTS</text>
-                        
-                        <rect x="25" y="210" width="200" height="150" rx="15" fill="#F8FAFC"/>
-                        <text x="40" y="235" font-family="Outfit" font-size="12" font-weight="bold" fill="#0F172A">Croissance (Mois n)</text>
-                        <path d="M 40 330 Q 90 280 140 260 T 210 250" fill="none" stroke="#00AEEF" stroke-width="3"/>
-                        <circle cx="40" cy="330" r="4" fill="white" stroke="#EC008C" stroke-width="2"/>
-                        <line x1="40" y1="245" x2="210" y2="245" stroke="#EC008C" stroke-width="1.5" stroke-dasharray="4,4"/>
-                        <text x="160" y="240" font-family="Poppins" font-size="8" font-weight="bold" fill="#EC008C">Max : 20 K</text>
+                    <svg viewBox="0 0 300 180" width="100%" height="160px" style="max-width: 320px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));">
+                        <rect x="10" y="10" width="280" height="160" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="3"/>
+                        <circle cx="50" cy="50" r="20" fill="#00AEEF"/>
+                        <text x="50" y="57" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">S</text>
+                        <text x="90" y="45" font-family="Outfit" font-size="14" font-weight="bold" fill="#0F172A">Stella Study App</text>
+                        <text x="90" y="65" font-family="Poppins" font-size="10" fill="#64748B">Modèle récurrent d'utilisateurs</text>
+                        <line x1="30" y1="95" x2="270" y2="95" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <text x="35" y="125" font-family="Outfit" font-size="12" font-weight="bold" fill="#005AAA">Mois 0 : 500</text>
+                        <text x="160" y="125" font-family="Outfit" font-size="12" font-weight="bold" fill="#EC008C">Mois 1 : 725</text>
+                        <text x="35" y="145" font-family="Poppins" font-size="9" fill="#64748B">Base initiale</text>
+                        <text x="160" y="145" font-family="Poppins" font-size="9" fill="#64748B">Après 1 mois (+45%)</text>
                     </svg>
                 </div>
 
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
-                <p><b>1.</b> Calculer le nombre d'abonnés de Clara aux mois 1 et 2 ($f_1$ et $f_2$).</p>
-                <p><b>2.</b> Justifier analytiquement que la relation de récurrence est : $f_{n+1} = 0,95f_n + 1000$.</p>
-                <p><b>3.</b> Clara craint que son nombre d'abonnés ne finisse par stagner. Pour l'étudier, on pose la suite $g_n = f_n - 20 000$. Calculer $g_0$.</p>
-                <p><b>4.</b> Démontrer que la suite $(g_n)$ est géométrique. Préciser sa raison $q$.</p>
-                <p><b>5.</b> Exprimer $g_n$ en fonction de $n$.</p>
-                <p><b>6.</b> En déduire que pour tout entier naturel $n$ : $\displaystyle f_n = 20 000 - 10 000 \times 0,95^n$</p>
-                <p><b>7.</b> Clara espère franchir un jour la barre des 30 000 abonnés. Déterminer la limite de la suite $(f_n)$ lorsque $n$ tend vers $+\infty$.</p>
-                <p><b>8.</b> Conclure quant à l'espoir de Clara : atteindra-t-elle cet objectif avec la dynamique actuelle ?</p>
+                <p><b>1.</b> Calculer le nombre d'utilisateurs au bout de 2 mois ($u_2$).</p>
+                <p><b>2.</b> Démontrer que la suite $(u_n)$ n'est ni arithmétique ni géométrique.</p>
+                <p><b>3.</b> On pose une suite auxiliaire $(v_n)$ définie pour tout entier $n$ par : $\displaystyle v_n = u_n - 2000$. Calculer $v_0$.</p>
+                <p><b>4.</b> Démontrer que $(v_n)$ est une suite géométrique dont on précisera la raison $q$ et le premier terme.</p>
+                <p><b>5.</b> Exprimer $v_n$ en fonction de $n$, puis en déduire l'expression de $u_n$ en fonction de $n$.</p>
+                <p><b>6.</b> Déterminer la limite de la suite $(u_n)$ en $+\infty$ et interpréter ce résultat pour l'application de Stella.</p>
 
-                <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé</button>
+                <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo2" class="correction">
-                    <div class="corr-step"><b>1.</b> $f_1 = 10000 \times 0,95 + 1000 = 9500 + 1000 = 10500$.<br>$f_2 = 10500 \times 0,95 + 1000 = 9975 + 1000 = 10975$.</div>
-                    <div class="corr-step"><b>2.</b> Perdre 5% revient à multiplier par $1 - 0,05 = 0,95$. Ensuite, on ajoute les $1000$ nouveaux abonnés. Donc le mois suivant $f_{n+1}$ s'écrit bien : $f_{n+1} = 0,95f_n + 1000$.</div>
-                    <div class="corr-step"><b>3.</b> $g_0 = f_0 - 20000 = 10000 - 20000 = -10000$.</div>
-                    <div class="corr-step"><b>4.</b> $g_{n+1} = f_{n+1} - 20000 = (0,95f_n + 1000) - 20000$<br>$g_{n+1} = 0,95f_n - 19000$<br>On factorise par $0,95$ : $\displaystyle g_{n+1} = 0,95\left(f_n - \frac{19000}{0,95}\right) = 0,95(f_n - 20000)$.<br>Donc $g_{n+1} = 0,95 g_n$. La suite $(g_n)$ est géométrique de raison $q = 0,95$.</div>
-                    <div class="corr-step"><b>5.</b> Formule explicite : $\displaystyle g_n = g_0 \times q^n = -10000 \times 0,95^n$.</div>
-                    <div class="corr-step"><b>6.</b> Comme $g_n = f_n - 20000$, on a $f_n = g_n + 20000$.<br>En remplaçant $g_n$ : $\displaystyle f_n = -10000 \times 0,95^n + 20000 = 20000 - 10000 \times 0,95^n$.</div>
-                    <div class="corr-step"><b>7.</b> La raison $q = 0,95$ est strictement comprise entre $-1$ et $1$. Donc $\displaystyle \lim_{n \to +\infty} 0,95^n = 0$.<br>Ainsi, $\displaystyle \lim_{n \to +\infty} f_n = 20000 - 10000 \times 0 = 20000$.</div>
-                    <div class="corr-step"><b>8.</b> La limite théorique étant de 20 000 abonnés (plafond de verre visible sur le graphique), la suite est majorée par 20 000. Clara ne pourra jamais franchir la barre des 30 000 abonnés avec cet algorithme.</div>
+                    <div class="corr-step"><b>1.</b> $u_1 = 0{,}85(500) + 300 = 425 + 300 = 725$.<br>$u_2 = 0{,}85(725) + 300 = 616{,}25 + 300 = 916{,}25$ (soit 916 utilisateurs).</div>
+                    <div class="corr-step"><b>2.</b> $u_1 - u_0 = 225$ et $u_2 - u_1 = 191{,}25$. Comme la différence n'est pas constante, $(u_n)$ n'est pas arithmétique. Les rapports ne sont pas constants non plus ($725/500 \neq 916{,}25/725$), donc elle n'est pas géométrique.</div>
+                    <div class="corr-step"><b>3.</b> $v_0 = u_0 - 2000 = 500 - 2000 = -1500$.</div>
+                    <div class="corr-step"><b>4.</b> $v_{n+1} = u_{n+1} - 2000 = (0{,}85u_n + 300) - 2000 = 0{,}85u_n - 1700$<br>
+                    $= 0{,}85(u_n - \frac{1700}{0{,}85}) = 0{,}85(u_n - 2000) = 0{,}85v_n$.<br>
+                    La suite $(v_n)$ est géométrique de raison $q = 0{,}85$ et de premier terme $v_0 = -1500$.</div>
+                    <div class="corr-step"><b>5.</b> $v_n = -1500 \times (0{,}85)^n$. Comme $u_n = v_n + 2000$, on obtient :<br>$\displaystyle u_n = 2000 - 1500 \times (0{,}85)^n$.</div>
+                    <div class="corr-step"><b>6.</b> Puisque $-1 < 0{,}85 < 1$, $\lim_{n \to +\infty} (0{,}85)^n = 0$. Par conséquent, $\lim_{n \to +\infty} u_n = 2000$. À long terme, l'application se stabilisera autour de 2000 utilisateurs actifs.</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -335,11 +344,13 @@
             </div>
         </div>
 
+        <!-- SECTION 4 : EXERCICE 3 (PROBABILITÉS CONDITIONNELLES) -->
         <div id="exo3" class="section-view">
             <div class="card card-exo3">
-                <div class="title-badge">Aléatoire</div>
-                <h2>Exercice 3 : Probabilités</h2>
-                <p>Dans un magasin multimédia, 60% des clients achètent un smartphone (événement $S$) et 40% achètent un ordinateur (événement $O$).<br>Parmi ceux qui achètent un smartphone, 30% souscrivent à une assurance ($A$).<br>Parmi ceux qui achètent un ordinateur, 75% souscrivent à une assurance ($A$).</p>
+                <div class="title-badge">Probabilités & Arbres</div>
+                <h2>Exercice 3 : Le club de sport de Stella</h2>
+                <p>Dans un club de remise en forme fréquenté par des étudiants, 70% des adhérents suivent des cours de Pilates (événement $P$) et les autres font de la musculation (événement $M$).</p>
+                <p>Parmi ceux qui font du Pilates, 80% possèdent une gourde isotherme du club (événement $G$). Parmi ceux qui font de la musculation, seulement 30% possèdent cette gourde.</p>
 
                 <div class="svg-container" style="background: transparent; border: none; padding: 0;">
                     <svg viewBox="0 0 450 280" width="100%" height="100%" style="filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));">
@@ -358,62 +369,59 @@
                         <path d="M 230 210 C 280 240, 330 245, 380 245" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
 
                         <rect x="90" y="80" width="40" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
-                        <text x="110" y="95" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,6</text>
+                        <text x="110" y="95" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,7</text>
                         <rect x="90" y="180" width="40" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
-                        <text x="110" y="195" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,4</text>
+                        <text x="110" y="195" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,3</text>
                         
                         <rect x="280" y="40" width="40" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
-                        <text x="300" y="55" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,3</text>
-                        <text x="300" y="105" font-size="16" font-weight="bold" fill="#1E293B" text-anchor="middle">...</text>
+                        <text x="300" y="55" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,8</text>
                         
-                        <rect x="280" y="180" width="45" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
-                        <text x="302.5" y="195" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,75</text>
-                        <text x="302.5" y="245" font-size="16" font-weight="bold" fill="#1E293B" text-anchor="middle">...</text>
+                        <rect x="280" y="180" width="40" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
+                        <text x="300" y="195" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,3</text>
 
                         <circle cx="215" cy="70" r="22" fill="url(#grad-blue)"/>
-                        <text x="215" y="76" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">S</text>
+                        <text x="215" y="76" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">P</text>
                         
                         <circle cx="215" cy="210" r="22" fill="url(#grad-blue)"/>
-                        <text x="215" y="216" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">O</text>
+                        <text x="215" y="216" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">M</text>
 
                         <circle cx="395" cy="35" r="20" fill="url(#grad-green)"/>
-                        <text x="395" y="41" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">A</text>
+                        <text x="395" y="41" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         
                         <circle cx="395" cy="105" r="20" fill="url(#grad-pink)"/>
-                        <text x="395" y="111" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">A</text>
+                        <text x="395" y="111" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         <line x1="387" y1="92" x2="403" y2="92" stroke="white" stroke-width="2"/>
 
                         <circle cx="395" cy="175" r="20" fill="url(#grad-green)"/>
-                        <text x="395" y="181" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">A</text>
+                        <text x="395" y="181" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         
                         <circle cx="395" cy="245" r="20" fill="url(#grad-pink)"/>
-                        <text x="395" y="251" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">A</text>
+                        <text x="395" y="251" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         <line x1="387" y1="232" x2="403" y2="232" stroke="white" stroke-width="2"/>
                     </svg>
                 </div>
 
                 <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
-                <p><b>1.</b> Reproduire l'arbre ci-dessus et compléter les probabilités manquantes sur les branches menant à l'événement $\overline{A}$.</p>
-                <p><b>2.</b> Calculer la probabilité $P(S \cap A)$. Interpréter ce résultat.</p>
-                <p><b>3.</b> Calculer la probabilité que le client ait souscrit une assurance ($P(A)$).</p>
-                <p><b>4.</b> Un client a souscrit une assurance. Quelle est la probabilité qu'il ait acheté un ordinateur ? (Arrondir à $10^{-3}$).</p>
+                <p><b>1.</b> Compléter mentalement ou sur votre copie les branches restantes de l'arbre (probabilités de $\overline{G}$ sachant $P$ et $\overline{G}$ sachant $M$).</p>
+                <p><b>2.</b> Calculer la probabilité $P(P \cap G)$ et interpréter le résultat dans le contexte.</p>
+                <p><b>3.</b> À l'aide de la formule des probabilités totales, calculer la probabilité globale $P(G)$ qu'un adhérent choisi au hasard possède la gourde.</p>
+                <p><b>4.</b> Un adhérent possède la gourde. Quelle est la probabilité qu'il fasse de la musculation ? (Arrondir à $10^{-3}$).</p>
 
-                <button class="btn-corr" onclick="toggleCorr('corr-exo3')">Afficher le corrigé</button>
+                <button class="btn-corr" onclick="toggleCorr('corr-exo3')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo3" class="correction">
-                    <div class="corr-step"><b>1.</b> La somme des probabilités issues d'un même nœud vaut 1.<br>$P_S(\overline{A}) = 1 - 0,3 = 0,7$.<br>$P_O(\overline{A}) = 1 - 0,75 = 0,25$.</div>
-                    <div class="corr-step"><b>2.</b> $P(S \cap A) = P(S) \times P_S(A) = 0,6 \times 0,3 = 0,18$.<br>Interprétation : 18% de l'ensemble des clients achètent un smartphone ET souscrivent une assurance.</div>
-                    <div class="corr-step"><b>3.</b> Les événements $S$ et $O$ forment une partition de l'univers. D'après la formule des probabilités totales :<br>$\displaystyle P(A) = P(S \cap A) + P(O \cap A)$.<br>On calcule d'abord $P(O \cap A) = 0,4 \times 0,75 = 0,30$.<br>Donc $\displaystyle P(A) = 0,18 + 0,30 = 0,48$.</div>
-                    <div class="corr-step"><b>4.</b> On cherche la probabilité conditionnelle $P_A(O)$.<br>Formule de Bayes : $\displaystyle P_A(O) = \frac{P(O \cap A)}{P(A)}$.<br>$\displaystyle P_A(O) = \frac{0,30}{0,48} = 0,625$.<br>La probabilité est de 62,5%.</div>
+                    <div class="corr-step"><b>1.</b> $P_P(\overline{G}) = 1 - 0{,}8 = 0{,}2$.<br>$P_M(\overline{G}) = 1 - 0{,}3 = 0{,}7$.</div>
+                    <div class="corr-step"><b>2.</b> $P(P \cap G) = P(P) \times P_P(G) = 0{,}7 \times 0{,}8 = 0{,}56$.<br>Interprétation : 56% de l'ensemble des membres du club font du Pilates ET possèdent la gourde.</div>
+                    <div class="corr-step"><b>3.</b> D'après la formule des probabilités totales :<br>$\displaystyle P(G) = P(P \cap G) + P(M \cap G) = 0{,}56 + (0{,}3 \times 0{,}3) = 0{,}56 + 0{,}09 = 0{,}65$.</div>
+                    <div class="corr-step"><b>4.</b> On cherche $P_G(M) = \frac{P(M \cap G)}{P(G)} = \frac{0{,}09}{0{,}65} \approx 0{,}138$.<br>La probabilité est d'environ 13,8%.</div>
                 </div>
             </div>
 
             <div class="nav-buttons">
                 <button class="btn-nav btn-prev" onclick="document.getElementById('section-selector').value='exo2'; switchSection('exo2');"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Précédent</button>
-                <a href="index.html" class="btn-nav btn-next" style="text-decoration:none;">Terminer <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="index.html" class="btn-nav btn-next" style="text-decoration:none;">Terminer 🏠 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
         </div>
-
     </main>
 
 <script>
@@ -428,70 +436,70 @@ const qcmData = [
         corr: "On distribue : $\\displaystyle 3x(x) + 3x(2) - 1(x) - 1(2) = 3x^2 + 6x - x - 2 = 3x^2 + 5x - 2$." 
     },
     { 
-        q: "Résoudre $\\displaystyle 4x - 5 = 7x + 4$", 
+        q: "Résoudre l'équation $\\displaystyle 4x - 5 = 7x + 4$", 
         opts: ["$x = -3$", "$x = 3$", "$x = 1$", "$x = -1$"], 
         ans: 0, 
         corr: "$\\displaystyle 4x - 7x = 4 + 5 \\Longleftrightarrow -3x = 9 \\Longleftrightarrow x = \\frac{9}{-3} = -3$." 
     },
     { 
-        q: "Résoudre $\\displaystyle -2x + 6 \\gt 0$", 
-        opts: ["$x \\lt 3$", "$x \\gt 3$", "$x \\lt -3$", "$x \\gt -3$"], 
+        q: "Résoudre l'inéquation $\\displaystyle -2x + 6 > 0$", 
+        opts: ["$x < 3$", "$x > 3$", "$x < -3$", "$x > -3$"], 
         ans: 0, 
-        corr: "$\\displaystyle -2x \\gt -6$. En divisant par $-2$ (un nombre négatif), on change le sens de l'inégalité : $\\displaystyle x \\lt \\frac{-6}{-2} \\Longleftrightarrow x \\lt 3$." 
+        corr: "$\\displaystyle -2x > -6$. En divisant par $-2$, on change le sens de l'inégalité : $\\displaystyle x < \\frac{-6}{-2} \\Longleftrightarrow x < 3$." 
     },
     { 
-        q: "Quelles sont les racines de $\\displaystyle x^2 - 7x + 10 = 0$ ?", 
+        q: "Quelles sont les racines du trinôme $\\displaystyle x^2 - 7x + 10 = 0$ ?", 
         opts: ["$2$ et $5$", "$-2$ et $-5$", "$3$ et $4$", "Pas de racine"], 
         ans: 0, 
         corr: "$\\displaystyle \\Delta = (-7)^2 - 4(1)(10) = 49 - 40 = 9$.<br>Racines : $\\displaystyle x_1 = \\frac{7 - 3}{2} = 2$ et $\\displaystyle x_2 = \\frac{7 + 3}{2} = 5$." 
     },
     { 
-        q: "Résoudre $\\displaystyle x^2 - 16 \\lt 0$", 
+        q: "Résoudre l'inéquation $\\displaystyle x^2 - 16 < 0$", 
         opts: ["$x \\in ]-4 ; 4[$", "$x \\in ]-\\infty ; -4[ \\cup ]4 ; +\\infty[$", "$x \\in [-4 ; 4]$", "Pas de solution"], 
         ans: 0, 
-        corr: "L'expression est une identité remarquable : $\\displaystyle (x-4)(x+4) \\lt 0$.<br>Le coefficient $a=1$ est positif, donc le trinôme est strictement négatif à l'intérieur des racines (entre $-4$ et $4$)." 
+        corr: "Identité remarquable : $\\displaystyle (x-4)(x+4) < 0$. Le trinôme est négatif à l'intérieur de ses racines, soit sur $]-4 ; 4[$. pouf." 
     },
     { 
         q: "Calculer et simplifier $\\displaystyle \\frac{5}{6} - \\frac{1}{4}$", 
         opts: ["$\\displaystyle \\frac{7}{12}$", "$\\displaystyle \\frac{4}{2}$", "$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{14}{24}$"], 
         ans: 0, 
-        corr: "Dénominateur commun : $12$.<br>$\\displaystyle \\frac{5 \\times 2}{12} - \\frac{1 \\times 3}{12} = \\frac{10 - 3}{12} = \\frac{7}{12}$." 
+        corr: "Dénominateur commun $12$ : $\\displaystyle \\frac{10}{12} - \\frac{3}{12} = \\frac{7}{12}$." 
     },
     { 
         q: "Comparer les fractions $\\displaystyle \\frac{3}{8}$ et $\\displaystyle \\frac{2}{5}$", 
-        opts: ["$\\displaystyle \\frac{3}{8} \\lt \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} = \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} \\gt \\frac{2}{5}$", "Incomparables"], 
+        opts: ["$\\displaystyle \\frac{3}{8} < \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} = \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} > \\frac{2}{5}$", "Incomparables"], 
         ans: 0, 
-        corr: "On met au même dénominateur (40) : $\\displaystyle \\frac{3 \\times 5}{40} = \\frac{15}{40}$ et $\\displaystyle \\frac{2 \\times 8}{40} = \\frac{16}{40}$.<br>Puisque $15 \\lt 16$, on a $\\displaystyle \\frac{3}{8} \\lt \\frac{2}{5}$." 
+        corr: "Au même dénominateur ($40$) : $\\displaystyle \\frac{15}{40}$ et $\\displaystyle \\frac{16}{40}$. Donc $\\displaystyle \\frac{3}{8} < \\frac{2}{5}$." 
     },
     { 
-        q: "Maths coef 4 (note 11), Français coef 2 (note 10), Anglais coef 2 (note $x$). Clara veut 12 de moyenne. Trouver $x$.", 
+        q: "Maths coef 4 (note 11), Français coef 2 (note 10), Anglais coef 2 (note $x$). Stella veut 12 de moyenne. Trouver $x$.", 
         opts: ["$16$", "$14$", "$15$", "$18$"], 
         ans: 0, 
-        corr: "$\\displaystyle \\frac{4(11) + 2(10) + 2(x)}{4+2+2} = 12 \\Longleftrightarrow \\frac{64 + 2x}{8} = 12 \\Longleftrightarrow 64 + 2x = 96 \\Longleftrightarrow 2x = 32 \\Longleftrightarrow x = 16$." 
+        corr: "$\\displaystyle \\frac{4(11) + 2(10) + 2(x)}{8} = 12 \\Longleftrightarrow 64 + 2x = 96 \\Longleftrightarrow 2x = 32 \\Longleftrightarrow x = 16$." 
     },
     { 
         q: "Résoudre $\\displaystyle \\cos(x) = -\\frac{1}{2}$ sur $]-\\pi ; \\pi]$", 
         opts: ["$\\displaystyle \\frac{2\\pi}{3}$ et $\\displaystyle -\\frac{2\\pi}{3}$", "$\\displaystyle \\frac{\\pi}{3}$ et $\\displaystyle -\\frac{\\pi}{3}$", "$\\displaystyle \\frac{5\\pi}{6}$ et $\\displaystyle -\\frac{5\\pi}{6}$", "$\\displaystyle \\frac{3\\pi}{4}$ et $\\displaystyle -\\frac{3\\pi}{4}$"], 
         ans: 0, 
-        corr: "D'après le cercle trigonométrique, le cosinus vaut $\\displaystyle -\\frac{1}{2}$ pour les angles correspondant à $\\displaystyle \\frac{2\\pi}{3}$ et $\\displaystyle -\\frac{2\\pi}{3}$." 
+        corr: "Sur le cercle trigonométrique, le cosinus vaut $\\displaystyle -\\frac{1}{2}$ pour les angles $\\displaystyle \\frac{2\\pi}{3}$ et $\\displaystyle -\\frac{2\\pi}{3}$." 
     },
     { 
         q: "Soient $\\displaystyle \\vec{u}(-3 ; 4)$ et $\\displaystyle \\vec{v}(2 ; 5)$. Calculer $\\displaystyle \\vec{u} \\cdot \\vec{v}$.", 
         opts: ["$14$", "$-14$", "$26$", "$-26$"], 
         ans: 0, 
-        corr: "Formule analytique : $\\displaystyle \\vec{u} \\cdot \\vec{v} = x_u x_v + y_u y_v = (-3 \\times 2) + (4 \\times 5) = -6 + 20 = 14$." 
+        corr: "Formule analytique : $\\displaystyle (-3 \\times 2) + (4 \\times 5) = -6 + 20 = 14$." 
     },
     { 
         q: "Déterminer la dérivée de la fonction $\\displaystyle g(x) = 2x^3 - 4x^2 + x - 5$", 
         opts: ["$\\displaystyle 6x^2 - 8x + 1$", "$\\displaystyle 6x^2 - 8x$", "$\\displaystyle 2x^2 - 4x + 1$", "$\\displaystyle 5x^2 - 8x + 1$"], 
         ans: 0, 
-        corr: "En appliquant les règles de dérivation usuelles : $\\displaystyle g'(x) = 2(3x^2) - 4(2x) + 1 - 0 = 6x^2 - 8x + 1$." 
+        corr: "Par dérivation usuelle : $\\displaystyle g'(x) = 2(3x^2) - 4(2x) + 1 = 6x^2 - 8x + 1$." 
     },
     { 
         q: "Simplifier l'expression $\\displaystyle \\sqrt{50} - \\sqrt{8}$", 
         opts: ["$\\displaystyle 3\\sqrt{2}$", "$\\displaystyle 4\\sqrt{2}$", "$\\displaystyle \\sqrt{42}$", "$\\displaystyle 7\\sqrt{2}$"], 
         ans: 0, 
-        corr: "On extrait les carrés parfaits : $\\displaystyle \\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$ et $\\displaystyle \\sqrt{8} = \\sqrt{4 \\times 2} = 2\\sqrt{2}$.<br>Donc $\\displaystyle 5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." 
+        corr: "$\\displaystyle \\sqrt{50} = 5\\sqrt{2}$ et $\\displaystyle \\sqrt{8} = 2\\sqrt{2}$. Donc $\\displaystyle 5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." 
     }
 ];
 
