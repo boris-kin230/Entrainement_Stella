@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Annales Maths 1ère - Stella R.</title>
+    <title>Stella R. - Spécialité Maths (1ère)</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,8 +17,8 @@
 
     <style>
         /* ==========================================================================
-            1. VARIABLES (Couleurs d'origine)
-            ========================================================================== */
+           1. VARIABLES (Couleurs d'origine)
+           ========================================================================== */
         :root {
             --nathan-green: #8CC63F;
             --nathan-blue: #005AAA;
@@ -50,8 +50,8 @@
         }
 
         /* ==========================================================================
-            2. ARRIÈRE-PLAN ANIMÉ (ORBES LÉGÈRES)
-            ========================================================================== */
+           2. ARRIÈRE-PLAN ANIMÉ (ORBES LÉGÈRES)
+           ========================================================================== */
         .bg-orbs {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1; overflow: hidden; pointer-events: none;
@@ -72,8 +72,8 @@
         }
 
         /* ==========================================================================
-            3. NAVBAR
-            ========================================================================== */
+           3. NAVBAR
+           ========================================================================== */
         header {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(255, 255, 255, 0.85);
@@ -95,21 +95,13 @@
         .brand-text span { font-size: 0.8rem; font-weight: 600; color: var(--nathan-cyan); text-transform: uppercase; letter-spacing: 1.5px; }
 
         /* ==========================================================================
-            4. CONTENU PRINCIPAL
-            ========================================================================== */
+           4. CONTENU PRINCIPAL
+           ========================================================================== */
         main { flex: 1; max-width: 900px; margin: 0 auto; width: 100%; padding: 40px 20px; }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
-        .stat-card {
-            background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center;
-            box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
-        }
-        .stat-val { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 5px; }
-        .stat-label { font-size: 0.85rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
-
         /* ==========================================================================
-            5. CARTES DES ÉPREUVES 
-            ========================================================================== */
+           5. CARTES DES ÉPREUVES 
+           ========================================================================== */
         .section-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--nathan-blue); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
         
         .epreuves-container { display: flex; flex-direction: column; gap: 25px; margin-bottom: 50px; }
@@ -162,28 +154,13 @@
         <div class="brand">
             <div class="brand-icon">$\sum$</div>
             <div class="brand-text">
-                <h1>Annales - Stella R.</h1>
+                <h1>Stella R.</h1>
                 <span>Spécialité Maths (1ère)</span>
             </div>
         </div>
     </header>
 
 <main>
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-val" style="color: var(--nathan-cyan);">3</div>
-            <div class="stat-label">Sujets</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-val" style="color: var(--nathan-pink);">24</div>
-            <div class="stat-label">Questions QCM</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-val" style="color: var(--nathan-green);">10</div>
-            <div class="stat-label">Problèmes</div>
-        </div>
-    </div>
-
     <h2 class="section-title">
         <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -199,8 +176,8 @@
                 <span class="badge badge-yellow">Sujet 1</span>
             </div>
             <div class="tags">
+                <span class="tag">Polynômes</span>
                 <span class="tag">Suites Numériques</span>
-                <span class="tag">Fonctions Polynômes</span>
                 <span class="tag">Probabilités</span>
             </div>
             <div class="btn-start">
@@ -215,8 +192,8 @@
                 <span class="badge badge-yellow">Sujet 2</span>
             </div>
             <div class="tags">
-                <span class="tag">Suites Arithmétiques & Géométriques</span>
                 <span class="tag">Polynômes du Second Degré</span>
+                <span class="tag">Suites Arithmétiques & Géométriques</span>
                 <span class="tag">Arbres de Probabilité</span>
             </div>
             <div class="btn-start">
@@ -227,13 +204,13 @@
 
         <a href="ep3.html" class="epreuve-card card-ep3">
             <div class="card-header">
-                <h3>DEVOIR N<sup>o</sup> 6</h3>
+                <h3>ÉPREUVE 3</h3>
                 <span class="badge badge-yellow">Sujet 3</span>
             </div>
             <div class="tags">
-                <span class="tag">Probabilités Conditionnelles</span>
+                <span class="tag">Probabilités & Suites</span>
+                <span class="tag">Polynômes</span>
                 <span class="tag">Suites & Modélisation</span>
-                <span class="tag">Étude de Polynôme</span>
             </div>
             <div class="btn-start">
                 Démarrer
