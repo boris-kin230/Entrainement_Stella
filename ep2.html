@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Épreuve 2 - Espace de Stella R.</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         MathJax = {
             tex: { 
                 inlineMath: [['$', '$'], ['\\(', '\\)']], 
                 displayMath: [['$$', '$$'], ['\\[', '\\]']], 
-                processEscapes: true 
+                processEscapes: true,
+                tags: 'ams'
             },
             svg: { fontCache: 'global' },
             startup: {
                 pageReady: () => {
                     return MathJax.startup.defaultPageReady().then(() => {
-                        document.getElementById('loader').style.opacity = '0';
-                        setTimeout(() => document.getElementById('loader').style.display = 'none', 300);
+                        const loader = document.getElementById('loader');
+                        if (loader) {
+                            loader.style.opacity = '0';
+                            setTimeout(() => loader.style.display = 'none', 300);
+                        }
                     });
                 }
             }
@@ -32,22 +36,33 @@
            1. VARIABLES PREMIUM ET RESET
            ========================================================================== */
         :root {
-            --primary: #005AAA; --primary-light: #4D9EEB;
-            --accent-pink: #EC008C; --accent-cyan: #00AEEF;
-            --accent-green: #8CC63F; --accent-yellow: #FFF200;
-            --bg-color: #F8FAFC; --surface-white: rgba(255, 255, 255, 0.85);
-            --surface-solid: #FFFFFF; --text-dark: #0F172A; --text-gray: #475569;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --primary: #005AAA;
+            --primary-light: #4D9EEB;
+            --accent-pink: #EC008C;
+            --accent-cyan: #00AEEF;
+            --accent-green: #8CC63F;
+            --accent-yellow: #FFF200;
+            --bg-color: #F8FAFC;
+            --surface-white: rgba(255, 255, 255, 0.9);
+            --surface-solid: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-gray: #475569;
+            --shadow-sm: 0 4px 12px rgba(0, 90, 170, 0.06);
             --shadow-xl: 0 20px 40px -10px rgba(0, 90, 170, 0.12);
-            --radius-lg: 24px; --radius-xl: 32px;
+            --radius-lg: 24px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-            overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         #loader {
@@ -55,36 +70,50 @@
             z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.3s ease;
         }
-        .spinner { border: 4px solid rgba(0, 174, 239, 0.2); border-top: 4px solid var(--accent-cyan); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        .spinner {
+            border: 4px solid rgba(0, 174, 239, 0.2);
+            border-top: 4px solid var(--accent-cyan);
+            border-radius: 50%; width: 46px; height: 46px;
+            animation: spin 1s linear infinite; margin-bottom: 18px;
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* ==========================================================================
            2. ARRIÈRE-PLAN ANIMÉ
            ========================================================================== */
         .bg-orbs { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; pointer-events: none; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(70px); animation: float 20s infinite ease-in-out alternate; opacity: 0.4; }
-        .orb-1 { width: 350px; height: 350px; background: rgba(0, 174, 239, 0.3); top: -50px; left: -100px; }
-        .orb-2 { width: 400px; height: 400px; background: rgba(236, 0, 140, 0.2); bottom: -100px; right: -50px; animation-delay: -5s; }
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 50px) scale(1.05); } }
+        .orb { position: absolute; border-radius: 50%; filter: blur(70px); animation: float 20s infinite ease-in-out alternate; opacity: 0.35; }
+        .orb-1 { width: 360px; height: 360px; background: rgba(0, 174, 239, 0.3); top: -60px; left: -100px; }
+        .orb-2 { width: 420px; height: 420px; background: rgba(236, 0, 140, 0.2); bottom: -100px; right: -60px; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, 50px) scale(1.06); } }
 
         /* ==========================================================================
            3. HEADER STICKY
            ========================================================================== */
         header {
             position: sticky; top: 0; z-index: 1000;
-            background: var(--surface-white); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5); padding: 15px 20px;
-            box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 15px;
+            background: var(--surface-white);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+            padding: 15px 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex; flex-direction: column; gap: 14px;
         }
 
         .header-top { display: flex; justify-content: space-between; align-items: center; }
         
         .btn-ui {
-            display: flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 14px;
+            display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 14px;
             font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; text-decoration: none; transition: 0.2s;
         }
         .btn-ui:active { transform: scale(0.95); }
         .btn-back { background: #F1F5F9; color: var(--primary); }
+
+        .header-badge {
+            font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.95rem;
+            color: var(--primary); background: rgba(0, 174, 239, 0.14);
+            padding: 8px 14px; border-radius: 12px;
+        }
 
         .nav-select {
             width: 100%; padding: 16px 20px; border-radius: 16px; border: none;
@@ -98,13 +127,13 @@
            4. CONTENU PRINCIPAL & CARTES
            ========================================================================== */
         main { padding: 25px 20px 80px 20px; max-width: 850px; margin: 0 auto; width: 100%; flex: 1; }
-        .section-view { display: none; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .section-view { display: none; animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
         .section-view.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
         .card {
             background: var(--surface-solid); border-radius: var(--radius-lg); padding: 30px 25px;
-            margin-bottom: 25px; box-shadow: var(--shadow-xl); position: relative; border: 1px solid rgba(0,0,0,0.03);
+            margin-bottom: 25px; box-shadow: var(--shadow-xl); position: relative; border: 1px solid rgba(0,0,0,0.04);
         }
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
         .card-auto::before { background: var(--accent-yellow); }
@@ -112,62 +141,98 @@
         .card-exo2::before { background: var(--accent-pink); }
         .card-exo3::before { background: var(--accent-green); }
 
-        .title-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; }
-        .card-auto .title-badge { background: rgba(255, 242, 0, 0.2); color: #B2A600; }
+        .title-badge {
+            display: inline-block; padding: 6px 15px; border-radius: 99px;
+            font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.85rem;
+            margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+        .card-auto .title-badge { background: rgba(255, 242, 0, 0.35); color: #854D0E; }
         .card-exo1 .title-badge { background: rgba(0, 174, 239, 0.15); color: #0369A1; }
         .card-exo2 .title-badge { background: rgba(236, 0, 140, 0.15); color: #9D174D; }
-        .card-exo3 .title-badge { background: rgba(140, 198, 63, 0.15); color: #166534; }
+        .card-exo3 .title-badge { background: rgba(140, 198, 63, 0.18); color: #166534; }
 
-        .card h2 { font-family: 'Outfit', sans-serif; color: var(--primary); font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; }
-        .card p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 15px; color: var(--text-dark); }
+        .card h2 { font-family: 'Outfit', sans-serif; color: var(--primary); font-size: 1.65rem; font-weight: 800; margin-bottom: 18px; }
+        .card h3 { font-family: 'Outfit', sans-serif; color: var(--text-dark); font-size: 1.25rem; font-weight: 800; margin: 24px 0 12px 0; padding-bottom: 8px; border-bottom: 2px solid #F1F5F9; }
+        .card p { font-size: 1.06rem; line-height: 1.8; margin-bottom: 14px; color: var(--text-dark); }
         
-        .math-block { background: #F8FAFC; padding: 20px; border-radius: 16px; text-align: center; margin: 20px 0; border: 1px solid #E2E8F0; font-size: 1.2rem; }
+        .math-block {
+            background: #F8FAFC; padding: 18px 20px; border-radius: 16px;
+            text-align: center; margin: 16px 0; border: 1px solid #E2E8F0;
+            font-size: 1.15rem; overflow-x: auto;
+        }
+
+        .question-item {
+            background: #FAFBFD; border: 1px solid #EDF2F7; border-radius: 14px;
+            padding: 14px 18px; margin-bottom: 12px; font-size: 1.05rem; line-height: 1.7;
+        }
+        .q-num {
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 28px; height: 28px; border-radius: 8px; background: var(--primary);
+            color: white; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.9rem;
+            margin-right: 8px;
+        }
+
+        /* --- TABLEAUX MATHÉMATIQUES (EFFECTIFS & SIGNES) --- */
+        .table-wrapper {
+            width: 100%; overflow-x: auto; margin: 18px 0;
+            border-radius: 16px; border: 2px solid #E2E8F0; background: #FFFFFF;
+        }
+        .math-table {
+            width: 100%; border-collapse: collapse; text-align: center; font-size: 1rem;
+        }
+        .math-table th, .math-table td {
+            padding: 12px 14px; border: 1px solid #CBD5E1;
+        }
+        .math-table th {
+            background: #F1F5F9; color: var(--primary); font-family: 'Outfit', sans-serif; font-weight: 800;
+        }
 
         /* --- QCM --- */
-        .qcm-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; }
+        .qcm-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
         @media(min-width: 600px) { .qcm-grid { grid-template-columns: 1fr 1fr; } }
         
         .qcm-opt {
-            background: #F1F5F9; border: 2px solid transparent; border-radius: 16px; padding: 20px 15px;
-            text-align: center; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: 0.2s;
-            display: flex; align-items: center; justify-content: center; min-height: 80px;
+            background: #F1F5F9; border: 2px solid transparent; border-radius: 16px; padding: 18px 15px;
+            text-align: center; font-weight: 600; font-size: 1.08rem; cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center; min-height: 74px;
         }
-        .qcm-opt:active { transform: scale(0.96); }
-        .qcm-opt.correct { border-color: var(--accent-cyan); background: #F0F9FF; color: #0369A1; box-shadow: 0 8px 20px rgba(0,174,239,0.2); }
+        .qcm-opt:hover { background: #E2E8F0; }
+        .qcm-opt:active { transform: scale(0.97); }
+        .qcm-opt.correct { border-color: var(--accent-green); background: #F0FDF4; color: #166534; box-shadow: 0 8px 20px rgba(140,198,63,0.2); }
         .qcm-opt.wrong { border-color: var(--accent-pink); background: #FDF2F8; color: #9D174D; }
 
         /* --- CORRECTIONS --- */
         .correction {
             background: #F8FAFC; border-left: 6px solid var(--primary); padding: 25px;
-            border-radius: 0 16px 16px 0; margin-top: 30px; display: none; font-size: 1.05rem; line-height: 1.8;
+            border-radius: 0 16px 16px 0; margin-top: 28px; display: none; font-size: 1.03rem; line-height: 1.8;
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
         }
         .correction.show { display: block; animation: slideUp 0.3s ease; }
-        .corr-step { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #CBD5E1; }
+        .corr-step { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed #CBD5E1; }
         .corr-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         .btn-corr {
             width: 100%; background: var(--primary); color: white; border: none;
-            padding: 18px; border-radius: 16px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.2rem; cursor: pointer; margin-top: 25px;
-            box-shadow: 0 8px 20px rgba(0, 90, 170, 0.2); transition: 0.2s;
+            padding: 18px; border-radius: 16px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.15rem;
+            cursor: pointer; margin-top: 22px; box-shadow: 0 8px 20px rgba(0, 90, 170, 0.2); transition: 0.2s;
         }
         .btn-corr:active { transform: scale(0.98); }
 
         /* --- NAVIGATION INTERNE --- */
-        .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 40px; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 35px; }
         .btn-nav {
             flex: 1; padding: 18px; border-radius: 16px; border: none; font-family: 'Outfit', sans-serif; font-weight: 800;
             font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; color: white;
-            transition: 0.2s;
+            transition: 0.2s; text-decoration: none;
         }
         .btn-prev { background: #94A3B8; }
         .btn-next { background: var(--accent-cyan); box-shadow: 0 8px 20px rgba(0,174,239,0.3); }
-        .btn-next:active, .btn-prev:active { transform: scale(0.95); }
+        .btn-next:active, .btn-prev:active { transform: scale(0.96); }
 
         /* --- SCHÉMAS SVG --- */
         .svg-container {
             width: 100%; background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 20px;
-            padding: 20px; margin: 25px 0; display: flex; justify-content: center; align-items: center;
+            padding: 20px; margin: 22px 0; display: flex; justify-content: center; align-items: center;
             box-shadow: inset 0 4px 15px rgba(0,0,0,0.02);
         }
     </style>
@@ -176,7 +241,7 @@
 
     <div id="loader">
         <div class="spinner"></div>
-        <p style="font-weight: 600; color: var(--primary); font-family: 'Outfit', sans-serif;">Génération de l'Épreuve 2 pour Stella R...</p>
+        <p style="font-weight: 600; color: var(--primary); font-family: 'Outfit', sans-serif;">Préparation de l'Épreuve 2 pour Stella R...</p>
     </div>
 
     <div class="bg-orbs">
@@ -189,129 +254,315 @@
             <a href="index.html" class="btn-ui btn-back">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Accueil
             </a>
+            <span class="header-badge">Stella R. • Épreuve 2</span>
         </div>
         <select class="nav-select" id="section-selector" onchange="switchSection(this.value)">
-            <option value="auto">1. Automatisme (QCM)</option>
-            <option value="exo1">2. Exercice 1 : Polynômes</option>
-            <option value="exo2">3. Exercice 2 : Suites & Modélisation</option>
-            <option value="exo3">4. Exercice 3 : Probabilités Conditionnelles</option>
+            <option value="auto">1. Automatisme (12 QCM)</option>
+            <option value="exo1">2. Exercice 1 : Polynômes (Factorisation, S et P, Signes)</option>
+            <option value="exo2">3. Exercice 2 : Suites & Modélisation (@Stella_Maths)</option>
+            <option value="exo3">4. Exercice 3 : Probabilités (Arbre, Tableau, Urne & Test)</option>
         </select>
     </header>
 
     <main>
-        <!-- SECTION 1 : AUTOMATISME -->
+        <!-- ==========================================================================
+             SECTION 1 : AUTOMATISME (12 QCM)
+             ========================================================================== -->
         <div id="auto" class="section-view active">
             <div class="card card-auto">
-                <div class="title-badge">Entraînement</div>
+                <div class="title-badge">Questions Flash</div>
                 <h2>Automatisme - 12 Questions</h2>
-                <p>Coche la bonne réponse pour valider tes réflexes de 1ère Spécialité Maths.</p>
+                <p>Coche la bonne réponse pour valider tes réflexes (fractions, factorisations, équations produits, somme et produit des racines, suites et probabilités).</p>
             </div>
             <div id="qcm-container"></div>
             <div class="nav-buttons">
-                <button class="btn-nav btn-next" onclick="document.getElementById('section-selector').value='exo1'; switchSection('exo1');">Exercice 1 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button class="btn-nav btn-next" onclick="switchSection('exo1')">Exercice 1 : Polynômes <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
             </div>
         </div>
 
-        <!-- SECTION 2 : EXERCICE 1 (POLYNÔMES) -->
+        <!-- ==========================================================================
+             SECTION 2 : EXERCICE 1 (POLYNÔMES)
+             ========================================================================== -->
         <div id="exo1" class="section-view">
             <div class="card card-exo1">
-                <div class="title-badge">Algèbre & Second Degré</div>
-                <h2>Exercice 1 : Fonctions Polynômes</h2>
-                <p>On considère la fonction polynôme $P$ du second degré définie sur $\mathbb{R}$ par :</p>
-                <div class="math-block">$\displaystyle P(x) = 2x^2 - 12x + 16$</div>
-                <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
-                
-                <p><b>1.</b> Calculer le discriminant $\Delta$ du polynôme $P(x)$, puis déterminer ses racines réelles $x_1$ et $x_2$.</p>
-                <p><b>2.</b> Écrire le polynôme $P(x)$ sous sa forme factorisée.</p>
-                <p><b>3.</b> Vérifier les racines à l'aide de la somme $S$ et du produit $P_{rod}$ des racines d'un trinôme.</p>
-                <p><b>4.</b> Résoudre dans $\mathbb{R}$ l'inéquation $P(x) \ge 0$.</p>
-                <p><b>5.</b> On considère un autre polynôme $Q(x) = 2x^3 - 8x^2 + 6x$. Sachant que $1$ est une racine évidente, factoriser complètement $Q(x)$ sous la forme d'un produit de facteurs du premier degré.</p>
+                <div class="title-badge">Algèbre • Polynômes du 2nd Degré</div>
+                <h2>Exercice 1 : Factorisations, Racines avec $S$ et $P$, Tableaux de signes</h2>
+                <p>Les deux parties de cet exercice sont indépendantes et permettent de travailler toutes les méthodes algébriques sur les polynômes du second degré.</p>
+
+                <h3>Partie A : Développement, factorisation et équations produits</h3>
+                <p>Pour tout nombre réel $x$, on considère les deux expressions suivantes :</p>
+                <div class="math-block">
+                    $\displaystyle C(x) = (3x + 1)(2x - 5) + (3x + 1)(x + 2)$
+                    <br><br>
+                    $\displaystyle D(x) = (2x + 1)^2 - 9$
+                </div>
+
+                <div class="question-item"><span class="q-num">1</span> Développer, réduire et ordonner l'expression $C(x)$.</div>
+                <div class="question-item"><span class="q-num">2</span> Factoriser $C(x)$ en mettant $(3x + 1)$ en facteur commun, puis montrer que pour tout réel $x$, on a : $\displaystyle C(x) = 3(3x + 1)(x - 1)$.</div>
+                <div class="question-item"><span class="q-num">3</span> Résoudre dans $\mathbb{R}$ l'équation produit-nul $C(x) = 0$.</div>
+                <div class="question-item"><span class="q-num">4</span> En écrivant $9 = 3^2$, factoriser l'expression $D(x)$ à l'aide d'une identité remarquable, puis résoudre dans $\mathbb{R}$ l'équation $D(x) = 0$.</div>
+
+                <h3>Partie B : Recherche de racines avec la Somme $S$ et le Produit $P$</h3>
+                <p>Stella étudie maintenant les deux polynômes $P$ et $Q$ définis sur $\mathbb{R}$ par :</p>
+                <div class="math-block">
+                    $\displaystyle P(x) = 3x^2 - 15x + 12 \qquad \text{et} \qquad Q(x) = -x^2 + 3x + 10$
+                </div>
+                <p>On rappelle que si un polynôme $ax^2 + bx + c$ admet deux racines $x_1$ et $x_2$, alors leur somme vaut $\displaystyle S = x_1 + x_2 = -\frac{b}{a}$ et leur produit vaut $\displaystyle P = x_1 \times x_2 = \frac{c}{a}$.</p>
+
+                <div class="question-item"><span class="q-num">5</span> Vérifier par le calcul que $x_1 = 1$ est une racine évidente de $P(x)$. Utiliser ensuite la somme $S$ ou le produit $P$ des racines pour déterminer la seconde racine $x_2$, puis donner la forme factorisée de $P(x)$.</div>
+                <div class="question-item"><span class="q-num">6</span> Calculer $Q(-2)$. En déduire une première racine $x_1$ de $Q(x)$, puis déterminer sa seconde racine $x_2$ à l'aide de $S$ ou $P$. Écrire alors $Q(x)$ sous forme factorisée.</div>
+                <div class="question-item"><span class="q-num">7</span> Construire le tableau de signes complet de $Q(x) = -(x + 2)(x - 5)$ sur $\mathbb{R}$, puis donner l'ensemble des solutions de l'inéquation $Q(x) \gt 0$.</div>
+                <div class="question-item"><span class="q-num">8</span> <b>Le cadre photo de Stella :</b> Stella souhaite fabriquer un cadre rectangulaire dont le périmètre mesure $22\text{ cm}$ et l'aire vaut $24\text{ cm}^2$.<br>
+                Montrer que la longueur $x_1$ et la largeur $x_2$ du cadre vérifient $x_1 + x_2 = 11$ et $x_1 \times x_2 = 24$, puis déterminer les dimensions exactes du cadre à l'aide d'un polynôme du second degré dont on cherchera une racine évidente.</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo1')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo1" class="correction">
-                    <div class="corr-step"><b>1.</b> $\Delta = (-12)^2 - 4(2)(16) = 144 - 128 = 16$.<br>
-                    Comme $\Delta > 0$, il y a deux racines distinctes :<br>
-                    $\displaystyle x_1 = \frac{12 - \sqrt{16}}{2(2)} = \frac{8}{4} = 2$ et $\displaystyle x_2 = \frac{12 + \sqrt{16}}{2(2)} = \frac{16}{4} = 4$.</div>
-                    <div class="corr-step"><b>2.</b> Forme factorisée $a(x-x_1)(x-x_2)$ :<br>
-                    $P(x) = 2(x - 2)(x - 4)$.</div>
-                    <div class="corr-step"><b>3.</b> Somme $S = x_1 + x_2 = 2 + 4 = 6$ (ce qui correspond à $-b/a = 12/2 = 6$).<br>
-                    Produit $P_{rod} = x_1 \times x_2 = 2 \times 4 = 8$ (ce qui correspond à $c/a = 16/2 = 8$). Les valeurs concordent.</div>
-                    <div class="corr-step"><b>4.</b> Le coefficient principal $a = 2$ est positif. Le trinôme est donc positif ou nul à l'extérieur de ses racines :<br>
-                    $S = ]-\infty ; 2] \cup [4 ; +\infty[$.</div>
-                    <div class="corr-step"><b>5.</b> Puisque $1$ est racine de $Q(x)$, on peut factoriser par $(x-1)$ :<br>
-                    $Q(x) = 2x(x^2 - 4x + 3)$.<br>
-                    Les racines de $x^2 - 4x + 3$ sont $1$ et $3$ (somme 4, produit 3).<br>
-                    La factorisation complète est donc : <b>$Q(x) = 2x(x - 1)(x - 3)$</b>.</div>
+                    <div class="corr-step">
+                        <b>1. Développement de $C(x)$ :</b><br>
+                        • $(3x + 1)(2x - 5) = 6x^2 - 15x + 2x - 5 = 6x^2 - 13x - 5$<br>
+                        • $(3x + 1)(x + 2) = 3x^2 + 6x + x + 2 = 3x^2 + 7x + 2$<br>
+                        En additionnant : $C(x) = (6x^2 - 13x - 5) + (3x^2 + 7x + 2) =$ <b>$9x^2 - 6x - 3$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>2. Factorisation de $C(x)$ :</b><br>
+                        On met $(3x + 1)$ en facteur commun :<br>
+                        $C(x) = (3x + 1)\big[(2x - 5) + (x + 2)\big] = (3x + 1)(3x - 3)$.<br>
+                        En factorisant $(3x - 3)$ par $3$, on obtient bien : <b>$C(x) = 3(3x + 1)(x - 1)$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>3. Résolution de $C(x) = 0$ :</b><br>
+                        $3(3x + 1)(x - 1) = 0 \Longleftrightarrow 3x + 1 = 0$ ou $x - 1 = 0 \Longleftrightarrow x = -\frac{1}{3}$ ou $x = 1$.<br>
+                        L'ensemble des solutions est <b>$\mathcal{S} = \left\{-\frac{1}{3} \;;\; 1\right\}$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>4. Factorisation et résolution pour $D(x)$ :</b><br>
+                        Avec $a^2 - b^2 = (a - b)(a + b)$ où $a = 2x + 1$ et $b = 3$ :<br>
+                        $D(x) = (2x + 1)^2 - 3^2 = \big[(2x + 1) - 3\big]\big[(2x + 1) + 3\big] =$ <b>$(2x - 2)(2x + 4)$</b>.<br>
+                        Ainsi, $D(x) = 0 \Longleftrightarrow 2x - 2 = 0$ ou $2x + 4 = 0 \Longleftrightarrow x = 1$ ou $x = -2$.<br>
+                        Donc <b>$\mathcal{S} = \{-2 \;;\; 1\}$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>5. Étude de $P(x) = 3x^2 - 15x + 12$ :</b><br>
+                        • $P(1) = 3(1)^2 - 15(1) + 12 = 3 - 15 + 12 = 0$, donc $x_1 = 1$ est bien une racine.<br>
+                        • Le produit des racines vaut $\displaystyle P = x_1 \times x_2 = \frac{c}{a} = \frac{12}{3} = 4$.<br>
+                        Comme $x_1 = 1$, on obtient $1 \times x_2 = 4 \Longleftrightarrow$ <b>$x_2 = 4$</b> (et on vérifie que $x_1 + x_2 = 5 = -\frac{-15}{3}$).<br>
+                        • Forme factorisée : <b>$P(x) = 3(x - 1)(x - 4)$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>6. Étude de $Q(x) = -x^2 + 3x + 10$ :</b><br>
+                        • $Q(-2) = -(-2)^2 + 3(-2) + 10 = -4 - 6 + 10 = 0$, donc <b>$x_1 = -2$</b> est une racine.<br>
+                        • Ici $a = -1$, $b = 3$ et $c = 10$. Le produit des racines vaut $\displaystyle P = \frac{c}{a} = \frac{10}{-1} = -10$.<br>
+                        Donc $(-2) \times x_2 = -10 \Longleftrightarrow$ <b>$x_2 = 5$</b> (et la somme vaut bien $-2 + 5 = 3 = -\frac{3}{-1}$).<br>
+                        • Forme factorisée : $Q(x) = -1(x - (-2))(x - 5) =$ <b>$-(x + 2)(x - 5)$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>7. Tableau de signes de $Q(x)$ et inéquation $Q(x) \gt 0$ :</b>
+                        <div class="table-wrapper">
+                            <table class="math-table">
+                                <tr>
+                                    <th>$x$</th>
+                                    <td>$-\infty$</td>
+                                    <td></td>
+                                    <td>$-2$</td>
+                                    <td></td>
+                                    <td>$5$</td>
+                                    <td></td>
+                                    <td>$+\infty$</td>
+                                </tr>
+                                <tr>
+                                    <th>Signe de $-1$</th>
+                                    <td></td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Signe de $x + 2$</th>
+                                    <td></td>
+                                    <td>$-$</td>
+                                    <td>$0$</td>
+                                    <td>$+$</td>
+                                    <td>$+$</td>
+                                    <td>$+$</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Signe de $x - 5$</th>
+                                    <td></td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td>$-$</td>
+                                    <td>$0$</td>
+                                    <td>$+$</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Signe de $Q(x)$</th>
+                                    <td></td>
+                                    <td><b>$-$</b></td>
+                                    <td><b>$0$</b></td>
+                                    <td><b>$+$</b></td>
+                                    <td><b>$0$</b></td>
+                                    <td><b>$-$</b></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        Ainsi, $Q(x) \gt 0$ pour <b>$x \in \,]-2 \;;\; 5[$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>8. Le cadre photo de Stella :</b><br>
+                        • Le demi-périmètre vaut $\frac{22}{2} = 11$, donc $S = x_1 + x_2 = 11$, et l'aire donne $P = x_1 \times x_2 = 24$.<br>
+                        • Les nombres $x_1$ et $x_2$ sont les racines du polynôme $x^2 - Sx + P = 0$, soit $x^2 - 11x + 24 = 0$.<br>
+                        • Testons $x = 3$ : $3^2 - 11(3) + 24 = 9 - 33 + 24 = 0$. Donc $x_1 = 3$ est racine évidente.<br>
+                        • Avec le produit $3 \times x_2 = 24$, on trouve $x_2 = 8$. Le cadre mesure donc <b>$8\text{ cm}$ de long sur $3\text{ cm}$ de large</b>.
+                    </div>
                 </div>
             </div>
             <div class="nav-buttons">
-                <button class="btn-nav btn-prev" onclick="document.getElementById('section-selector').value='auto'; switchSection('auto');"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Précédent</button>
-                <button class="btn-nav btn-next" onclick="document.getElementById('section-selector').value='exo2'; switchSection('exo2');">Exercice 2 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button class="btn-nav btn-prev" onclick="switchSection('auto')"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Automatisme</button>
+                <button class="btn-nav btn-next" onclick="switchSection('exo2')">Exercice 2 : Suites <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
             </div>
         </div>
 
-        <!-- SECTION 3 : EXERCICE 2 (SUITES & MODÉLISATION) -->
+        <!-- ==========================================================================
+             SECTION 3 : EXERCICE 2 (SUITES & MODÉLISATION)
+             ========================================================================== -->
         <div id="exo2" class="section-view">
             <div class="card card-exo2">
-                <div class="title-badge">Modélisation Numérique</div>
-                <h2>Exercice 2 : La croissance de l'application de Stella</h2>
-                <p>Pour développer sa propre application de révision, Stella réalise un investissement initial de 500 utilisateurs actifs au mois 0 ($u_0 = 500$). Une étude prévisionnelle indique que d'un mois sur l'autre, l'application conserve 85% de ses anciens utilisateurs et en attire 300 nouveaux.</p>
-                <p>On modélise le nombre d'utilisateurs au mois $n$ par la suite $(u_n)$. Ainsi, pour tout entier $n \ge 0$ :</p>
-                <div class="math-block">$\displaystyle u_{n+1} = 0{,}85u_n + 300$</div>
+                <div class="title-badge">Analyse • Suites Arithmétiques, Géométriques & Convergence</div>
+                <h2>Exercice 2 : Le compte @Stella_Maths</h2>
+                <p>En parallèle de ses révisions, Stella anime un compte d'entraide scolaire qui rassemble déjà $10\,000$ abonnés au début de l'année (mois $0$). Elle compare deux prévisions simples (Partie A) avant d'étudier le modèle réel de l'algorithme (Partie B).</p>
 
                 <div class="svg-container" style="background: transparent; border: none; padding: 0;">
-                    <svg viewBox="0 0 300 180" width="100%" height="160px" style="max-width: 320px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));">
-                        <rect x="10" y="10" width="280" height="160" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="3"/>
-                        <circle cx="50" cy="50" r="20" fill="#00AEEF"/>
-                        <text x="50" y="57" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">S</text>
-                        <text x="90" y="45" font-family="Outfit" font-size="14" font-weight="bold" fill="#0F172A">Stella Study App</text>
-                        <text x="90" y="65" font-family="Poppins" font-size="10" fill="#64748B">Modèle récurrent d'utilisateurs</text>
-                        <line x1="30" y1="95" x2="270" y2="95" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <text x="35" y="125" font-family="Outfit" font-size="12" font-weight="bold" fill="#005AAA">Mois 0 : 500</text>
-                        <text x="160" y="125" font-family="Outfit" font-size="12" font-weight="bold" fill="#EC008C">Mois 1 : 725</text>
-                        <text x="35" y="145" font-family="Poppins" font-size="9" fill="#64748B">Base initiale</text>
-                        <text x="160" y="145" font-family="Poppins" font-size="9" fill="#64748B">Après 1 mois (+45%)</text>
+                    <svg viewBox="0 0 260 420" width="100%" height="340px" style="max-width: 250px; filter: drop-shadow(0 20px 30px rgba(0,90,170,0.14));">
+                        <rect x="10" y="10" width="240" height="400" rx="32" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="4"/>
+                        <path d="M 90 10 L 90 24 Q 90 34 100 34 L 160 34 Q 170 34 170 24 L 170 10" fill="#0F172A"/>
+                        <defs>
+                            <linearGradient id="grad-stella" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#EC008C" />
+                                <stop offset="50%" stop-color="#00AEEF" />
+                                <stop offset="100%" stop-color="#005AAA" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="130" cy="78" r="30" fill="url(#grad-stella)"/>
+                        <text x="130" y="87" font-family="Outfit" font-size="24" font-weight="900" fill="white" text-anchor="middle">S</text>
+                        <text x="130" y="130" font-family="Outfit" font-size="16" font-weight="800" fill="#0F172A" text-anchor="middle">@Stella_Maths</text>
+                        
+                        <text x="55" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#005AAA" text-anchor="middle">10 K</text>
+                        <text x="55" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">MOIS 0</text>
+                        
+                        <text x="130" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#00AEEF" text-anchor="middle">+1 K</text>
+                        <text x="130" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">GAIN / MOIS</text>
+
+                        <text x="205" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#EC008C" text-anchor="middle">-5 %</text>
+                        <text x="205" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">PERTE / MOIS</text>
+                        
+                        <rect x="25" y="205" width="210" height="175" rx="18" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <text x="40" y="232" font-family="Outfit" font-size="12" font-weight="800" fill="#0F172A">Évolution des abonnés (fₙ)</text>
+                        <path d="M 40 345 Q 95 285 150 268 T 220 258" fill="none" stroke="#00AEEF" stroke-width="3.5"/>
+                        <circle cx="40" cy="345" r="4.5" fill="white" stroke="#EC008C" stroke-width="2.5"/>
+                        <circle cx="95" cy="308" r="4" fill="#005AAA"/>
+                        <circle cx="150" cy="278" r="4" fill="#005AAA"/>
+                        <line x1="35" y1="252" x2="220" y2="252" stroke="#EC008C" stroke-width="1.8" stroke-dasharray="4,4"/>
+                        <text x="162" y="246" font-family="Poppins" font-size="9" font-weight="700" fill="#EC008C">Plafond : 20 K</text>
                     </svg>
                 </div>
 
-                <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
-                <p><b>1.</b> Calculer le nombre d'utilisateurs au bout de 2 mois ($u_2$).</p>
-                <p><b>2.</b> Démontrer que la suite $(u_n)$ n'est ni arithmétique ni géométrique.</p>
-                <p><b>3.</b> On pose une suite auxiliaire $(v_n)$ définie pour tout entier $n$ par : $\displaystyle v_n = u_n - 2000$. Calculer $v_0$.</p>
-                <p><b>4.</b> Démontrer que $(v_n)$ est une suite géométrique dont on précisera la raison $q$ et le premier terme.</p>
-                <p><b>5.</b> Exprimer $v_n$ en fonction de $n$, puis en déduire l'expression de $u_n$ en fonction de $n$.</p>
-                <p><b>6.</b> Déterminer la limite de la suite $(u_n)$ en $+\infty$ et interpréter ce résultat pour l'application de Stella.</p>
+                <h3>Partie A : Comparaison d'un modèle arithmétique et d'un modèle géométrique</h3>
+                <p>• <b>Modèle 1 :</b> Le compte gagne exactement $800$ abonnés supplémentaires chaque mois. On note $a_n$ le nombre d'abonnés au mois $n$, avec $a_0 = 10\,000$.<br>
+                • <b>Modèle 2 :</b> Le nombre d'abonnés augmente de $6\,\%$ chaque mois. On note $b_n$ le nombre d'abonnés au mois $n$, avec $b_0 = 10\,000$.</p>
+
+                <div class="question-item"><span class="q-num">1</span> Calculer $a_1$, $a_2$ ainsi que $b_1$ et $b_2$. Préciser la nature et la raison de chacune des suites $(a_n)$ et $(b_n)$.</div>
+                <div class="question-item"><span class="q-num">2</span> Exprimer $a_n$ et $b_n$ en fonction de $n$, puis déterminer quel modèle donne le plus d'abonnés au bout d'un an ($n = 12$). On arrondira $b_{12}$ à l'unité.</div>
+
+                <h3>Partie B : Modélisation complète avec l'algorithme</h3>
+                <p>En réalité, une étude statistique montre que chaque mois, le compte de Stella <b>perd $5\,\%$</b> de ses abonnés du mois précédent, mais <b>gagne $1\,000$ nouveaux abonnés</b>. On note $f_n$ le nombre d'abonnés au mois $n$, avec $f_0 = 10\,000$.</p>
+
+                <div class="question-item"><span class="q-num">3</span> Calculer $f_1$ et $f_2$, puis justifier que pour tout entier naturel $n$, on a : $\displaystyle f_{n+1} = 0{,}95f_n + 1\,000$.</div>
+                <div class="question-item"><span class="q-num">4</span> Démontrer à l'aide des trois premiers termes que la suite $(f_n)$ n'est ni arithmétique, ni géométrique.</div>
+                <div class="question-item"><span class="q-num">5</span> Pour étudier l'évolution à long terme, on pose pour tout entier $n$ : $\displaystyle g_n = f_n - 20\,000$. Calculer $g_0$, puis démontrer que la suite $(g_n)$ est géométrique de raison $q = 0{,}95$.</div>
+                <div class="question-item"><span class="q-num">6</span> Exprimer $g_n$ en fonction de $n$, puis en déduire que pour tout entier naturel $n$ : $\displaystyle f_n = 20\,000 - 10\,000 \times 0{,}95^n$.</div>
+                <div class="question-item"><span class="q-num">7</span> Démontrer que pour tout entier $n$, $\displaystyle f_{n+1} - f_n = 500 \times 0{,}95^n$. En déduire le sens de variation de la suite $(f_n)$.</div>
+                <div class="question-item"><span class="q-num">8</span> Déterminer la limite de la suite $(f_n)$ lorsque $n$ tend vers $+\infty$. Stella pourra-t-elle un jour franchir la barre des $25\,000$ abonnés avec ce rythme ?</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo2" class="correction">
-                    <div class="corr-step"><b>1.</b> $u_1 = 0{,}85(500) + 300 = 425 + 300 = 725$.<br>$u_2 = 0{,}85(725) + 300 = 616{,}25 + 300 = 916{,}25$ (soit 916 utilisateurs).</div>
-                    <div class="corr-step"><b>2.</b> $u_1 - u_0 = 225$ et $u_2 - u_1 = 191{,}25$. Comme la différence n'est pas constante, $(u_n)$ n'est pas arithmétique. Les rapports ne sont pas constants non plus ($725/500 \neq 916{,}25/725$), donc elle n'est pas géométrique.</div>
-                    <div class="corr-step"><b>3.</b> $v_0 = u_0 - 2000 = 500 - 2000 = -1500$.</div>
-                    <div class="corr-step"><b>4.</b> $v_{n+1} = u_{n+1} - 2000 = (0{,}85u_n + 300) - 2000 = 0{,}85u_n - 1700$<br>
-                    $= 0{,}85(u_n - \frac{1700}{0{,}85}) = 0{,}85(u_n - 2000) = 0{,}85v_n$.<br>
-                    La suite $(v_n)$ est géométrique de raison $q = 0{,}85$ et de premier terme $v_0 = -1500$.</div>
-                    <div class="corr-step"><b>5.</b> $v_n = -1500 \times (0{,}85)^n$. Comme $u_n = v_n + 2000$, on obtient :<br>$\displaystyle u_n = 2000 - 1500 \times (0{,}85)^n$.</div>
-                    <div class="corr-step"><b>6.</b> Puisque $-1 < 0{,}85 < 1$, $\lim_{n \to +\infty} (0{,}85)^n = 0$. Par conséquent, $\lim_{n \to +\infty} u_n = 2000$. À long terme, l'application se stabilisera autour de 2000 utilisateurs actifs.</div>
+                    <div class="corr-step">
+                        <b>1. Étude des deux premiers modèles :</b><br>
+                        • $a_1 = 10\,000 + 800 = 10\,800$ et $a_2 = 10\,800 + 800 = 11\,600$. La suite $(a_n)$ est <b>arithmétique</b> de raison $r = 800$.<br>
+                        • Augmenter de $6\,\%$ revient à multiplier par $1 + \frac{6}{100} = 1{,}06$.<br>
+                        $b_1 = 10\,000 \times 1{,}06 = 10\,600$ et $b_2 = 10\,600 \times 1{,}06 = 11\,236$. La suite $(b_n)$ est <b>géométrique</b> de raison $q = 1{,}06$.
+                    </div>
+                    <div class="corr-step">
+                        <b>2. Formules explicites et comparaison à $n = 12$ :</b><br>
+                        • Pour tout $n$ : $a_n = 10\,000 + 800n$, donc $a_{12} = 10\,000 + 800 \times 12 = 19\,600$ abonnés.<br>
+                        • Pour tout $n$ : $b_n = 10\,000 \times 1{,}06^n$, donc $b_{12} = 10\,000 \times 1{,}06^{12} \approx 20\,122$ abonnés.<br>
+                        Au bout d'un an, le <b>Modèle 2 (géométrique)</b> dépasse le Modèle 1.
+                    </div>
+                    <div class="corr-step">
+                        <b>3. Calcul de $f_1$, $f_2$ et relation de récurrence :</b><br>
+                        • Perdre $5\,\%$ revient à multiplier par $1 - 0{,}05 = 0{,}95$, puis on ajoute $1\,000$. On a donc bien $f_{n+1} = 0{,}95f_n + 1\,000$.<br>
+                        • $f_1 = 0{,}95 \times 10\,000 + 1\,000 = 9\,500 + 1\,000 = 10\,500$.<br>
+                        • $f_2 = 0{,}95 \times 10\,500 + 1\,000 = 9\,975 + 1\,000 = 10\,975$.
+                    </div>
+                    <div class="corr-step">
+                        <b>4. Nature de $(f_n)$ :</b><br>
+                        • $f_1 - f_0 = 500$ et $f_2 - f_1 = 475$. La différence n'est pas constante : $(f_n)$ n'est <b>pas arithmétique</b>.<br>
+                        • $\frac{f_1}{f_0} = \frac{10\,500}{10\,000} = 1{,}05$ alors que $\frac{f_2}{f_1} = \frac{10\,975}{10\,500} \approx 1{,}045$. Le quotient n'est pas constant : $(f_n)$ n'est <b>pas géométrique</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>5. Suite auxiliaire $(g_n)$ :</b><br>
+                        • $g_0 = f_0 - 20\,000 = 10\,000 - 20\,000 = -10\,000$.<br>
+                        • Pour tout entier $n$ : $g_{n+1} = f_{n+1} - 20\,000 = 0{,}95f_n + 1\,000 - 20\,000 = 0{,}95f_n - 19\,000$.<br>
+                        En factorisant par $0{,}95$ (sachant que $\frac{19\,000}{0{,}95} = 20\,000$) :<br>
+                        $g_{n+1} = 0{,}95(f_n - 20\,000) = 0{,}95g_n$.<br>
+                        La suite $(g_n)$ est donc <b>géométrique</b> de raison $q = 0{,}95$ et de premier terme $g_0 = -10\,000$.
+                    </div>
+                    <div class="corr-step">
+                        <b>6. Expressions explicites de $g_n$ et $f_n$ :</b><br>
+                        $g_n = g_0 \times q^n = -10\,000 \times 0{,}95^n$.<br>
+                        Comme $f_n = g_n + 20\,000$, on en déduit : <b>$f_n = 20\,000 - 10\,000 \times 0{,}95^n$</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>7. Sens de variation de $(f_n)$ :</b><br>
+                        $f_{n+1} - f_n = (20\,000 - 10\,000 \times 0{,}95^{n+1}) - (20\,000 - 10\,000 \times 0{,}95^n)$<br>
+                        $f_{n+1} - f_n = 10\,000 \times 0{,}95^n \times (1 - 0{,}95) = 10\,000 \times 0{,}95^n \times 0{,}05 = 500 \times 0{,}95^n$.<br>
+                        Comme $0{,}95^n \gt 0$ pour tout $n$, on a $f_{n+1} - f_n \gt 0$ : la suite $(f_n)$ est <b>strictement croissante</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>8. Limite et interprétation :</b><br>
+                        Puisque $-1 \lt 0{,}95 \lt 1$, on a $\displaystyle \lim_{n \to +\infty} 0{,}95^n = 0$, d'où $\displaystyle \lim_{n \to +\infty} f_n = 20\,000$.<br>
+                        Le nombre d'abonnés converge vers un plafond de $20\,000$ : Stella <b>ne pourra donc jamais atteindre $25\,000$ abonnés</b> avec cette dynamique.
+                    </div>
                 </div>
             </div>
             <div class="nav-buttons">
-                <button class="btn-nav btn-prev" onclick="document.getElementById('section-selector').value='exo1'; switchSection('exo1');"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Précédent</button>
-                <button class="btn-nav btn-next" onclick="document.getElementById('section-selector').value='exo3'; switchSection('exo3');">Exercice 3 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button class="btn-nav btn-prev" onclick="switchSection('exo1')"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Exercice 1</button>
+                <button class="btn-nav btn-next" onclick="switchSection('exo3')">Exercice 3 : Probabilités <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
             </div>
         </div>
 
-        <!-- SECTION 4 : EXERCICE 3 (PROBABILITÉS CONDITIONNELLES) -->
+        <!-- ==========================================================================
+             SECTION 4 : EXERCICE 3 (PROBABILITÉS CONDITIONNELLES)
+             ========================================================================== -->
         <div id="exo3" class="section-view">
             <div class="card card-exo3">
-                <div class="title-badge">Probabilités & Arbres</div>
+                <div class="title-badge">Probabilités • Arbre, Tableau croisé, Urne, Dé & Faux positif</div>
                 <h2>Exercice 3 : Le club de sport de Stella</h2>
-                <p>Dans un club de remise en forme fréquenté par des étudiants, 70% des adhérents suivent des cours de Pilates (événement $P$) et les autres font de la musculation (événement $M$).</p>
-                <p>Parmi ceux qui font du Pilates, 80% possèdent une gourde isotherme du club (événement $G$). Parmi ceux qui font de la musculation, seulement 30% possèdent cette gourde.</p>
+                <p>Les deux parties de cet exercice sont indépendantes.</p>
+
+                <h3>Partie A : Arbre pondéré et Indépendance</h3>
+                <p>Dans le club de remise en forme fréquenté par Stella, $70\,\%$ des adhérents suivent les cours de Pilates (événement $P$) et les autres pratiquent uniquement la Musculation (événement $M = \overline{P}$).<br>
+                Parmi ceux qui font du Pilates, $80\,\%$ possèdent la gourde isotherme du club (événement $G$). Parmi ceux qui font de la Musculation, seulement $30\,\%$ possèdent cette gourde.</p>
 
                 <div class="svg-container" style="background: transparent; border: none; padding: 0;">
-                    <svg viewBox="0 0 450 280" width="100%" height="100%" style="filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));">
+                    <svg viewBox="0 0 450 260" width="100%" height="240px" style="filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));">
                         <defs>
                             <marker id="arrow2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0F172A" /></marker>
                             <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00AEEF" /><stop offset="100%" stop-color="#005AAA" /></linearGradient>
@@ -319,65 +570,174 @@
                             <linearGradient id="grad-pink" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF758C" /><stop offset="100%" stop-color="#EC008C" /></linearGradient>
                         </defs>
                         
-                        <path d="M 50 140 C 100 80, 150 70, 200 70" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
-                        <path d="M 50 140 C 100 200, 150 210, 200 210" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
-                        <path d="M 230 70 C 280 40, 330 35, 380 35" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
-                        <path d="M 230 70 C 280 100, 330 105, 380 105" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
-                        <path d="M 230 210 C 280 180, 330 175, 380 175" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
-                        <path d="M 230 210 C 280 240, 330 245, 380 245" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 50 130 C 100 75, 150 65, 195 65" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 50 130 C 100 185, 150 195, 195 195" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 235 65 C 280 38, 330 32, 375 32" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 235 65 C 280 92, 330 98, 375 98" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 235 195 C 280 168, 330 162, 375 162" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
+                        <path d="M 235 195 C 280 222, 330 228, 375 228" stroke="#0F172A" stroke-width="2.5" fill="none" marker-end="url(#arrow2)"/>
 
-                        <rect x="90" y="80" width="40" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
-                        <text x="110" y="95" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,7</text>
-                        <rect x="90" y="180" width="40" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
-                        <text x="110" y="195" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,3</text>
+                        <rect x="90" y="72" width="42" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
+                        <text x="111" y="87" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,7</text>
+                        <rect x="90" y="168" width="42" height="22" rx="11" fill="white" stroke="#005AAA" stroke-width="2"/>
+                        <text x="111" y="183" font-size="12" font-weight="bold" fill="#005AAA" text-anchor="middle">0,3</text>
                         
-                        <rect x="280" y="40" width="40" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
-                        <text x="300" y="55" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,8</text>
+                        <rect x="280" y="34" width="42" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
+                        <text x="301" y="49" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,8</text>
+                        <text x="301" y="98" font-size="15" font-weight="bold" fill="#9D174D" text-anchor="middle">...</text>
                         
-                        <rect x="280" y="180" width="40" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
-                        <text x="300" y="195" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,3</text>
+                        <rect x="280" y="164" width="42" height="22" rx="11" fill="white" stroke="#8CC63F" stroke-width="2"/>
+                        <text x="301" y="179" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">0,3</text>
+                        <text x="301" y="228" font-size="15" font-weight="bold" fill="#9D174D" text-anchor="middle">...</text>
 
-                        <circle cx="215" cy="70" r="22" fill="url(#grad-blue)"/>
-                        <text x="215" y="76" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">P</text>
+                        <circle cx="215" cy="65" r="21" fill="url(#grad-blue)"/>
+                        <text x="215" y="71" font-family="Outfit" font-size="17" font-weight="bold" fill="white" text-anchor="middle">P</text>
                         
-                        <circle cx="215" cy="210" r="22" fill="url(#grad-blue)"/>
-                        <text x="215" y="216" font-family="Outfit" font-size="18" font-weight="bold" fill="white" text-anchor="middle">M</text>
+                        <circle cx="215" cy="195" r="21" fill="url(#grad-blue)"/>
+                        <text x="215" y="201" font-family="Outfit" font-size="17" font-weight="bold" fill="white" text-anchor="middle">M</text>
 
-                        <circle cx="395" cy="35" r="20" fill="url(#grad-green)"/>
-                        <text x="395" y="41" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
+                        <circle cx="395" cy="32" r="19" fill="url(#grad-green)"/>
+                        <text x="395" y="38" font-family="Outfit" font-size="15" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         
-                        <circle cx="395" cy="105" r="20" fill="url(#grad-pink)"/>
-                        <text x="395" y="111" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
-                        <line x1="387" y1="92" x2="403" y2="92" stroke="white" stroke-width="2"/>
+                        <circle cx="395" cy="98" r="19" fill="url(#grad-pink)"/>
+                        <text x="395" y="105" font-family="Outfit" font-size="15" font-weight="bold" fill="white" text-anchor="middle">G</text>
+                        <line x1="387" y1="86" x2="403" y2="86" stroke="white" stroke-width="2"/>
 
-                        <circle cx="395" cy="175" r="20" fill="url(#grad-green)"/>
-                        <text x="395" y="181" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
+                        <circle cx="395" cy="162" r="19" fill="url(#grad-green)"/>
+                        <text x="395" y="168" font-family="Outfit" font-size="15" font-weight="bold" fill="white" text-anchor="middle">G</text>
                         
-                        <circle cx="395" cy="245" r="20" fill="url(#grad-pink)"/>
-                        <text x="395" y="251" font-family="Outfit" font-size="16" font-weight="bold" fill="white" text-anchor="middle">G</text>
-                        <line x1="387" y1="232" x2="403" y2="232" stroke="white" stroke-width="2"/>
+                        <circle cx="395" cy="228" r="19" fill="url(#grad-pink)"/>
+                        <text x="395" y="235" font-family="Outfit" font-size="15" font-weight="bold" fill="white" text-anchor="middle">G</text>
+                        <line x1="387" y1="216" x2="403" y2="216" stroke="white" stroke-width="2"/>
                     </svg>
                 </div>
 
-                <hr style="border:0; border-top:1px solid #E2E8F0; margin: 25px 0;">
-                <p><b>1.</b> Compléter mentalement ou sur votre copie les branches restantes de l'arbre (probabilités de $\overline{G}$ sachant $P$ et $\overline{G}$ sachant $M$).</p>
-                <p><b>2.</b> Calculer la probabilité $P(P \cap G)$ et interpréter le résultat dans le contexte.</p>
-                <p><b>3.</b> À l'aide de la formule des probabilités totales, calculer la probabilité globale $P(G)$ qu'un adhérent choisi au hasard possède la gourde.</p>
-                <p><b>4.</b> Un adhérent possède la gourde. Quelle est la probabilité qu'il fasse de la musculation ? (Arrondir à $10^{-3}$).</p>
+                <div class="question-item"><span class="q-num">1</span> Reproduire et compléter les branches manquantes de l'arbre pondéré ci-dessus.</div>
+                <div class="question-item"><span class="q-num">2</span> Calculer la probabilité $P(P \cap G)$ et interpréter ce résultat dans le contexte de l'énoncé.</div>
+                <div class="question-item"><span class="q-num">3</span> Démontrer que la probabilité qu'un adhérent choisi au hasard possède la gourde est $P(G) = 0{,}65$.</div>
+                <div class="question-item"><span class="q-num">4</span> On croise un adhérent qui possède la gourde du club. Quelle est la probabilité qu'il pratique la Musculation ? (Donner la fraction irréductible puis l'arrondi au millième).</div>
+                <div class="question-item"><span class="q-num">5</span> Les événements $P$ et $G$ sont-ils indépendants ? Justifier par le calcul.</div>
+
+                <h3>Partie B : Tableau croisé, Tirage en urne avec dé et Faux positifs</h3>
+                <p>Lors d'une journée portes ouvertes regroupant <b>$200$ participants</b> ($80$ Juniors et $120$ Seniors), on recense les personnes équipées d'une montre connectée :</p>
+                <p>• Parmi les $80$ Juniors, $50$ portent une montre connectée.<br>
+                • Au total, $130$ participants portent une montre connectée.</p>
+
+                <div class="table-wrapper">
+                    <table class="math-table">
+                        <tr>
+                            <th></th>
+                            <th>Juniors ($J$)</th>
+                            <th>Seniors ($S$)</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr>
+                            <th>Avec montre ($C$)</th>
+                            <td>$50$</td>
+                            <td>$\dots$</td>
+                            <td>$130$</td>
+                        </tr>
+                        <tr>
+                            <th>Sans montre ($\overline{C}$)</th>
+                            <td>$\dots$</td>
+                            <td>$\dots$</td>
+                            <td>$\dots$</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>$80$</td>
+                            <td>$120$</td>
+                            <td>$200$</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="question-item"><span class="q-num">6</span> Compléter le tableau croisé ci-dessus. On choisit un participant au hasard : calculer $P(S \cap \overline{C})$ ainsi que la probabilité que le participant soit un Junior sachant qu'il porte une montre connectée.</div>
+                <div class="question-item"><span class="q-num">7</span> <b>Tombola avec un dé et deux urnes :</b> Pour tenter de gagner un sac de sport, Stella lance un dé cubique équilibré à $6$ faces.<br>
+                • Si elle obtient un multiple de $3$ (c'est-à-dire $3$ ou $6$), elle tire un jeton dans l'urne $U_1$ contenant $6$ jetons gagnants et $4$ jetons perdants.<br>
+                • Sinon, elle tire un jeton dans l'urne $U_2$ contenant $3$ jetons gagnants et $7$ jetons perdants.<br>
+                Calculer la probabilité que Stella gagne le sac de sport.</div>
+                <div class="question-item"><span class="q-num">8</span> <b>Contrôle médical et Faux positif :</b> Lors d'une compétition officielle, $2\,\%$ des athlètes utilisent un produit interdit (événement $I$). Un test biologique est positif ($T$) chez $95\,\%$ des athlètes en infraction, mais déclenche aussi un <b>faux positif</b> chez $3\,\%$ des athlètes sains ($\overline{I}$).<br>
+                Calculer $P(T)$, puis déterminer la probabilité qu'un athlète contrôlé positif ait réellement pris le produit interdit.</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo3')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo3" class="correction">
-                    <div class="corr-step"><b>1.</b> $P_P(\overline{G}) = 1 - 0{,}8 = 0{,}2$.<br>$P_M(\overline{G}) = 1 - 0{,}3 = 0{,}7$.</div>
-                    <div class="corr-step"><b>2.</b> $P(P \cap G) = P(P) \times P_P(G) = 0{,}7 \times 0{,}8 = 0{,}56$.<br>Interprétation : 56% de l'ensemble des membres du club font du Pilates ET possèdent la gourde.</div>
-                    <div class="corr-step"><b>3.</b> D'après la formule des probabilités totales :<br>$\displaystyle P(G) = P(P \cap G) + P(M \cap G) = 0{,}56 + (0{,}3 \times 0{,}3) = 0{,}56 + 0{,}09 = 0{,}65$.</div>
-                    <div class="corr-step"><b>4.</b> On cherche $P_G(M) = \frac{P(M \cap G)}{P(G)} = \frac{0{,}09}{0{,}65} \approx 0{,}138$.<br>La probabilité est d'environ 13,8%.</div>
+                    <div class="corr-step">
+                        <b>1. Branches manquantes de l'arbre :</b><br>
+                        • $P_P(\overline{G}) = 1 - 0{,}8 = 0{,}2$<br>
+                        • $P_M(\overline{G}) = 1 - 0{,}3 = 0{,}7$
+                    </div>
+                    <div class="corr-step">
+                        <b>2. Calcul de $P(P \cap G)$ :</b><br>
+                        $P(P \cap G) = P(P) \times P_P(G) = 0{,}7 \times 0{,}8 = 0{,}56$.<br>
+                        <i>Interprétation :</i> $56\,\%$ des adhérents du club pratiquent le Pilates et possèdent la gourde.
+                    </div>
+                    <div class="corr-step">
+                        <b>3. Probabilité totale $P(G)$ :</b><br>
+                        $P(G) = P(P \cap G) + P(M \cap G) = 0{,}56 + 0{,}3 \times 0{,}3 = 0{,}56 + 0{,}09 = 0{,}65$.
+                    </div>
+                    <div class="corr-step">
+                        <b>4. Probabilité qu'il fasse de la Musculation sachant qu'il a la gourde :</b><br>
+                        $\displaystyle P_G(M) = \frac{P(M \cap G)}{P(G)} = \frac{0{,}09}{0{,}65} = \frac{9}{65} \approx 0{,}138$ (soit environ $13{,}8\,\%$).
+                    </div>
+                    <div class="corr-step">
+                        <b>5. Indépendance de $P$ et $G$ :</b><br>
+                        D'une part, $P(P \cap G) = 0{,}56$. D'autre part, $P(P) \times P(G) = 0{,}7 \times 0{,}65 = 0{,}455$.<br>
+                        Comme $0{,}56 \neq 0{,}455$, les événements $P$ et $G$ <b>ne sont pas indépendants</b>.
+                    </div>
+                    <div class="corr-step">
+                        <b>6. Tableau croisé complété :</b>
+                        <div class="table-wrapper">
+                            <table class="math-table">
+                                <tr>
+                                    <th></th>
+                                    <th>Juniors ($J$)</th>
+                                    <th>Seniors ($S$)</th>
+                                    <th>Total</th>
+                                </tr>
+                                <tr>
+                                    <th>Avec montre ($C$)</th>
+                                    <td>$50$</td>
+                                    <td><b>$80$</b></td>
+                                    <td>$130$</td>
+                                </tr>
+                                <tr>
+                                    <th>Sans montre ($\overline{C}$)</th>
+                                    <td><b>$30$</b></td>
+                                    <td><b>$40$</b></td>
+                                    <td><b>$70$</b></td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td>$80$</td>
+                                    <td>$120$</td>
+                                    <td>$200$</td>
+                                </tr>
+                            </table>
+                        </div>
+                        • $\displaystyle P(S \cap \overline{C}) = \frac{40}{200} = \frac{1}{5} = 0{,}2$.<br>
+                        • $\displaystyle P_C(J) = \frac{50}{130} = \frac{5}{13} \approx 0{,}385$.
+                    </div>
+                    <div class="corr-step">
+                        <b>7. Tombola (Dé et Urnes) :</b><br>
+                        Notons $A$ l'événement « obtenir un multiple de $3$ » ($P(A) = \frac{2}{6} = \frac{1}{3}$ et $P(\overline{A}) = \frac{2}{3}$) et $V$ « tirer un jeton gagnant ».<br>
+                        On a $P_A(V) = \frac{6}{10} = 0{,}6$ et $P_{\overline{A}}(V) = \frac{3}{10} = 0{,}3$.<br>
+                        Donc $\displaystyle P(V) = P(A \cap V) + P(\overline{A} \cap V) = \frac{1}{3} \times 0{,}6 + \frac{2}{3} \times 0{,}3 = 0{,}2 + 0{,}2 = 0{,}4$.
+                    </div>
+                    <div class="corr-step">
+                        <b>8. Contrôle médical et Faux positif :</b><br>
+                        On a $P(I) = 0{,}02$, $P(\overline{I}) = 0{,}98$, $P_I(T) = 0{,}95$ et $P_{\overline{I}}(T) = 0{,}03$.<br>
+                        • $P(T) = P(I \cap T) + P(\overline{I} \cap T) = 0{,}02 \times 0{,}95 + 0{,}98 \times 0{,}03 = 0{,}019 + 0{,}0294 = 0{,}0484$.<br>
+                        • Probabilité que l'athlète soit en infraction sachant que le test est positif :<br>
+                        $\displaystyle P_T(I) = \frac{P(I \cap T)}{P(T)} = \frac{0{,}019}{0{,}0484} = \frac{95}{242} \approx 0{,}393$ (soit $39{,}3\,\%$).
+                    </div>
                 </div>
             </div>
 
             <div class="nav-buttons">
-                <button class="btn-nav btn-prev" onclick="document.getElementById('section-selector').value='exo2'; switchSection('exo2');"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Précédent</button>
-                <a href="index.html" class="btn-nav btn-next" style="text-decoration:none;">Terminer 🏠 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <button class="btn-nav btn-prev" onclick="switchSection('exo2')"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg> Exercice 2</button>
+                <a href="index.html" class="btn-nav btn-next">Retour Accueil 🏠 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
         </div>
     </main>
@@ -385,79 +745,80 @@
 <script>
 // ==========================================
 // DONNÉES QCM (12 Questions - Épreuve 2)
+// Sans discriminant, sans forme canonique, sans vecteur, sans trigo, sans dérivée
 // ==========================================
 const qcmData = [
     { 
-        q: "Développer et réduire l'expression $\\displaystyle (3x - 1)(x + 2)$", 
+        q: "Calculer et simplifier $\\displaystyle \\frac{5}{6} - \\frac{1}{4}$ :", 
+        opts: ["$\\displaystyle \\frac{4}{2}$", "$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{7}{12}$", "$\\displaystyle \\frac{3}{10}$"], 
+        ans: 2, 
+        corr: "Dénominateur commun $12$ : $\\displaystyle \\frac{5 \\times 2}{12} - \\frac{1 \\times 3}{12} = \\frac{10 - 3}{12} = \\frac{7}{12}$." 
+    },
+    { 
+        q: "Développer et réduire l'expression $\\displaystyle (3x - 1)(x + 2)$ :", 
         opts: ["$\\displaystyle 3x^2 + 5x - 2$", "$\\displaystyle 3x^2 - 2$", "$\\displaystyle 3x^2 + 7x - 2$", "$\\displaystyle 3x^2 - x - 2$"], 
         ans: 0, 
         corr: "On distribue : $\\displaystyle 3x(x) + 3x(2) - 1(x) - 1(2) = 3x^2 + 6x - x - 2 = 3x^2 + 5x - 2$." 
     },
     { 
-        q: "Résoudre l'équation $\\displaystyle 4x - 5 = 7x + 4$", 
-        opts: ["$x = -3$", "$x = 3$", "$x = 1$", "$x = -1$"], 
-        ans: 0, 
-        corr: "$\\displaystyle 4x - 7x = 4 + 5 \\Longleftrightarrow -3x = 9 \\Longleftrightarrow x = \\frac{9}{-3} = -3$." 
+        q: "Factoriser l'expression $B(x) = (2x - 1)(x + 3) - (2x - 1)(4x - 2)$ :", 
+        opts: ["$(2x - 1)(-3x + 1)$", "$(2x - 1)(-3x + 5)$", "$(2x - 1)(5x + 1)$", "$(2x - 1)(3x - 5)$"], 
+        ans: 1, 
+        corr: "On met $(2x - 1)$ en facteur : $B(x) = (2x - 1)\\big[(x + 3) - (4x - 2)\\big] = (2x - 1)(x + 3 - 4x + 2) = (2x - 1)(-3x + 5)$." 
     },
     { 
-        q: "Résoudre l'inéquation $\\displaystyle -2x + 6 > 0$", 
-        opts: ["$x < 3$", "$x > 3$", "$x < -3$", "$x > -3$"], 
-        ans: 0, 
-        corr: "$\\displaystyle -2x > -6$. En divisant par $-2$, on change le sens de l'inégalité : $\\displaystyle x < \\frac{-6}{-2} \\Longleftrightarrow x < 3$." 
+        q: "Factoriser à l'aide d'une identité remarquable l'expression $16x^2 - 25$ :", 
+        opts: ["$(4x - 5)^2$", "$(16x - 5)(16x + 5)$", "$(8x - 5)(8x + 5)$", "$(4x - 5)(4x + 5)$"], 
+        ans: 3, 
+        corr: "On reconnaît $a^2 - b^2 = (a - b)(a + b)$ avec $a = 4x$ et $b = 5$ : $16x^2 - 25 = (4x - 5)(4x + 5)$." 
     },
     { 
-        q: "Quelles sont les racines du trinôme $\\displaystyle x^2 - 7x + 10 = 0$ ?", 
-        opts: ["$2$ et $5$", "$-2$ et $-5$", "$3$ et $4$", "Pas de racine"], 
+        q: "Résoudre dans $\\mathbb{R}$ l'inéquation $\\displaystyle -2x + 6 \\gt 0$ :", 
+        opts: ["$x \\lt 3$", "$x \\gt 3$", "$x \\lt -3$", "$x \\gt -3$"], 
         ans: 0, 
-        corr: "$\\displaystyle \\Delta = (-7)^2 - 4(1)(10) = 49 - 40 = 9$.<br>Racines : $\\displaystyle x_1 = \\frac{7 - 3}{2} = 2$ et $\\displaystyle x_2 = \\frac{7 + 3}{2} = 5$." 
+        corr: "$\\displaystyle -2x \\gt -6$. En divisant par $-2$ (négatif), on change le sens de l'inégalité : $\\displaystyle x \\lt \\frac{-6}{-2} \\Longleftrightarrow x \\lt 3$." 
     },
     { 
-        q: "Résoudre l'inéquation $\\displaystyle x^2 - 16 < 0$", 
-        opts: ["$x \\in ]-4 ; 4[$", "$x \\in ]-\\infty ; -4[ \\cup ]4 ; +\\infty[$", "$x \\in [-4 ; 4]$", "Pas de solution"], 
-        ans: 0, 
-        corr: "Identité remarquable : $\\displaystyle (x-4)(x+4) < 0$. Le trinôme est négatif à l'intérieur de ses racines, soit sur $]-4 ; 4[$. pouf." 
+        q: "Quelles sont les solutions de l'équation produit $(4x + 8)(3 - x) = 0$ ?", 
+        opts: ["$2$ et $3$", "$-2$ et $-3$", "$-2$ et $3$", "$2$ et $-3$"], 
+        ans: 2, 
+        corr: "Un produit est nul si l'un de ses facteurs est nul : $4x + 8 = 0 \\Longleftrightarrow x = -2$ ou $3 - x = 0 \\Longleftrightarrow x = 3$." 
     },
     { 
-        q: "Calculer et simplifier $\\displaystyle \\frac{5}{6} - \\frac{1}{4}$", 
-        opts: ["$\\displaystyle \\frac{7}{12}$", "$\\displaystyle \\frac{4}{2}$", "$\\displaystyle \\frac{1}{2}$", "$\\displaystyle \\frac{14}{24}$"], 
-        ans: 0, 
-        corr: "Dénominateur commun $12$ : $\\displaystyle \\frac{10}{12} - \\frac{3}{12} = \\frac{7}{12}$." 
+        q: "Soit $P(x) = 3x^2 - 15x + 18$. Que vaut la somme $S$ de ses deux racines ?", 
+        opts: ["$15$", "$5$", "$-5$", "$6$"], 
+        ans: 1, 
+        corr: "La somme des racines d'un polynôme $ax^2 + bx + c$ vaut $\\displaystyle S = -\\frac{b}{a} = -\\frac{-15}{3} = 5$." 
     },
     { 
-        q: "Comparer les fractions $\\displaystyle \\frac{3}{8}$ et $\\displaystyle \\frac{2}{5}$", 
-        opts: ["$\\displaystyle \\frac{3}{8} < \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} = \\frac{2}{5}$", "$\\displaystyle \\frac{3}{8} > \\frac{2}{5}$", "Incomparables"], 
-        ans: 0, 
-        corr: "Au même dénominateur ($40$) : $\\displaystyle \\frac{15}{40}$ et $\\displaystyle \\frac{16}{40}$. Donc $\\displaystyle \\frac{3}{8} < \\frac{2}{5}$." 
+        q: "Sachant que $x_1 = 2$ est une racine de $x^2 - 7x + 10 = 0$, que vaut l'autre racine $x_2$ ?", 
+        opts: ["$x_2 = 8$", "$x_2 = -5$", "$x_2 = 3$", "$x_2 = 5$"], 
+        ans: 3, 
+        corr: "Avec le produit des racines $\\displaystyle P = x_1 \\times x_2 = \\frac{c}{a} = 10$, on a $2 \\times x_2 = 10 \\Longleftrightarrow x_2 = 5$." 
     },
     { 
-        q: "Maths coef 4 (note 11), Français coef 2 (note 10), Anglais coef 2 (note $x$). Stella veut 12 de moyenne. Trouver $x$.", 
-        opts: ["$16$", "$14$", "$15$", "$18$"], 
+        q: "Résoudre dans $\\mathbb{R}$ l'inéquation $(x - 4)(x + 4) \\lt 0$ :", 
+        opts: ["$]-4 \\;;\\; 4[$", "$]-\\infty \\;;\\; -4[ \\cup ]4 \\;;\\; +\\infty[$", "$[-4 \\;;\\; 4]$", "Pas de solution"], 
         ans: 0, 
-        corr: "$\\displaystyle \\frac{4(11) + 2(10) + 2(x)}{8} = 12 \\Longleftrightarrow 64 + 2x = 96 \\Longleftrightarrow 2x = 32 \\Longleftrightarrow x = 16$." 
+        corr: "Les racines sont $-4$ et $4$, et le coefficient devant $x^2$ est $a = 1 \\gt 0$. Le produit est strictement négatif entre les racines, soit sur $]-4 \\;;\\; 4[$." 
     },
     { 
-        q: "Résoudre $\\displaystyle \\cos(x) = -\\frac{1}{2}$ sur $]-\\pi ; \\pi]$", 
-        opts: ["$\\displaystyle \\frac{2\\pi}{3}$ et $\\displaystyle -\\frac{2\\pi}{3}$", "$\\displaystyle \\frac{\\pi}{3}$ et $\\displaystyle -\\frac{\\pi}{3}$", "$\\displaystyle \\frac{5\\pi}{6}$ et $\\displaystyle -\\frac{5\\pi}{6}$", "$\\displaystyle \\frac{3\\pi}{4}$ et $\\displaystyle -\\frac{3\\pi}{4}$"], 
-        ans: 0, 
-        corr: "Sur le cercle trigonométrique, le cosinus vaut $\\displaystyle -\\frac{1}{2}$ pour les angles $\\displaystyle \\frac{2\\pi}{3}$ et $\\displaystyle -\\frac{2\\pi}{3}$." 
+        q: "Soit $(u_n)$ une suite arithmétique de premier terme $u_0 = -5$ et de raison $r = 4$. Que vaut $u_6$ ?", 
+        opts: ["$24$", "$19$", "$15$", "$-29$"], 
+        ans: 1, 
+        corr: "Pour une suite arithmétique : $u_n = u_0 + n \\times r$, donc $u_6 = -5 + 6 \\times 4 = -5 + 24 = 19$." 
     },
     { 
-        q: "Soient $\\displaystyle \\vec{u}(-3 ; 4)$ et $\\displaystyle \\vec{v}(2 ; 5)$. Calculer $\\displaystyle \\vec{u} \\cdot \\vec{v}$.", 
-        opts: ["$14$", "$-14$", "$26$", "$-26$"], 
-        ans: 0, 
-        corr: "Formule analytique : $\\displaystyle (-3 \\times 2) + (4 \\times 5) = -6 + 20 = 14$." 
+        q: "Soit $u_n = 12 - 4 \\times 0{,}6^n$. Quelle est la limite de la suite $(u_n)$ quand $n$ tend vers $+\\infty$ ?", 
+        opts: ["$0$", "$8$", "$12$", "$+\\infty$"], 
+        ans: 2, 
+        corr: "Comme $-1 \\lt 0{,}6 \\lt 1$, on a $\\displaystyle \\lim_{n \\to +\\infty} 0{,}6^n = 0$, donc $\\displaystyle \\lim_{n \\to +\\infty} u_n = 12 - 4 \\times 0 = 12$." 
     },
     { 
-        q: "Déterminer la dérivée de la fonction $\\displaystyle g(x) = 2x^3 - 4x^2 + x - 5$", 
-        opts: ["$\\displaystyle 6x^2 - 8x + 1$", "$\\displaystyle 6x^2 - 8x$", "$\\displaystyle 2x^2 - 4x + 1$", "$\\displaystyle 5x^2 - 8x + 1$"], 
-        ans: 0, 
-        corr: "Par dérivation usuelle : $\\displaystyle g'(x) = 2(3x^2) - 4(2x) + 1 = 6x^2 - 8x + 1$." 
-    },
-    { 
-        q: "Simplifier l'expression $\\displaystyle \\sqrt{50} - \\sqrt{8}$", 
-        opts: ["$\\displaystyle 3\\sqrt{2}$", "$\\displaystyle 4\\sqrt{2}$", "$\\displaystyle \\sqrt{42}$", "$\\displaystyle 7\\sqrt{2}$"], 
-        ans: 0, 
-        corr: "$\\displaystyle \\sqrt{50} = 5\\sqrt{2}$ et $\\displaystyle \\sqrt{8} = 2\\sqrt{2}$. Donc $\\displaystyle 5\\sqrt{2} - 2\\sqrt{2} = 3\\sqrt{2}$." 
+        q: "Soient $A$ et $B$ deux événements indépendants tels que $P(A) = 0{,}5$ et $P(B) = 0{,}6$. Que vaut $P(A \\cap B)$ ?", 
+        opts: ["$1{,}1$", "$0{,}1$", "$0{,}25$", "$0{,}3$"], 
+        ans: 3, 
+        corr: "Puisque $A$ et $B$ sont indépendants, on a $P(A \\cap B) = P(A) \\times P(B) = 0{,}5 \\times 0{,}6 = 0{,}3$." 
     }
 ];
 
@@ -466,11 +827,10 @@ const qcmData = [
 // ==========================================
 const qcmContainer = document.getElementById('qcm-container');
 let htmlQCM = '';
-qcmData.queryObject = qcmData;
 qcmData.forEach((q, index) => {
     htmlQCM += `
-        <div class="card" id="qcm-${index}" style="border-top: none; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-            <p style="font-weight:700; margin-bottom:20px; font-size:1.15rem; color: var(--primary);">${index+1}. ${q.q}</p>
+        <div class="card" id="qcm-${index}" style="border-top: none; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+            <p style="font-weight:700; margin-bottom:18px; font-size:1.12rem; color: var(--primary);">${index + 1}. ${q.q}</p>
             <div class="qcm-grid">
                 ${q.opts.map((opt, i) => `<div class="qcm-opt" onclick="checkAnswer(${index}, ${i}, ${q.ans})">${opt}</div>`).join('')}
             </div>
@@ -482,6 +842,10 @@ qcmData.forEach((q, index) => {
 });
 qcmContainer.innerHTML = htmlQCM;
 
+if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise();
+}
+
 function switchSection(id) {
     document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -491,12 +855,12 @@ function switchSection(id) {
 
 function checkAnswer(qIndex, selectedIdx, correctIdx) {
     const card = document.getElementById(`qcm-${qIndex}`);
-    if(card.classList.contains('answered')) return;
+    if (card.classList.contains('answered')) return;
     card.classList.add('answered');
 
     const options = card.querySelectorAll('.qcm-opt');
     options.forEach((opt, idx) => {
-        if(idx === correctIdx) opt.classList.add('correct');
+        if (idx === correctIdx) opt.classList.add('correct');
         else if (idx === selectedIdx) opt.classList.add('wrong');
         opt.style.pointerEvents = 'none';
     });
@@ -507,7 +871,7 @@ function checkAnswer(qIndex, selectedIdx, correctIdx) {
 function toggleCorr(id) {
     const el = document.getElementById(id);
     const btn = el.previousElementSibling;
-    if(el.classList.contains('show')) {
+    if (el.classList.contains('show')) {
         el.classList.remove('show');
         btn.innerText = "Afficher le corrigé détaillé";
     } else {
