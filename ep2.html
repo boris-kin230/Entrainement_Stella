@@ -436,109 +436,161 @@
             <div class="card card-exo2">
                 <div class="title-badge">Suites</div>
                 <h2>Exercice 2 </h2>
-                <p>En parallèle de ses révisions, Stella anime un compte d'entraide scolaire qui rassemble déjà $10\,000$ abonnés au début de l'année (mois $0$). Elle compare deux prévisions simples (Partie A) avant d'étudier le modèle réel de l'algorithme (Partie B).</p>
+                <p>En parallèle de ses révisions, Stella anime le compte d'entraide scolaire <b>@Stella_Maths</b>. Elle étudie d'abord l'évolution du nombre d'abonnés à l'aide du nuage de points d'une suite rationnelle (Partie A), puis le nombre de vues mensuelles modélisé par une suite polynomiale (Partie B).</p>
 
-                <div class="svg-container" style="background: transparent; border: none; padding: 0;">
-                    <svg viewBox="0 0 260 420" width="100%" height="340px" style="max-width: 250px; filter: drop-shadow(0 20px 30px rgba(0,90,170,0.14));">
-                        <rect x="10" y="10" width="240" height="400" rx="32" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="4"/>
-                        <path d="M 90 10 L 90 24 Q 90 34 100 34 L 160 34 Q 170 34 170 24 L 170 10" fill="#0F172A"/>
+                <h3>Partie A : Nuage de points $M_n(n\,;\,f_n)$, sens de variation et limite en $\frac{1}{n}$</h3>
+                <p>Pour tout entier naturel $n$ (où $n$ désigne le nombre de mois écoulés depuis le lancement), le nombre d'abonnés (exprimé en milliers) est modélisé par la suite $(f_n)$ définie par :</p>
+                <div class="math-block">$\displaystyle f_n = \frac{20n + 10}{n + 1}$</div>
+                <p>On a représenté ci-dessous le nuage des premiers points $M_n(n\,;\,f_n)$ associés à la suite $(f_n)$, ainsi qu'une étude d'audience d'une seconde suite $(u_n)$ décroissante représentée par les points $A_n(n\,;\,u_n)$.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 500 265" width="100%" height="255">
                         <defs>
-                            <linearGradient id="grad-stella" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#EC008C" />
-                                <stop offset="50%" stop-color="#00AEEF" />
-                                <stop offset="100%" stop-color="#005AAA" />
-                            </linearGradient>
+                            <marker id="axis-arr2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+                            </marker>
                         </defs>
-                        <circle cx="130" cy="78" r="30" fill="url(#grad-stella)"/>
-                        <text x="130" y="87" font-family="Outfit" font-size="24" font-weight="900" fill="white" text-anchor="middle">S</text>
-                        <text x="130" y="130" font-family="Outfit" font-size="16" font-weight="800" fill="#0F172A" text-anchor="middle">@Stella_Maths</text>
-                        
-                        <text x="55" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#005AAA" text-anchor="middle">10 K</text>
-                        <text x="55" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">MOIS 0</text>
-                        
-                        <text x="130" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#00AEEF" text-anchor="middle">+1 K</text>
-                        <text x="130" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">GAIN / MOIS</text>
+                        <!-- Grille horizontale -->
+                        <line x1="55" y1="35" x2="470" y2="35" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="55" y1="75" x2="470" y2="75" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="55" y1="115" x2="470" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="55" y1="155" x2="470" y2="155" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="55" y1="195" x2="470" y2="195" stroke="#E2E8F0" stroke-width="1"/>
 
-                        <text x="205" y="165" font-family="Outfit" font-size="16" font-weight="800" fill="#EC008C" text-anchor="middle">-5 %</text>
-                        <text x="205" y="180" font-family="Poppins" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">PERTE / MOIS</text>
-                        
-                        <rect x="25" y="205" width="210" height="175" rx="18" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <text x="40" y="232" font-family="Outfit" font-size="12" font-weight="800" fill="#0F172A">Évolution des abonnés (fₙ)</text>
-                        <path d="M 40 345 Q 95 285 150 268 T 220 258" fill="none" stroke="#00AEEF" stroke-width="3.5"/>
-                        <circle cx="40" cy="345" r="4.5" fill="white" stroke="#EC008C" stroke-width="2.5"/>
-                        <circle cx="95" cy="308" r="4" fill="#005AAA"/>
-                        <circle cx="150" cy="278" r="4" fill="#005AAA"/>
-                        <line x1="35" y1="252" x2="220" y2="252" stroke="#EC008C" stroke-width="1.8" stroke-dasharray="4,4"/>
-                        <text x="162" y="246" font-family="Poppins" font-size="9" font-weight="700" fill="#EC008C">Plafond : 20 K</text>
+                        <!-- Grille verticale -->
+                        <line x1="105" y1="20" x2="105" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="155" y1="20" x2="155" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="205" y1="20" x2="205" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="255" y1="20" x2="255" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="305" y1="20" x2="305" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="355" y1="20" x2="355" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="405" y1="20" x2="405" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="455" y1="20" x2="455" y2="230" stroke="#E2E8F0" stroke-width="1"/>
+
+                        <!-- Axes -->
+                        <line x1="45" y1="225" x2="480" y2="225" stroke="#475569" stroke-width="2" marker-end="url(#axis-arr2)"/>
+                        <line x1="55" y1="235" x2="55" y2="15" stroke="#475569" stroke-width="2" marker-end="url(#axis-arr2)"/>
+
+                        <!-- Droite plafond y = 20 -->
+                        <line x1="55" y1="35" x2="475" y2="35" stroke="#EC008C" stroke-width="2" stroke-dasharray="6,5"/>
+                        <text x="410" y="27" font-family="Outfit" font-size="12" font-weight="800" fill="#EC008C">Plafond y = 20 (en milliers)</text>
+
+                        <!-- Graduations Y (y=20 -> 35, y=15 -> 95, y=10 -> 155, y=5 -> 215) : 1 unité = 12px ? Prenons 10 unités = 80px : y=20->35, y=15->75, y=10->115, y=5->155, y=0->195 -->
+                        <text x="45" y="39" font-family="Poppins" font-size="11" font-weight="700" fill="#EC008C" text-anchor="end">20</text>
+                        <text x="45" y="79" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">15</text>
+                        <text x="45" y="119" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">10</text>
+                        <text x="45" y="159" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">5</text>
+                        <text x="45" y="228" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">0</text>
+
+                        <!-- Graduations X -->
+                        <text x="55" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">0</text>
+                        <text x="105" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">1</text>
+                        <text x="155" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">2</text>
+                        <text x="205" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">3</text>
+                        <text x="255" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">4</text>
+                        <text x="305" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">5</text>
+                        <text x="355" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">6</text>
+                        <text x="405" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">7</text>
+                        <text x="455" y="245" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">8</text>
+                        <text x="480" y="245" font-family="Outfit" font-size="13" font-weight="800" fill="#0F172A">n</text>
+
+                        <!-- Nuage de points M_n(n ; f_n) : y_px = 225 - (f_n / 20)*190 -->
+                        <!-- n=0, f0=10 -> y = 115 -->
+                        <circle cx="55" cy="115" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="72" y="122" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA">M₀</text>
+                        <!-- n=1, f1=15 -> y = 75 -->
+                        <circle cx="105" cy="75" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="105" y="92" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₁</text>
+                        <!-- n=2, f2=16.67 -> y = 61.7 -->
+                        <circle cx="155" cy="61.7" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="155" y="79" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₂</text>
+                        <!-- n=3, f3=17.5 -> y = 55 -->
+                        <circle cx="205" cy="55" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="205" y="72" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₃</text>
+                        <!-- n=4, f4=18 -> y = 51 -->
+                        <circle cx="255" cy="51" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="255" y="68" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₄</text>
+                        <!-- n=5, f5=18.33 -> y = 48.3 -->
+                        <circle cx="305" cy="48.3" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <!-- n=6, f6=18.57 -> y = 46.4 -->
+                        <circle cx="355" cy="46.4" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <!-- n=7, f7=18.75 -> y = 45 -->
+                        <circle cx="405" cy="45" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <!-- n=8, f8=18.89 -> y = 43.9 -->
+                        <circle cx="455" cy="43.9" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <text x="455" y="61" font-family="Outfit" font-size="12" font-weight="800" fill="#166534" text-anchor="middle">M₈</text>
                     </svg>
                 </div>
 
-                <h3>Partie A</h3>
-                <p>• <b>Modèle 1 :</b> Le compte gagne exactement $800$ abonnés supplémentaires chaque mois. On note $a_n$ le nombre d'abonnés au mois $n$, avec $a_0 = 10\,000$.<br>
-                • <b>Modèle 2 :</b> Le nombre d'abonnés augmente de $6\,\%$ chaque mois. On note $b_n$ le nombre d'abonnés au mois $n$, avec $b_0 = 10\,000$.</p>
+                <div class="question-item"><span class="q-num">1</span> Calculer $f_0$, $f_1$, $f_3$ et $f_4$, puis interpréter les coordonnées des points $M_0$ et $M_4$ sur le graphique dans le contexte du compte de Stella.</div>
+                <div class="question-item"><span class="q-num">2</span> En observant la disposition des points $M_n(n\,;\,f_n)$ sur le graphique, conjecturer le sens de variation de la suite $(f_n)$ ainsi que sa limite éventuelle lorsque $n$ tend vers $+\infty$.</div>
+                <div class="question-item"><span class="q-num">3</span> Vérifier par une mise au même dénominateur que pour tout entier naturel $n$, on peut écrire :
+                <div class="math-block">$\displaystyle f_n = 20 - \frac{10}{n + 1}$</div></div>
+                <div class="question-item"><span class="q-num">4</span> Démontrer que pour tout entier naturel $n$, on a $\displaystyle f_{n+1} - f_n = \frac{10}{(n + 1)(n + 2)}$. En déduire le sens de variation de la suite $(f_n)$ sur $\mathbb{N}$.</div>
+                <div class="question-item"><span class="q-num">5</span> À l'aide de la limite de référence $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$, déterminer la limite de la suite $(f_n)$ lorsque $n$ tend vers $+\infty$. Stella pourra-t-elle dépasser les $25\,000$ abonnés avec ce modèle ?</div>
 
-                <div class="question-item"><span class="q-num">1</span> Calculer $a_1$, $a_2$ ainsi que $b_1$ et $b_2$. Préciser la nature et la raison de chacune des suites $(a_n)$ et $(b_n)$.</div>
-                <div class="question-item"><span class="q-num">2</span> Exprimer $a_n$ et $b_n$ en fonction de $n$, puis déterminer quel modèle donne le plus d'abonnés au bout d'un an ($n = 12$). On arrondira $b_{12}$ à l'unité.</div>
+                <h3>Partie B : Suite décroissante en $\frac{1}{n}$ et suite polynomiale</h3>
+                <p>Stella étudie également deux autres indicateurs définis pour tout entier naturel $n$ par :</p>
+                <div class="math-block">
+                    $\displaystyle u_n = 2 + \frac{6}{n + 1} \qquad \text{et} \qquad v_n = -n^2 + 4n + 12$
+                </div>
 
-                <h3>Partie B</h3>
-                <p>En réalité, une étude statistique montre que chaque mois, le compte de Stella <b>perd $5\,\%$</b> de ses abonnés du mois précédent, mais <b>gagne $1\,000$ nouveaux abonnés</b>. On note $f_n$ le nombre d'abonnés au mois $n$, avec $f_0 = 10\,000$.</p>
-
-                <div class="question-item"><span class="q-num">3</span> Calculer $f_1$ et $f_2$, puis justifier que pour tout entier naturel $n$, on a : $\displaystyle f_{n+1} = 0{,}95f_n + 1\,000$.</div>
-                <div class="question-item"><span class="q-num">4</span> Démontrer à l'aide des trois premiers termes que la suite $(f_n)$ n'est ni arithmétique, ni géométrique.</div>
-                <div class="question-item"><span class="q-num">5</span> Pour étudier l'évolution à long terme, on pose pour tout entier $n$ : $\displaystyle g_n = f_n - 20\,000$. Calculer $g_0$, puis démontrer que la suite $(g_n)$ est géométrique de raison $q = 0{,}95$.</div>
-                <div class="question-item"><span class="q-num">6</span> Exprimer $g_n$ en fonction de $n$, puis en déduire que pour tout entier naturel $n$ : $\displaystyle f_n = 20\,000 - 10\,000 \times 0{,}95^n$.</div>
-                <div class="question-item"><span class="q-num">7</span> Démontrer que pour tout entier $n$, $\displaystyle f_{n+1} - f_n = 500 \times 0{,}95^n$. En déduire le sens de variation de la suite $(f_n)$.</div>
-                <div class="question-item"><span class="q-num">8</span> Déterminer la limite de la suite $(f_n)$ lorsque $n$ tend vers $+\infty$. Stella pourra-t-elle un jour franchir la barre des $25\,000$ abonnés avec ce rythme ?</div>
+                <div class="question-item"><span class="q-num">6</span> Étudier le signe de $u_{n+1} - u_n$ pour tout entier naturel $n$, en déduire le sens de variation de la suite $(u_n)$, puis déterminer sa limite lorsque $n$ tend vers $+\infty$. Vers quelle droite horizontale les points $A_n(n\,;\,u_n)$ se rapprochent-ils ?</div>
+                <div class="question-item"><span class="q-num">7</span> Calculer $v_0$, $v_1$, $v_2$ et $v_3$. Montrer que pour tout entier naturel $n$, on a $\displaystyle v_{n+1} - v_n = -2n + 3$, puis en déduire le sens de variation de la suite $(v_n)$ à partir du rang $n = 2$.</div>
+                <div class="question-item"><span class="q-num">8</span> Vérifier que pour tout entier $n \ge 1$, on a $\displaystyle v_n = n^2\left(-1 + \frac{4}{n} + \frac{12}{n^2}\right)$, puis déterminer la limite de la suite $(v_n)$ lorsque $n$ tend vers $+\infty$. La suite $(v_n)$ est-elle convergente ?</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo2" class="correction">
                     <div class="corr-step">
-                        <b>1. Étude des deux premiers modèles :</b><br>
-                        • $a_1 = 10\,000 + 800 = 10\,800$ et $a_2 = 10\,800 + 800 = 11\,600$. La suite $(a_n)$ est <b>arithmétique</b> de raison $r = 800$.<br>
-                        • Augmenter de $6\,\%$ revient à multiplier par $1 + \frac{6}{100} = 1{,}06$.<br>
-                        $b_1 = 10\,000 \times 1{,}06 = 10\,600$ et $b_2 = 10\,600 \times 1{,}06 = 11\,236$. La suite $(b_n)$ est <b>géométrique</b> de raison $q = 1{,}06$.
+                        <b>1. Calcul des premiers termes et lecture des points :</b><br>
+                        • $f_0 = \frac{20(0) + 10}{0 + 1} = 10$ : le point $M_0(0\,;\,10)$ signifie qu'au mois $0$, Stella possède $10\,000$ abonnés.<br>
+                        • $f_1 = \frac{20(1) + 10}{1 + 1} = \frac{30}{2} = 15$.<br>
+                        • $f_3 = \frac{20(3) + 10}{3 + 1} = \frac{70}{4} = 17{,}5$.<br>
+                        • $f_4 = \frac{20(4) + 10}{4 + 1} = \frac{90}{5} = 18$ : le point $M_4(4\,;\,18)$ signifie qu'au bout de $4$ mois, le compte rassemble $18\,000$ abonnés.
                     </div>
                     <div class="corr-step">
-                        <b>2. Formules explicites et comparaison à $n = 12$ :</b><br>
-                        • Pour tout $n$ : $a_n = 10\,000 + 800n$, donc $a_{12} = 10\,000 + 800 \times 12 = 19\,600$ abonnés.<br>
-                        • Pour tout $n$ : $b_n = 10\,000 \times 1{,}06^n$, donc $b_{12} = 10\,000 \times 1{,}06^{12} \approx 20\,122$ abonnés.<br>
-                        Au bout d'un an, le <b>Modèle 2 (géométrique)</b> dépasse le Modèle 1.
+                        <b>2. Conjectures à partir du nuage de points $M_n(n\,;\,f_n)$ :</b><br>
+                        • Les points $M_n$ s'élèvent lorsque $n$ augmente : on conjecture que la suite $(f_n)$ est <b>strictement croissante</b>.<br>
+                        • Les points $M_n$ viennent se coller sous la droite horizontale d'équation $y = 20$ lorsque $n$ devient grand : on conjecture que la suite $(f_n)$ est <b>convergente</b> de limite $20$.
                     </div>
                     <div class="corr-step">
-                        <b>3. Calcul de $f_1$, $f_2$ et relation de récurrence :</b><br>
-                        • Perdre $5\,\%$ revient à multiplier par $1 - 0{,}05 = 0{,}95$, puis on ajoute $1\,000$. On a donc bien $f_{n+1} = 0{,}95f_n + 1\,000$.<br>
-                        • $f_1 = 0{,}95 \times 10\,000 + 1\,000 = 9\,500 + 1\,000 = 10\,500$.<br>
-                        • $f_2 = 0{,}95 \times 10\,500 + 1\,000 = 9\,975 + 1\,000 = 10\,975$.
+                        <b>3. Transformation d'écriture de $f_n$ :</b><br>
+                        Pour tout entier naturel $n$, mettons $20 - \frac{10}{n + 1}$ au même dénominateur :<br>
+                        $\displaystyle 20 - \frac{10}{n + 1} = \frac{20(n + 1) - 10}{n + 1} = \frac{20n + 20 - 10}{n + 1} = \frac{20n + 10}{n + 1} = f_n$.
                     </div>
                     <div class="corr-step">
-                        <b>4. Nature de $(f_n)$ :</b><br>
-                        • $f_1 - f_0 = 500$ et $f_2 - f_1 = 475$. La différence n'est pas constante : $(f_n)$ n'est <b>pas arithmétique</b>.<br>
-                        • $\frac{f_1}{f_0} = \frac{10\,500}{10\,000} = 1{,}05$ alors que $\frac{f_2}{f_1} = \frac{10\,975}{10\,500} \approx 1{,}045$. Le quotient n'est pas constant : $(f_n)$ n'est <b>pas géométrique</b>.
+                        <b>4. Sens de variation de $(f_n)$ :</b><br>
+                        Pour tout entier naturel $n$ :<br>
+                        $\displaystyle f_{n+1} - f_n = \left(20 - \frac{10}{n + 2}\right) - \left(20 - \frac{10}{n + 1}\right) = \frac{10}{n + 1} - \frac{10}{n + 2}$.<br>
+                        En réduisant au même dénominateur :<br>
+                        $\displaystyle f_{n+1} - f_n = \frac{10(n + 2) - 10(n + 1)}{(n + 1)(n + 2)} = \frac{10n + 20 - 10n - 10}{(n + 1)(n + 2)} = \frac{10}{(n + 1)(n + 2)}$.<br>
+                        Comme $n \ge 0$, on a $n + 1 \gt 0$ et $n + 2 \gt 0$, donc $f_{n+1} - f_n \gt 0$ pour tout $n \in \mathbb{N}$ : la suite $(f_n)$ est <b>strictement croissante</b>.
                     </div>
                     <div class="corr-step">
-                        <b>5. Suite auxiliaire $(g_n)$ :</b><br>
-                        • $g_0 = f_0 - 20\,000 = 10\,000 - 20\,000 = -10\,000$.<br>
-                        • Pour tout entier $n$ : $g_{n+1} = f_{n+1} - 20\,000 = 0{,}95f_n + 1\,000 - 20\,000 = 0{,}95f_n - 19\,000$.<br>
-                        En factorisant par $0{,}95$ (sachant que $\frac{19\,000}{0{,}95} = 20\,000$) :<br>
-                        $g_{n+1} = 0{,}95(f_n - 20\,000) = 0{,}95g_n$.<br>
-                        La suite $(g_n)$ est donc <b>géométrique</b> de raison $q = 0{,}95$ et de premier terme $g_0 = -10\,000$.
+                        <b>5. Limite et plafond d'abonnés :</b><br>
+                        Comme $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$, on a $\displaystyle \lim_{n \to +\infty} \frac{10}{n + 1} = 0$, d'où $\displaystyle \lim_{n \to +\infty} f_n = 20 - 0 = 20$.<br>
+                        La suite $(f_n)$ converge vers $20$ (soit $20\,000$ abonnés) et reste toujours inférieure à $20$ : Stella <b>ne pourra donc pas dépasser $25\,000$ abonnés</b> avec ce modèle.
                     </div>
                     <div class="corr-step">
-                        <b>6. Expressions explicites de $g_n$ et $f_n$ :</b><br>
-                        $g_n = g_0 \times q^n = -10\,000 \times 0{,}95^n$.<br>
-                        Comme $f_n = g_n + 20\,000$, on en déduit : <b>$f_n = 20\,000 - 10\,000 \times 0{,}95^n$</b>.
+                        <b>6. Étude de la suite $(u_n)$ :</b><br>
+                        • $\displaystyle u_{n+1} - u_n = \left(2 + \frac{6}{n + 2}\right) - \left(2 + \frac{6}{n + 1}\right) = \frac{6(n + 1) - 6(n + 2)}{(n + 1)(n + 2)} = \frac{-6}{(n + 1)(n + 2)} \lt 0$.<br>
+                        La suite $(u_n)$ est donc <b>strictement décroissante</b>.<br>
+                        • Comme $\displaystyle \lim_{n \to +\infty} \frac{6}{n + 1} = 0$, on obtient $\displaystyle \lim_{n \to +\infty} u_n = 2$. Les points $A_n(n\,;\,u_n)$ se rapprochent de la droite horizontale d'équation <b>$y = 2$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>7. Sens de variation de $(f_n)$ :</b><br>
-                        $f_{n+1} - f_n = (20\,000 - 10\,000 \times 0{,}95^{n+1}) - (20\,000 - 10\,000 \times 0{,}95^n)$<br>
-                        $f_{n+1} - f_n = 10\,000 \times 0{,}95^n \times (1 - 0{,}95) = 10\,000 \times 0{,}95^n \times 0{,}05 = 500 \times 0{,}95^n$.<br>
-                        Comme $0{,}95^n \gt 0$ pour tout $n$, on a $f_{n+1} - f_n \gt 0$ : la suite $(f_n)$ est <b>strictement croissante</b>.
+                        <b>7. Étude des variations de la suite polynomiale $(v_n)$ :</b><br>
+                        • $v_0 = 12$, $v_1 = -1 + 4 + 12 = 15$, $v_2 = -4 + 8 + 12 = 16$ et $v_3 = -9 + 12 + 12 = 15$.<br>
+                        • Pour tout entier naturel $n$ :<br>
+                        $v_{n+1} - v_n = \big[-(n + 1)^2 + 4(n + 1) + 12\big] - (-n^2 + 4n + 12)$<br>
+                        $v_{n+1} - v_n = -(n^2 + 2n + 1) + 4n + 4 + 12 + n^2 - 4n - 12 = -2n + 3$.<br>
+                        • Pour tout entier $n \ge 2$, on a $-2n \le -4$, donc $-2n + 3 \le -1 \lt 0$. Ainsi, $v_{n+1} - v_n \lt 0$ pour $n \ge 2$ : la suite $(v_n)$ est <b>strictement décroissante à partir du rang $n = 2$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>8. Limite et interprétation :</b><br>
-                        Puisque $-1 \lt 0{,}95 \lt 1$, on a $\displaystyle \lim_{n \to +\infty} 0{,}95^n = 0$, d'où $\displaystyle \lim_{n \to +\infty} f_n = 20\,000$.<br>
-                        Le nombre d'abonnés converge vers un plafond de $20\,000$ : Stella <b>ne pourra donc jamais atteindre $25\,000$ abonnés</b> avec cette dynamique.
+                        <b>8. Limite de $(v_n)$ :</b><br>
+                        En développant $n^2\left(-1 + \frac{4}{n} + \frac{12}{n^2}\right) = -n^2 + 4n + 12 = v_n$, l'égalité est vérifiée pour tout $n \ge 1$.<br>
+                        Or $\displaystyle \lim_{n \to +\infty} \frac{4}{n} = 0$ et $\displaystyle \lim_{n \to +\infty} \frac{12}{n^2} = 0$, donc $\displaystyle \lim_{n \to +\infty} \left(-1 + \frac{4}{n} + \frac{12}{n^2}\right) = -1$.<br>
+                        Comme $\displaystyle \lim_{n \to +\infty} n^2 = +\infty$, par produit on a $\displaystyle \lim_{n \to +\infty} v_n = -\infty$. La suite $(v_n)$ n'admet pas de limite finie : elle est <b>divergente</b>.
                     </div>
                 </div>
             </div>
@@ -745,7 +797,7 @@
 <script>
 // ==========================================
 // DONNÉES QCM (12 Questions - Épreuve 2)
-// Sans discriminant, sans forme canonique, sans vecteur, sans trigo, sans dérivée
+// Sans discriminant, sans forme canonique, sans vecteur, sans trigo, sans dérivée, sans suite arith/géo
 // ==========================================
 const qcmData = [
     { 
@@ -803,16 +855,16 @@ const qcmData = [
         corr: "Les racines sont $-4$ et $4$, et le coefficient devant $x^2$ est $a = 1 \\gt 0$. Le produit est strictement négatif entre les racines, soit sur $]-4 \\;;\\; 4[$." 
     },
     { 
-        q: "Soit $(u_n)$ une suite arithmétique de premier terme $u_0 = -5$ et de raison $r = 4$. Que vaut $u_6$ ?", 
-        opts: ["$24$", "$19$", "$15$", "$-29$"], 
+        q: "Soit $(u_n)$ une suite telle que pour tout entier $n \\ge 0$, $\\displaystyle u_{n+1} - u_n = \\frac{5}{n + 2}$. Alors la suite $(u_n)$ est :", 
+        opts: ["Strictement décroissante", "Strictement croissante", "Constante", "Non monotone"], 
         ans: 1, 
-        corr: "Pour une suite arithmétique : $u_n = u_0 + n \\times r$, donc $u_6 = -5 + 6 \\times 4 = -5 + 24 = 19$." 
+        corr: "Pour tout entier $n \\ge 0$, $n + 2 \\gt 0$, donc $\\displaystyle u_{n+1} - u_n = \\frac{5}{n + 2} \\gt 0$ : la suite $(u_n)$ est strictement croissante." 
     },
     { 
-        q: "Soit $u_n = 12 - 4 \\times 0{,}6^n$. Quelle est la limite de la suite $(u_n)$ quand $n$ tend vers $+\\infty$ ?", 
+        q: "Soit $\\displaystyle u_n = 12 - \\frac{4}{n + 1}$ pour tout entier $n \\ge 0$. Quelle est la limite de la suite $(u_n)$ quand $n$ tend vers $+\\infty$ ?", 
         opts: ["$0$", "$8$", "$12$", "$+\\infty$"], 
         ans: 2, 
-        corr: "Comme $-1 \\lt 0{,}6 \\lt 1$, on a $\\displaystyle \\lim_{n \\to +\\infty} 0{,}6^n = 0$, donc $\\displaystyle \\lim_{n \\to +\\infty} u_n = 12 - 4 \\times 0 = 12$." 
+        corr: "Comme $\\displaystyle \\lim_{n \\to +\\infty} \\frac{1}{n} = 0$, on a $\\displaystyle \\lim_{n \\to +\\infty} \\frac{4}{n + 1} = 0$, et donc $\\displaystyle \\lim_{n \\to +\\infty} u_n = 12 - 0 = 12$." 
     },
     { 
         q: "Soient $A$ et $B$ deux événements indépendants tels que $P(A) = 0{,}5$ et $P(B) = 0{,}6$. Que vaut $P(A \\cap B)$ ?", 
