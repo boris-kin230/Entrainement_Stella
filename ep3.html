@@ -439,15 +439,98 @@
                 <h2>Exercice 2 </h2>
                 <p>Pour préparer ses contrôles de spécialité, Stella utilise une application d'entraînement mathématique. L'exercice comporte deux parties indépendantes.</p>
 
-                <h3>Partie A</h3>
-                <p>Au lancement de l'application (semaine $0$), Stella dispose d'un capital initial de $400$ points. Elle compare deux modes de progression hebdomadaire :<br>
-                • <b>Mode Classique :</b> son score augmente de $120$ points chaque semaine. On note $a_n$ son score à la semaine $n$, avec $a_0 = 400$.<br>
-                • <b>Mode Intensif :</b> son score augmente de $20\,\%$ chaque semaine. On note $b_n$ son score à la semaine $n$, avec $b_0 = 400$.</p>
+                <h3>Partie A : Nuage de points $M_n(n\,;\,u_n)$, sens de variation et limites</h3>
+                <p>Stella étudie d'abord le temps moyen de résolution d'un exercice (en minutes) après $n$ semaines d'entraînement, modélisé pour tout entier naturel $n$ par la suite $(u_n)$ définie par :</p>
+                <div class="math-block">$\displaystyle u_n = 1 + \frac{6}{n + 2}$</div>
+                <p>Dans le repère orthogonal ci-dessous, on a représenté le nuage des premiers points $M_n(n\,;\,u_n)$ associés à la suite $(u_n)$, ainsi que la droite horizontale d'équation $y = 1$ en pointillés.</p>
 
-                <div class="question-item"><span class="q-num">1</span> Calculer $a_1$, $a_2$ ainsi que $b_1$ et $b_2$. Préciser la nature et la raison de chacune des suites $(a_n)$ et $(b_n)$.</div>
-                <div class="question-item"><span class="q-num">2</span> Exprimer $a_n$ et $b_n$ en fonction de $n$, puis étudier le sens de variation de chacune des deux suites.</div>
+                <div class="svg-container">
+                    <svg viewBox="0 0 500 250" width="100%" height="240">
+                        <defs>
+                            <marker id="axis-arr3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+                            </marker>
+                        </defs>
+                        <!-- Grille horizontale (y=0 à 210, 1 unité = 45px : y=1->165, y=2->120, y=3->75, y=4->30) -->
+                        <line x1="50" y1="30" x2="470" y2="30" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="75" x2="470" y2="75" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="120" x2="470" y2="120" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="165" x2="470" y2="165" stroke="#E2E8F0" stroke-width="1"/>
 
-                <h3>Partie B </h3>
+                        <!-- Grille verticale -->
+                        <line x1="100" y1="20" x2="100" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="150" y1="20" x2="150" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="200" y1="20" x2="200" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="250" y1="20" x2="250" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="300" y1="20" x2="300" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="350" y1="20" x2="350" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="400" y1="20" x2="400" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="450" y1="20" x2="450" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+
+                        <!-- Axes -->
+                        <line x1="40" y1="210" x2="480" y2="210" stroke="#475569" stroke-width="2" marker-end="url(#axis-arr3)"/>
+                        <line x1="50" y1="220" x2="50" y2="15" stroke="#475569" stroke-width="2" marker-end="url(#axis-arr3)"/>
+
+                        <!-- Droite asymptote y = 1 -->
+                        <line x1="50" y1="165" x2="475" y2="165" stroke="#EC008C" stroke-width="2" stroke-dasharray="6,5"/>
+                        <text x="430" y="182" font-family="Outfit" font-size="12" font-weight="800" fill="#EC008C">y = 1</text>
+
+                        <!-- Graduations Y -->
+                        <text x="38" y="214" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">0</text>
+                        <text x="38" y="169" font-family="Poppins" font-size="11" font-weight="700" fill="#EC008C" text-anchor="end">1</text>
+                        <text x="38" y="124" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">2</text>
+                        <text x="38" y="79" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">3</text>
+                        <text x="38" y="34" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="end">4</text>
+
+                        <!-- Graduations X -->
+                        <text x="50" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">0</text>
+                        <text x="100" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">1</text>
+                        <text x="150" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">2</text>
+                        <text x="200" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">3</text>
+                        <text x="250" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">4</text>
+                        <text x="300" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">5</text>
+                        <text x="350" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">6</text>
+                        <text x="400" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">7</text>
+                        <text x="450" y="230" font-family="Poppins" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">8</text>
+                        <text x="478" y="230" font-family="Outfit" font-size="13" font-weight="800" fill="#0F172A">n</text>
+                        <text x="64" y="24" font-family="Outfit" font-size="13" font-weight="800" fill="#0F172A">uₙ</text>
+
+                        <!-- Nuage de points M_n(n ; u_n) : y_px = 210 - u_n * 45 -->
+                        <!-- n=0, u0=4 -> (50, 30) -->
+                        <circle cx="50" cy="30" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="68" y="34" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA">M₀</text>
+                        <!-- n=1, u1=3 -> (100, 75) -->
+                        <circle cx="100" cy="75" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="100" y="62" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₁</text>
+                        <!-- n=2, u2=2.5 -> (150, 97.5) -->
+                        <circle cx="150" cy="97.5" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="150" y="85" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₂</text>
+                        <!-- n=3, u3=2.2 -> (200, 111) -->
+                        <circle cx="200" cy="111" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="200" y="99" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₃</text>
+                        <!-- n=4, u4=2 -> (250, 120) -->
+                        <circle cx="250" cy="120" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="250" y="108" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₄</text>
+                        <!-- n=5, u5=13/7=1.86 -> (300, 126.4) -->
+                        <circle cx="300" cy="126.4" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <!-- n=6, u6=1.75 -> (350, 131.25) -->
+                        <circle cx="350" cy="131.25" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <text x="350" y="119" font-family="Outfit" font-size="12" font-weight="800" fill="#166534" text-anchor="middle">M₆</text>
+                        <!-- n=7, u7=5/3=1.67 -> (400, 135) -->
+                        <circle cx="400" cy="135" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <!-- n=8, u8=1.6 -> (450, 138) -->
+                        <circle cx="450" cy="138" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <text x="450" y="126" font-family="Outfit" font-size="12" font-weight="800" fill="#166534" text-anchor="middle">M₈</text>
+                    </svg>
+                </div>
+
+                <div class="question-item"><span class="q-num">1</span> Calculer $u_0$, $u_1$, $u_2$ et $u_4$, puis vérifier qu'ils correspondent bien aux ordonnées des points $M_0$, $M_1$, $M_2$ et $M_4$ placés sur le graphique.</div>
+                <div class="question-item"><span class="q-num">2</span> À l'aide du nuage de points $M_n(n\,;\,u_n)$, conjecturer le sens de variation de la suite $(u_n)$ ainsi que sa limite éventuelle lorsque $n$ tend vers $+\infty$.</div>
+                <div class="question-item"><span class="q-num">3</span> Démontrer par le calcul que pour tout entier naturel $n$, on a $\displaystyle u_{n+1} - u_n = \frac{-6}{(n + 2)(n + 3)}$. En déduire rigoureusement le sens de variation de la suite $(u_n)$, puis déterminer sa limite lorsque $n$ tend vers $+\infty$ à l'aide de la limite de référence $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$.</div>
+                <div class="question-item"><span class="q-num">4</span> Le score cumulé de Stella est modélisé pour tout entier naturel $n$ par la suite polynomiale $\displaystyle w_n = 3n^2 - 5n + 2$.<br>
+                Montrer que pour tout entier naturel $n$, on a $\displaystyle w_{n+1} - w_n = 6n - 2$, en déduire le sens de variation de $(w_n)$ à partir du rang $n = 1$, puis déterminer $\displaystyle \lim_{n \to +\infty} w_n$ en écrivant $\displaystyle w_n = n^2\left(3 - \frac{5}{n} + \frac{2}{n^2}\right)$ pour $n \ge 1$.</div>
+
+                <h3>Partie B : Probabilités et suite récurrente ($p_n$ et $p_{n+1}$)</h3>
                 <p>Chaque soir, Stella tente de résoudre le « Défi Étoile » de son application :<br>
                 • Si elle réussit le défi du jour $n$, la probabilité qu'elle réussisse celui du jour $n+1$ est égale à $0{,}8$.<br>
                 • Si elle échoue au défi du jour $n$, elle révise sa fiche méthode et la probabilité qu'elle réussisse le défi du jour $n+1$ est égale à $0{,}3$.</p>
@@ -505,61 +588,64 @@
                     </svg>
                 </div>
 
-                <div class="question-item"><span class="q-num">3</span> Reproduire et compléter l'arbre pondéré ci-dessus modélisant le passage du jour $n$ au jour $n+1$.</div>
-                <div class="question-item"><span class="q-num">4</span> Calculer la probabilité $p_2$ que Stella réussisse le défi du deuxième jour.</div>
-                <div class="question-item"><span class="q-num">5</span> Démontrer que, pour tout entier naturel $n \ge 1$, on a la relation : $\displaystyle p_{n+1} = 0{,}5p_n + 0{,}3$.</div>
-                <div class="question-item"><span class="q-num">6</span> Pour tout entier naturel $n \ge 1$, on pose $\displaystyle v_n = p_n - 0{,}6$. Calculer $v_1$, puis démontrer que $(v_n)$ est une suite géométrique de raison $q = 0{,}5$.</div>
-                <div class="question-item"><span class="q-num">7</span> Exprimer $v_n$ en fonction de $n$, puis en déduire que pour tout entier $n \ge 1$ : $\displaystyle p_n = 0{,}3 \times 0{,}5^{n-1} + 0{,}6$.</div>
-                <div class="question-item"><span class="q-num">8</span> Démontrer que pour tout entier $n \ge 1$, $\displaystyle p_{n+1} - p_n = -0{,}15 \times 0{,}5^{n-1}$. En déduire le sens de variation de la suite $(p_n)$, puis déterminer sa limite lorsque $n$ tend vers $+\infty$ et interpréter ce résultat.</div>
+                <div class="question-item"><span class="q-num">5</span> Reproduire et compléter l'arbre pondéré ci-dessus modélisant le passage du jour $n$ au jour $n+1$.</div>
+                <div class="question-item"><span class="q-num">6</span> Démontrer que, pour tout entier naturel $n \ge 1$, on a la relation : $\displaystyle p_{n+1} = 0{,}5p_n + 0{,}3$.</div>
+                <div class="question-item"><span class="q-num">7</span> Sachant que $p_1 = 0{,}9$, calculer les probabilités $p_2$, $p_3$ et $p_4$ (sous forme décimale exacte). Quelles sont les coordonnées des points $A_1$, $A_2$, $A_3$ et $A_4$ représentant le début de la suite $(p_n)$ dans un repère ?</div>
+                <div class="question-item"><span class="q-num">8</span> En plaçant sur ordinateur un grand nombre de points $A_n(n\,;\,p_n)$, Stella observe que les points descendent et viennent s'aligner le long d'une droite horizontale d'équation $y = L$.<br>
+                Déterminer par le calcul la valeur exacte de $L$ vérifiant l'équation d'équilibre $L = 0{,}5L + 0{,}3$, puis interpréter ce résultat pour la réussite de Stella à long terme.</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo2" class="correction">
                     <div class="corr-step">
-                        <b>1. Premiers termes et nature des suites $(a_n)$ et $(b_n)$ :</b><br>
-                        • $a_1 = 400 + 120 = 520$ et $a_2 = 520 + 120 = 640$. La suite $(a_n)$ est <b>arithmétique</b> de raison $r = 120$.<br>
-                        • Augmenter de $20\,\%$ revient à multiplier par $1 + \frac{20}{100} = 1{,}2$.<br>
-                        $b_1 = 400 \times 1{,}2 = 480$ et $b_2 = 480 \times 1{,}2 = 576$. La suite $(b_n)$ est <b>géométrique</b> de raison $q = 1{,}2$.
+                        <b>1. Premiers termes et lecture des points $M_n(n\,;\,u_n)$ :</b><br>
+                        • $u_0 = 1 + \frac{6}{0 + 2} = 1 + 3 = 4 \longrightarrow M_0(0\,;\,4)$<br>
+                        • $u_1 = 1 + \frac{6}{1 + 2} = 1 + 2 = 3 \longrightarrow M_1(1\,;\,3)$<br>
+                        • $u_2 = 1 + \frac{6}{2 + 2} = 1 + 1{,}5 = 2{,}5 \longrightarrow M_2(2\,;\,2{,}5)$<br>
+                        • $u_4 = 1 + \frac{6}{4 + 2} = 1 + 1 = 2 \longrightarrow M_4(4\,;\,2)$
                     </div>
                     <div class="corr-step">
-                        <b>2. Formules explicites et sens de variation :</b><br>
-                        • Pour tout $n$ : <b>$a_n = 400 + 120n$</b>. Comme $r = 120 \gt 0$, la suite $(a_n)$ est <b>strictement croissante</b>.<br>
-                        • Pour tout $n$ : <b>$b_n = 400 \times 1{,}2^n$</b>. Comme $b_0 = 400 \gt 0$ et $q = 1{,}2 \gt 1$, la suite $(b_n)$ est <b>strictement croissante</b>.
+                        <b>2. Conjectures à partir du nuage de points :</b><br>
+                        • D'un rang au suivant, les points $M_n$ descendent : on conjecture que la suite $(u_n)$ est <b>strictement décroissante</b>.<br>
+                        • Lorsque $n$ devient grand, les points $M_n$ se rapprochent de la droite horizontale d'équation $y = 1$ : on conjecture que la suite $(u_n)$ est <b>convergente</b> de limite $1$.
                     </div>
                     <div class="corr-step">
-                        <b>3. Complétion de l'arbre pondéré :</b><br>
+                        <b>3. Sens de variation et limite de $(u_n)$ :</b><br>
+                        • Pour tout entier naturel $n$ :<br>
+                        $\displaystyle u_{n+1} - u_n = \left(1 + \frac{6}{n + 3}\right) - \left(1 + \frac{6}{n + 2}\right) = \frac{6(n + 2) - 6(n + 3)}{(n + 2)(n + 3)} = \frac{6n + 12 - 6n - 18}{(n + 2)(n + 3)} = \frac{-6}{(n + 2)(n + 3)}$.<br>
+                        Comme $n \ge 0$, on a $n + 2 \gt 0$ et $n + 3 \gt 0$, donc $u_{n+1} - u_n \lt 0$ : la suite $(u_n)$ est <b>strictement décroissante</b>.<br>
+                        • Comme $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$, on a $\displaystyle \lim_{n \to +\infty} \frac{6}{n + 2} = 0$, et donc $\displaystyle \lim_{n \to +\infty} u_n = 1 + 0 = 1$ (soit $1$ minute par exercice à long terme).
+                    </div>
+                    <div class="corr-step">
+                        <b>4. Étude de la suite polynomiale $(w_n)$ :</b><br>
+                        • Pour tout entier naturel $n$ :<br>
+                        $w_{n+1} - w_n = \big[3(n + 1)^2 - 5(n + 1) + 2\big] - (3n^2 - 5n + 2) = 3(n^2 + 2n + 1) - 5n - 5 + 2 - 3n^2 + 5n - 2 = 6n - 2$.<br>
+                        Pour tout $n \ge 1$, $6n - 2 \ge 4 \gt 0$, donc $(w_n)$ est <b>strictement croissante à partir du rang $n = 1$</b>.<br>
+                        • Pour $n \ge 1$, $\displaystyle \lim_{n \to +\infty} \frac{5}{n} = 0$ et $\displaystyle \lim_{n \to +\infty} \frac{2}{n^2} = 0$, donc $\displaystyle \lim_{n \to +\infty} \left(3 - \frac{5}{n} + \frac{2}{n^2}\right) = 3$.<br>
+                        Comme $\displaystyle \lim_{n \to +\infty} n^2 = +\infty$, par produit on obtient $\displaystyle \lim_{n \to +\infty} w_n = +\infty$ (la suite $(w_n)$ diverge vers $+\infty$).
+                    </div>
+                    <div class="corr-step">
+                        <b>5. Complétion de l'arbre pondéré :</b><br>
                         • De $R_n$ vers $\overline{R_{n+1}}$ : $1 - 0{,}8 = 0{,}2$.<br>
                         • De $\overline{R_n}$ vers $\overline{R_{n+1}}$ : $1 - 0{,}3 = 0{,}7$.
                     </div>
                     <div class="corr-step">
-                        <b>4. Calcul de $p_2$ :</b><br>
-                        Pour $n = 1$, on a $P(R_1) = p_1 = 0{,}9$ et $P(\overline{R_1}) = 1 - 0{,}9 = 0{,}1$.<br>
-                        $p_2 = P(R_2) = P(R_1 \cap R_2) + P(\overline{R_1} \cap R_2) = 0{,}9 \times 0{,}8 + 0{,}1 \times 0{,}3 = 0{,}72 + 0{,}03 = 0{,}75$.
-                    </div>
-                    <div class="corr-step">
-                        <b>5. Relation entre $p_{n+1}$ et $p_n$ :</b><br>
+                        <b>6. Relation entre $p_{n+1}$ et $p_n$ :</b><br>
                         Les événements $R_n$ et $\overline{R_n}$ forment une partition de l'univers :<br>
                         $p_{n+1} = P(R_{n+1}) = P(R_n \cap R_{n+1}) + P(\overline{R_n} \cap R_{n+1})$<br>
                         $p_{n+1} = p_n \times 0{,}8 + (1 - p_n) \times 0{,}3 = 0{,}8p_n + 0{,}3 - 0{,}3p_n =$ <b>$0{,}5p_n + 0{,}3$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>6. Étude de la suite auxiliaire $(v_n)$ :</b><br>
-                        • $v_1 = p_1 - 0{,}6 = 0{,}9 - 0{,}6 = 0{,}3$.<br>
-                        • Pour tout entier $n \ge 1$ : $v_{n+1} = p_{n+1} - 0{,}6 = (0{,}5p_n + 0{,}3) - 0{,}6 = 0{,}5p_n - 0{,}3$.<br>
-                        En factorisant par $0{,}5$ : $v_{n+1} = 0{,}5(p_n - 0{,}6) = 0{,}5v_n$.<br>
-                        La suite $(v_n)$ est donc une <b>suite géométrique</b> de premier terme $v_1 = 0{,}3$ et de raison $q = 0{,}5$.
+                        <b>7. Calcul de $p_2$, $p_3$, $p_4$ et coordonnées des points $A_n(n\,;\,p_n)$ :</b><br>
+                        • $p_1 = 0{,}9 \longrightarrow A_1(1\,;\,0{,}9)$<br>
+                        • $p_2 = 0{,}5 \times 0{,}9 + 0{,}3 = 0{,}45 + 0{,}3 = 0{,}75 \longrightarrow A_2(2\,;\,0{,}75)$<br>
+                        • $p_3 = 0{,}5 \times 0{,}75 + 0{,}3 = 0{,}375 + 0{,}3 = 0{,}675 \longrightarrow A_3(3\,;\,0{,}675)$<br>
+                        • $p_4 = 0{,}5 \times 0{,}675 + 0{,}3 = 0{,}3375 + 0{,}3 = 0{,}6375 \longrightarrow A_4(4\,;\,0{,}6375)$
                     </div>
                     <div class="corr-step">
-                        <b>7. Expression de $v_n$ et de $p_n$ en fonction de $n$ :</b><br>
-                        Comme $(v_n)$ débute au rang $1$ : $v_n = v_1 \times q^{n-1} = 0{,}3 \times 0{,}5^{n-1}$.<br>
-                        Or $p_n = v_n + 0{,}6$, d'où : <b>$p_n = 0{,}3 \times 0{,}5^{n-1} + 0{,}6$</b>.
-                    </div>
-                    <div class="corr-step">
-                        <b>8. Sens de variation et convergence de $(p_n)$ :</b><br>
-                        • $p_{n+1} - p_n = (0{,}3 \times 0{,}5^n + 0{,}6) - (0{,}3 \times 0{,}5^{n-1} + 0{,}6) = 0{,}3 \times 0{,}5^{n-1} \times (0{,}5 - 1) = -0{,}15 \times 0{,}5^{n-1}$.<br>
-                        Comme $0{,}5^{n-1} \gt 0$, on a $p_{n+1} - p_n \lt 0$ : la suite $(p_n)$ est <b>strictement décroissante</b>.<br>
-                        • Puisque $-1 \lt 0{,}5 \lt 1$, on a $\displaystyle \lim_{n \to +\infty} 0{,}5^{n-1} = 0$, et donc $\displaystyle \lim_{n \to +\infty} p_n = 0{,}6$.<br>
-                        <i>Interprétation :</i> Au fil des jours, la probabilité que Stella réussisse son défi quotidien se stabilise autour de $60\,\%$.
+                        <b>8. Valeur limite d'équilibre $L$ et interprétation :</b><br>
+                        On résout l'équation $L = 0{,}5L + 0{,}3 \Longleftrightarrow L - 0{,}5L = 0{,}3 \Longleftrightarrow 0{,}5L = 0{,}3 \Longleftrightarrow L = \frac{0{,}3}{0{,}5} =$ <b>$0{,}6$</b>.<br>
+                        <i>Interprétation :</i> Les points $A_n(n\,;\,p_n)$ se rapprochent de la droite horizontale $y = 0{,}6$. À long terme, la probabilité que Stella réussisse son défi quotidien converge vers $60\,\%$.
                     </div>
                 </div>
             </div>
@@ -721,7 +807,7 @@
 <script>
 // ==========================================
 // DONNÉES QCM (12 Questions - Épreuve 3)
-// 100% conformes au programme de début novembre (sans discriminant, sans forme canonique, sans vecteur, sans trigo)
+// 100% conformes au programme de début novembre (sans discriminant, sans forme canonique, sans vecteur, sans trigo, sans suite arith/géo)
 // ==========================================
 const qcmData = [
     { 
@@ -779,16 +865,16 @@ const qcmData = [
         corr: "Le produit des racines vaut $\\displaystyle P = \\frac{c}{a} = \\frac{-6}{2} = -3$. Comme $(-1) \\times x_2 = -3$, on obtient $x_2 = 3$." 
     },
     { 
-        q: "Soit $(u_n)$ une suite arithmétique telle que $u_0 = 12$ et de raison $r = -2{,}5$. Que vaut $u_8$ ?", 
-        opts: ["$-20$", "$-8$", "$32$", "$-5{,}5$"], 
+        q: "Soit $(u_n)$ la suite définie par $u_0 = 5$ et, pour tout entier $n \\ge 0$, $u_{n+1} = 2u_n - 3$. Que vaut $u_2$ ?", 
+        opts: ["$7$", "$11$", "$14$", "$9$"], 
         ans: 1, 
-        corr: "Pour une suite arithmétique : $\\displaystyle u_n = u_0 + n \\times r$, donc $u_8 = 12 + 8 \\times (-2{,}5) = 12 - 20 = -8$." 
+        corr: "On calcule de proche en proche : $u_1 = 2(5) - 3 = 7$, puis $u_2 = 2(7) - 3 = 14 - 3 = 11$." 
     },
     { 
-        q: "Soit $\\displaystyle v_n = 7 + 3 \\times 0{,}4^n$. Quelle est la limite de la suite $(v_n)$ quand $n$ tend vers $+\\infty$ ?", 
+        q: "Soit $\\displaystyle v_n = 7 + \\frac{3}{n^2 + 1}$ pour tout entier $n \\ge 0$. Quelle est la limite de la suite $(v_n)$ quand $n$ tend vers $+\\infty$ ?", 
         opts: ["$0$", "$10$", "$7$", "$+\\infty$"], 
         ans: 2, 
-        corr: "Comme $-1 \\lt 0{,}4 \\lt 1$, on a $\\displaystyle \\lim_{n \\to +\\infty} 0{,}4^n = 0$, et donc $\\displaystyle \\lim_{n \\to +\\infty} v_n = 7 + 3 \\times 0 = 7$." 
+        corr: "Comme $\\displaystyle \\lim_{n \\to +\\infty} \\frac{3}{n^2 + 1} = 0$, on obtient par somme $\\displaystyle \\lim_{n \\to +\\infty} v_n = 7 + 0 = 7$." 
     },
     { 
         q: "Dans une urne de $40$ billes, $16$ sont bleues et $10$ billes sont à la fois bleues et étoilées. On tire une bille bleue : quelle est la probabilité qu'elle soit étoilée ?", 
