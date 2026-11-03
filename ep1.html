@@ -424,75 +424,163 @@
         <div id="exo2" class="section-view">
             <div class="card card-exo2">
                 <span class="part-badge badge-cyan">Suites</span>
-                <h2>Exercice 2 </h2>
-                <p>Pour financer un voyage linguistique, Stella place un capital initial de $1\,000\text{ €}$ au mois $0$. Sa banque lui propose d'abord deux formules simples (Partie A), puis une formule mixte avec plafond (Partie B).</p>
+                <h2>Exercice 2</h2>
+                <p>Les deux parties de cet exercice sont indépendantes et portent sur la représentation graphique d'une suite par son nuage de points, l'étude du sens de variation et la notion de convergence ou de divergence.</p>
 
-                <h3>Partie A</h3>
-                <p>• <b>Formule A :</b> Le capital augmente d'un montant fixe de $50\text{ €}$ chaque mois. On note $a_n$ le capital au bout de $n$ mois, avec $a_0 = 1\,000$.<br>
-                • <b>Formule B :</b> Le capital augmente de $4\,\%$ chaque mois. On note $b_n$ le capital au bout de $n$ mois, avec $b_0 = 1\,000$.</p>
+                <h3>Partie A : Nuage de points $M_n(n\,;\,u_n)$, sens de variation et limite en $\frac{1}{n}$</h3>
+                <p>Pour tout entier naturel $n$, on considère la suite $(u_n)$ définie par :</p>
+                <div class="math-block">$\displaystyle u_n = 3 - \frac{4}{n + 1}$</div>
+                <p>Dans le repère orthogonal ci-dessous, on a représenté les premiers points $M_n$ de coordonnées $(n\,;\,u_n)$ associés à la suite $(u_n)$, ainsi que la droite horizontale d'équation $y = 3$ en pointillés.</p>
 
-                <div class="question-item"><span class="q-num">1</span> Calculer $a_1$, $a_2$ ainsi que $b_1$ et $b_2$.</div>
-                <div class="question-item"><span class="q-num">2</span> Donner la nature et la raison de chacune des suites $(a_n)$ et $(b_n)$, puis exprimer $a_n$ et $b_n$ en fonction de $n$.</div>
-                <div class="question-item"><span class="q-num">3</span> Étudier le sens de variation de la suite $(a_n)$ et celui de la suite $(b_n)$.</div>
+                <div class="svg-container">
+                    <svg viewBox="0 0 500 260" width="100%" height="250">
+                        <defs>
+                            <marker id="axis-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+                            </marker>
+                        </defs>
+                        <!-- Grille horizontale -->
+                        <line x1="50" y1="35" x2="470" y2="35" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="75" x2="470" y2="75" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="115" x2="470" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="155" x2="470" y2="155" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="50" y1="235" x2="470" y2="235" stroke="#E2E8F0" stroke-width="1"/>
 
-                <h3>Partie B</h3>
-                <p>Stella étudie maintenant une suite $(u_n)$ (exprimée en milliers d'euros) définie par son premier terme $u_0 = 1$ et, pour tout entier naturel $n$, par la relation :</p>
-                <div class="math-block">$\displaystyle u_{n+1} = 0{,}5u_n + 2$</div>
+                        <!-- Grille verticale -->
+                        <line x1="100" y1="20" x2="100" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="150" y1="20" x2="150" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="200" y1="20" x2="200" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="250" y1="20" x2="250" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="300" y1="20" x2="300" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="350" y1="20" x2="350" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="400" y1="20" x2="400" y2="240" stroke="#E2E8F0" stroke-width="1"/>
+                        <line x1="450" y1="20" x2="450" y2="240" stroke="#E2E8F0" stroke-width="1"/>
 
-                <div class="question-item"><span class="q-num">4</span> Calculer $u_1$ et $u_2$. La suite $(u_n)$ est-elle arithmétique ? Est-elle géométrique ? Justifier avec soin.</div>
-                <div class="question-item"><span class="q-num">5</span> Pour tout entier naturel $n$, on pose $v_n = u_n - 4$. Calculer $v_0$, puis démontrer que $(v_n)$ est une suite géométrique de raison $q = 0{,}5$.</div>
-                <div class="question-item"><span class="q-num">6</span> Exprimer $v_n$ en fonction de $n$, puis en déduire que pour tout entier naturel $n$, on a : $\displaystyle u_n = 4 - 3 \times 0{,}5^n$.</div>
-                <div class="question-item"><span class="q-num">7</span> Démontrer que pour tout entier naturel $n$, $\displaystyle u_{n+1} - u_n = 1{,}5 \times 0{,}5^n$. En déduire le sens de variation de la suite $(u_n)$.</div>
-                <div class="question-item"><span class="q-num">8</span> Déterminer la limite de la suite $(u_n)$ lorsque $n$ tend vers $+\infty$. La suite $(u_n)$ est-elle convergente ?</div>
+                        <!-- Axes -->
+                        <line x1="40" y1="195" x2="480" y2="195" stroke="#475569" stroke-width="2" marker-end="url(#axis-arrow)"/>
+                        <line x1="50" y1="245" x2="50" y2="15" stroke="#475569" stroke-width="2" marker-end="url(#axis-arrow)"/>
+
+                        <!-- Droite limite y = 3 -->
+                        <line x1="50" y1="75" x2="475" y2="75" stroke="#EC008C" stroke-width="2" stroke-dasharray="6,5"/>
+                        <text x="435" y="66" font-family="Outfit" font-size="13" font-weight="800" fill="#EC008C">y = 3</text>
+
+                        <!-- Graduations Y (1 unité = 40px, y=0 à 195) -->
+                        <text x="35" y="240" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">-1</text>
+                        <text x="35" y="199" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">0</text>
+                        <text x="35" y="159" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">1</text>
+                        <text x="35" y="119" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">2</text>
+                        <text x="35" y="79" font-family="Poppins" font-size="12" font-weight="700" fill="#EC008C" text-anchor="end">3</text>
+                        <text x="35" y="39" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">4</text>
+
+                        <!-- Graduations X (1 unité = 50px, x=0 à 50) -->
+                        <text x="100" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">1</text>
+                        <text x="150" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">2</text>
+                        <text x="200" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">3</text>
+                        <text x="250" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">4</text>
+                        <text x="300" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">5</text>
+                        <text x="350" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">6</text>
+                        <text x="400" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">7</text>
+                        <text x="450" y="213" font-family="Poppins" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">8</text>
+                        <text x="478" y="213" font-family="Outfit" font-size="13" font-weight="800" fill="#0F172A">n</text>
+                        <text x="62" y="24" font-family="Outfit" font-size="13" font-weight="800" fill="#0F172A">uₙ</text>
+
+                        <!-- Nuage de points M_n(n ; u_n) -->
+                        <!-- n=0, u0=-1 -> (50, 235) -->
+                        <circle cx="50" cy="235" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="66" y="238" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA">M₀</text>
+                        <!-- n=1, u1=1 -> (100, 155) -->
+                        <circle cx="100" cy="155" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="100" y="142" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₁</text>
+                        <!-- n=2, u2=5/3 -> (150, 128.3) -->
+                        <circle cx="150" cy="128.3" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="150" y="116" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₂</text>
+                        <!-- n=3, u3=2 -> (200, 115) -->
+                        <circle cx="200" cy="115" r="5.5" fill="#005AAA" stroke="white" stroke-width="1.5"/>
+                        <text x="200" y="103" font-family="Outfit" font-size="12" font-weight="800" fill="#005AAA" text-anchor="middle">M₃</text>
+                        <!-- n=4, u4=2.2 -> (250, 107) -->
+                        <circle cx="250" cy="107" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="250" y="95" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₄</text>
+                        <!-- n=5, u5=7/3 -> (300, 101.7) -->
+                        <circle cx="300" cy="101.7" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <text x="300" y="90" font-family="Outfit" font-size="12" font-weight="800" fill="#0369A1" text-anchor="middle">M₅</text>
+                        <!-- n=6, u6=17/7 -> (350, 97.9) -->
+                        <circle cx="350" cy="97.9" r="5.5" fill="#00AEEF" stroke="white" stroke-width="1.5"/>
+                        <!-- n=7, u7=2.5 -> (400, 95) -->
+                        <circle cx="400" cy="95" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                        <text x="400" y="112" font-family="Outfit" font-size="12" font-weight="800" fill="#3F6212" text-anchor="middle">M₇</text>
+                        <!-- n=8, u8=23/9 -> (450, 92.8) -->
+                        <circle cx="450" cy="92.8" r="5.5" fill="#8CC63F" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                </div>
+
+                <div class="question-item"><span class="q-num">1</span> Calculer les termes $u_0$, $u_1$, $u_2$ et $u_3$, puis vérifier qu'ils correspondent bien aux ordonnées des points $M_0$, $M_1$, $M_2$ et $M_3$ placés sur le graphique.</div>
+                <div class="question-item"><span class="q-num">2</span> À l'aide de l'allure du nuage de points $M_n(n\,;\,u_n)$, conjecturer le sens de variation de la suite $(u_n)$ ainsi que son comportement (convergence et valeur limite éventuelle) lorsque $n$ devient très grand.</div>
+                <div class="question-item"><span class="q-num">3</span> Démontrer par le calcul que pour tout entier naturel $n$, on a : $\displaystyle u_{n+1} - u_n = \frac{4}{(n + 1)(n + 2)}$. En déduire rigoureusement le sens de variation de la suite $(u_n)$.</div>
+                <div class="question-item"><span class="q-num">4</span> En utilisant la limite de référence $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$, déterminer la limite de la suite $(u_n)$ lorsque $n$ tend vers $+\infty$ et conclure quant à sa convergence.</div>
+
+                <h3>Partie B : Suites polynomiales et étude de variations</h3>
+                <p>Pour tout entier naturel $n$, Stella étudie maintenant la suite $(v_n)$ définie par le polynôme en $n$ suivant :</p>
+                <div class="math-block">$\displaystyle v_n = 2n^2 - 3n + 5$</div>
+
+                <div class="question-item"><span class="q-num">5</span> Calculer $v_0$, $v_1$ et $v_2$. La suite $(v_n)$ est-elle monotone dès le rang $n = 0$ ? Justifier.</div>
+                <div class="question-item"><span class="q-num">6</span> Montrer que pour tout entier naturel $n$, on a : $\displaystyle v_{n+1} - v_n = 4n - 1$. Étudier le signe de $4n - 1$ pour $n \ge 1$ et en déduire le sens de variation de la suite $(v_n)$ à partir du rang $n = 1$.</div>
+                <div class="question-item"><span class="q-num">7</span> Vérifier que pour tout entier $n \ge 1$, on peut écrire $\displaystyle v_n = n^2\left(2 - \frac{3}{n} + \frac{5}{n^2}\right)$. En déduire la limite de $v_n$ lorsque $n$ tend vers $+\infty$. La suite $(v_n)$ est-elle convergente ou divergente ?</div>
+                <div class="question-item"><span class="q-num">8</span> On considère enfin une suite $(w_n)$ définie par $w_0 = 10$ et, pour tout entier naturel $n$, par la relation de récurrence $\displaystyle w_{n+1} = w_n - \frac{2}{n + 1}$. Sans calculer ses termes, déterminer le sens de variation de la suite $(w_n)$.</div>
 
                 <button class="btn-corr" onclick="toggleCorr('corr-exo2')">Afficher le corrigé détaillé</button>
                 
                 <div id="corr-exo2" class="correction">
                     <div class="corr-step">
-                        <b>1. Premiers termes :</b><br>
-                        • $a_1 = 1000 + 50 = 1050$ et $a_2 = 1050 + 50 = 1100$.<br>
-                        • Augmenter de $4\,\%$ revient à multiplier par $1 + \frac{4}{100} = 1{,}04$.<br>
-                        Donc $b_1 = 1000 \times 1{,}04 = 1040$ et $b_2 = 1040 \times 1{,}04 = 1081{,}6$.
+                        <b>1. Calcul des premiers termes et lecture des points $M_n(n\,;\,u_n)$ :</b><br>
+                        • $u_0 = 3 - \frac{4}{0 + 1} = 3 - 4 = -1$, ce qui correspond bien au point $M_0(0\,;\,-1)$.<br>
+                        • $u_1 = 3 - \frac{4}{1 + 1} = 3 - 2 = 1$, ce qui correspond bien au point $M_1(1\,;\,1)$.<br>
+                        • $u_2 = 3 - \frac{4}{2 + 1} = 3 - \frac{4}{3} = \frac{5}{3} \approx 1{,}67$, ce qui correspond au point $M_2\left(2\,;\,\frac{5}{3}\right)$.<br>
+                        • $u_3 = 3 - \frac{4}{3 + 1} = 3 - 1 = 2$, ce qui correspond bien au point $M_3(3\,;\,2)$.
                     </div>
                     <div class="corr-step">
-                        <b>2. Nature et expressions explicites :</b><br>
-                        • Pour tout $n$, $a_{n+1} = a_n + 50$ : $(a_n)$ est une <b>suite arithmétique</b> de raison $r = 50$ et de premier terme $a_0 = 1000$. Donc <b>$a_n = 1000 + 50n$</b>.<br>
-                        • Pour tout $n$, $b_{n+1} = 1{,}04 \times b_n$ : $(b_n)$ est une <b>suite géométrique</b> de raison $q = 1{,}04$ et de premier terme $b_0 = 1000$. Donc <b>$b_n = 1000 \times 1{,}04^n$</b>.
+                        <b>2. Conjectures graphiques à l'aide du nuage de points :</b><br>
+                        • D'un rang au suivant, les points $M_n$ montent systématiquement : on conjecture que la suite $(u_n)$ est <b>strictement croissante</b>.<br>
+                        • Lorsque $n$ devient grand, les points $M_n$ se rapprochent de plus en plus de la droite horizontale d'équation $y = 3$ sans jamais la dépasser : on conjecture que la suite $(u_n)$ est <b>convergente</b> et qu'elle converge vers $3$.
                     </div>
                     <div class="corr-step">
-                        <b>3. Sens de variation :</b><br>
-                        • $a_{n+1} - a_n = 50 \gt 0$, donc $(a_n)$ est <b>strictement croissante</b>.<br>
-                        • Pour $(b_n)$, le premier terme $b_0 = 1000 \gt 0$ et la raison $q = 1{,}04 \gt 1$, donc $(b_n)$ est également <b>strictement croissante</b>.
+                        <b>3. Démonstration du sens de variation de $(u_n)$ :</b><br>
+                        Pour tout entier naturel $n$ :<br>
+                        $\displaystyle u_{n+1} - u_n = \left(3 - \frac{4}{n + 2}\right) - \left(3 - \frac{4}{n + 1}\right) = \frac{4}{n + 1} - \frac{4}{n + 2}$.<br>
+                        On met au même dénominateur $(n + 1)(n + 2)$ :<br>
+                        $\displaystyle u_{n+1} - u_n = \frac{4(n + 2) - 4(n + 1)}{(n + 1)(n + 2)} = \frac{4n + 8 - 4n - 4}{(n + 1)(n + 2)} = \frac{4}{(n + 1)(n + 2)}$.<br>
+                        Comme $n \ge 0$, on a $n + 1 \gt 0$ et $n + 2 \gt 0$, donc le quotient $\frac{4}{(n + 1)(n + 2)}$ est strictement positif. Ainsi, $u_{n+1} - u_n \gt 0$ pour tout $n \in \mathbb{N}$ : la suite $(u_n)$ est <b>strictement croissante</b>.
                     </div>
                     <div class="corr-step">
-                        <b>4. Calcul de $u_1$ et $u_2$ :</b><br>
-                        $u_1 = 0{,}5 \times 1 + 2 = 2{,}5$ et $u_2 = 0{,}5 \times 2{,}5 + 2 = 1{,}25 + 2 = 3{,}25$.<br>
-                        • $u_1 - u_0 = 2{,}5 - 1 = 1{,}5$ alors que $u_2 - u_1 = 3{,}25 - 2{,}5 = 0{,}75$. La différence n'est pas constante, donc $(u_n)$ n'est <b>pas arithmétique</b>.<br>
-                        • $\frac{u_1}{u_0} = 2{,}5$ alors que $\frac{u_2}{u_1} = \frac{3{,}25}{2{,}5} = 1{,}3$. Le quotient n'est pas constant, donc $(u_n)$ n'est <b>pas géométrique</b>.
+                        <b>4. Limite et convergence de $(u_n)$ :</b><br>
+                        Lorsque $n$ tend vers $+\infty$, $n + 1$ tend vers $+\infty$, donc d'après la limite de référence $\displaystyle \lim_{n \to +\infty} \frac{1}{n} = 0$, on a $\displaystyle \lim_{n \to +\infty} \frac{4}{n + 1} = 0$.<br>
+                        Par différence, $\displaystyle \lim_{n \to +\infty} u_n = 3 - 0 = 3$. La suite $(u_n)$ est donc bien <b>convergente et converge vers $3$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>5. Étude de la suite auxiliaire $(v_n)$ :</b><br>
-                        • $v_0 = u_0 - 4 = 1 - 4 = -3$.<br>
-                        • Pour tout entier $n$ : $v_{n+1} = u_{n+1} - 4 = (0{,}5u_n + 2) - 4 = 0{,}5u_n - 2$.<br>
-                        On factorise par $0{,}5$ : $v_{n+1} = 0{,}5(u_n - 4) = 0{,}5v_n$.<br>
-                        La suite $(v_n)$ est donc bien une <b>suite géométrique</b> de premier terme $v_0 = -3$ et de raison $q = 0{,}5$.
+                        <b>5. Premiers termes de la suite polynomiale $(v_n)$ :</b><br>
+                        • $v_0 = 2(0)^2 - 3(0) + 5 = 5$<br>
+                        • $v_1 = 2(1)^2 - 3(1) + 5 = 2 - 3 + 5 = 4$<br>
+                        • $v_2 = 2(2)^2 - 3(2) + 5 = 8 - 6 + 5 = 7$<br>
+                        On constate que $v_1 \lt v_0$ (car $4 \lt 5$) mais $v_2 \gt v_1$ (car $7 \gt 4$) : la suite $(v_n)$ n'est donc <b>pas monotone dès le rang $0$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>6. Formules explicites :</b><br>
-                        Comme $(v_n)$ est géométrique : $v_n = v_0 \times q^n = -3 \times 0{,}5^n$.<br>
-                        Or $v_n = u_n - 4 \Longleftrightarrow u_n = v_n + 4$, d'où : <b>$u_n = 4 - 3 \times 0{,}5^n$</b>.
+                        <b>6. Sens de variation de $(v_n)$ à partir du rang $1$ :</b><br>
+                        Pour tout entier naturel $n$ :<br>
+                        $v_{n+1} - v_n = \big[2(n + 1)^2 - 3(n + 1) + 5\big] - (2n^2 - 3n + 5)$<br>
+                        $v_{n+1} - v_n = 2(n^2 + 2n + 1) - 3n - 3 + 5 - 2n^2 + 3n - 5$<br>
+                        $v_{n+1} - v_n = 2n^2 + 4n + 2 - 2n^2 - 3 = 4n - 1$.<br>
+                        Pour tout entier $n \ge 1$, on a $4n \ge 4$, donc $4n - 1 \ge 3 \gt 0$. Ainsi, $v_{n+1} - v_n \gt 0$ pour tout $n \ge 1$ : la suite $(v_n)$ est <b>strictement croissante à partir du rang $n = 1$</b>.
                     </div>
                     <div class="corr-step">
-                        <b>7. Sens de variation de $(u_n)$ :</b><br>
-                        $u_{n+1} - u_n = (4 - 3 \times 0{,}5^{n+1}) - (4 - 3 \times 0{,}5^n) = 3 \times 0{,}5^n - 3 \times 0{,}5^{n+1}$.<br>
-                        En factorisant par $3 \times 0{,}5^n$ : $u_{n+1} - u_n = 3 \times 0{,}5^n \times (1 - 0{,}5) = 3 \times 0{,}5^n \times 0{,}5 = 1{,}5 \times 0{,}5^n$.<br>
-                        Comme $0{,}5^n \gt 0$ et $1{,}5 \gt 0$, on a $u_{n+1} - u_n \gt 0$ pour tout $n$ : la suite $(u_n)$ est <b>strictement croissante</b>.
+                        <b>7. Limite de la suite polynomiale $(v_n)$ :</b><br>
+                        En développant $n^2\left(2 - \frac{3}{n} + \frac{5}{n^2}\right) = 2n^2 - 3n + 5 = v_n$, l'égalité est vérifiée pour tout $n \ge 1$.<br>
+                        Or $\displaystyle \lim_{n \to +\infty} \frac{3}{n} = 0$ et $\displaystyle \lim_{n \to +\infty} \frac{5}{n^2} = 0$, donc $\displaystyle \lim_{n \to +\infty} \left(2 - \frac{3}{n} + \frac{5}{n^2}\right) = 2$.<br>
+                        Comme $\displaystyle \lim_{n \to +\infty} n^2 = +\infty$, par produit on obtient $\displaystyle \lim_{n \to +\infty} v_n = +\infty$. La suite $(v_n)$ est donc <b>divergente</b> (ses points $M_n$ montent indéfiniment sans s'approcher d'une droite horizontale).
                     </div>
                     <div class="corr-step">
-                        <b>8. Limite et convergence :</b><br>
-                        Comme $-1 \lt 0{,}5 \lt 1$, on sait que $\displaystyle \lim_{n \to +\infty} 0{,}5^n = 0$.<br>
-                        Par conséquent, $\displaystyle \lim_{n \to +\infty} u_n = 4 - 3 \times 0 = 4$.<br>
-                        La suite $(u_n)$ est donc <b>convergente</b> et converge vers $4$ (soit $4\,000\text{ €}$).
+                        <b>8. Sens de variation de $(w_n)$ :</b><br>
+                        Pour tout entier naturel $n$, on exprime la différence : $\displaystyle w_{n+1} - w_n = -\frac{2}{n + 1}$.<br>
+                        Comme $n \ge 0$, on a $n + 1 \gt 0$, donc $-\frac{2}{n + 1} \lt 0$.<br>
+                        Puisque $w_{n+1} - w_n \lt 0$ pour tout entier naturel $n$, la suite $(w_n)$ est <b>strictement décroissante</b>.
                     </div>
                 </div>
             </div>
@@ -712,7 +800,7 @@
 
 <script>
 // ==========================================
-// DONNÉES QCM (12 Questions - Sans trigo, sans vecteur, sans discriminant)
+// DONNÉES QCM (12 Questions - Sans trigo, sans vecteur, sans discriminant, sans suite arith/géo)
 // Toutes les barres obliques LaTeX sont doublées (\\) pour un rendu MathJax parfait
 // ==========================================
 const qcmData = [
@@ -765,22 +853,22 @@ const qcmData = [
         corr: "Le produit des racines vaut $\\displaystyle P = \\frac{c}{a} = 6$. Comme $x_1 = 1$, on a $1 \\times x_2 = 6 \\Longleftrightarrow x_2 = 6$." 
     },
     { 
-        q: "Soit $(u_n)$ une suite arithmétique telle que $u_0 = 4$ et de raison $r = -3$. Que vaut $u_5$ ?", 
-        opts: ["$-11$", "$19$", "$-15$", "$-8$"], 
+        q: "Soit $(u_n)$ la suite définie pour tout entier $n \\ge 0$ par $u_n = n^2 - 2n + 4$. Que vaut $u_3$ ?", 
+        opts: ["$7$", "$4$", "$9$", "$13$"], 
         ans: 0, 
-        corr: "Pour une suite arithmétique : $u_n = u_0 + n \\times r$, donc $u_5 = 4 + 5 \\times (-3) = 4 - 15 = -11$." 
+        corr: "On remplace $n$ par $3$ : $u_3 = 3^2 - 2(3) + 4 = 9 - 6 + 4 = 7$." 
     },
     { 
-        q: "Soit $(v_n)$ une suite géométrique telle que $v_0 = 2$ et de raison $q = 3$. Que vaut $v_3$ ?", 
-        opts: ["$18$", "$54$", "$162$", "$24$"], 
+        q: "Soit $(v_n)$ une suite telle que pour tout entier $n \\ge 0$, $v_{n+1} - v_n = -3n - 2$. Alors la suite $(v_n)$ est :", 
+        opts: ["Strictement croissante", "Strictement décroissante", "Constante", "Non monotone"], 
         ans: 1, 
-        corr: "Pour une suite géométrique : $v_n = v_0 \\times q^n$, donc $v_3 = 2 \\times 3^3 = 2 \\times 27 = 54$." 
+        corr: "Comme $n \\ge 0$, on a $-3n - 2 \\le -2 \\lt 0$, donc $v_{n+1} - v_n \\lt 0$ pour tout $n$ : la suite $(v_n)$ est strictement décroissante." 
     },
     { 
-        q: "Soit $u_n = 5 \\times 0{,}8^n$. Quelle est la limite de $(u_n)$ quand $n$ tend vers $+\\infty$ ?", 
-        opts: ["$+\\infty$", "$5$", "$0$", "N'existe pas"], 
+        q: "Soit $\\displaystyle u_n = 5 - \\frac{3}{n}$ pour $n \\ge 1$. Quelle est la limite de $(u_n)$ quand $n$ tend vers $+\\infty$ ?", 
+        opts: ["$+\\infty$", "$2$", "$5$", "$0$"], 
         ans: 2, 
-        corr: "Puisque $-1 \\lt 0{,}8 \\lt 1$, on a $\\displaystyle \\lim_{n \\to +\\infty} 0{,}8^n = 0$, donc $\\displaystyle \\lim_{n \\to +\\infty} u_n = 5 \\times 0 = 0$." 
+        corr: "Comme $\\displaystyle \\lim_{n \\to +\\infty} \\frac{1}{n} = 0$, on a $\\displaystyle \\lim_{n \\to +\\infty} \\frac{3}{n} = 0$, et donc $\\displaystyle \\lim_{n \\to +\\infty} u_n = 5 - 0 = 5$." 
     },
     { 
         q: "Si $P(A) = 0{,}4$ et $P_A(B) = 0{,}5$, alors $P(A \\cap B)$ est égale à :", 
